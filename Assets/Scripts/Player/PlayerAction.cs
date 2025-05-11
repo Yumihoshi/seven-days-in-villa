@@ -13,6 +13,10 @@ public class PlayerAction : MonoBehaviour
    private Vector2 movement;
    
    
+   [Header("Interact")]
+   [SerializeField] PlayerInteract playerInteract;
+   
+   
    [SerializeField] Animator animator;
    
    private void Awake()
@@ -20,6 +24,7 @@ public class PlayerAction : MonoBehaviour
       DontDestroyOnLoad(gameObject);
       rb = GetComponent<Rigidbody2D>();
       animator = GetComponentInChildren<Animator>();
+      playerInteract = GetComponent<PlayerInteract>();
    }
 
 
@@ -50,6 +55,15 @@ public class PlayerAction : MonoBehaviour
       movement.Normalize();
       animator.SetFloat("InputX", movement.x);
       animator.SetFloat("InputY", movement.y);
+   }
+
+
+   public void Interact(InputAction.CallbackContext context)
+   {
+      if (context.performed)
+      {
+         playerInteract.Interact();
+      }
    }
    
 }
