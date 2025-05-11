@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Bg
+    uniqueID: 3741350627
+    locked: 0
+  - name: Instance
+    uniqueID: 3363171531
+    locked: 0
+  - name: Player
+    uniqueID: 1198787027
+    locked: 0

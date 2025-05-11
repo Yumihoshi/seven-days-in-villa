@@ -410,7 +410,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseKey: 
-  test: 3
 --- !u!1 &1494819933
 GameObject:
   m_ObjectHideFlags: 0
