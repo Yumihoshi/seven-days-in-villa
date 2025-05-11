@@ -21,8 +21,7 @@ public class PlayerAction : MonoBehaviour
       Vector2 movement = context.ReadValue<Vector2>();
       if (context.performed)
       {
-         movement *= speed*Time.deltaTime;
-         rb.MovePosition(rb.position+movement);
+         
       }
    }
    
