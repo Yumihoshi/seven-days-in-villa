@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> :MonoBehaviour where T:Singleton<T>
+namespace cjr.Single
 {
-   static T instance;
-
-   public static T Instance
+   public class Singleton<T> :MonoBehaviour where T:Singleton<T>
    {
-      get
+      static T instance;
+
+      public static T Instance
       {
-         if(instance == null)
-            instance = (T)FindObjectOfType(typeof(T));
-         return instance;
+         get
+         {
+            if(instance == null)
+               instance = (T)FindObjectOfType(typeof(T));
+            return instance;
+         }
       }
    }
+   
 }
