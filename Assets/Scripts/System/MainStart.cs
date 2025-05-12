@@ -18,10 +18,10 @@ public class MainStart : MonoBehaviour
 
     IEnumerator ChangeScene()
     {
+        Mask.DOFade(1, 0.3f);
         AsyncOperation operation = SceneManager.LoadSceneAsync(1);
         operation.allowSceneActivation = false; // 先禁止自动激活
         Mask.alpha = 0;
-        Mask.DOFade(1, 0.1f);
         // 等待加载到 90%
         while (operation.progress < 0.9f)
         {
