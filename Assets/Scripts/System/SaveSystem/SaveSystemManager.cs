@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class SaveSystemManager : MonoBehaviour
 {
+
+
+    [SerializeField] private bool IsDebug = true;
+    
+    
     public string SaveSlotName;
     static SaveSystemManager instance;
 
@@ -37,6 +42,8 @@ public class SaveSystemManager : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
+        if(IsDebug)
+            return;
         foreach (GameObject go in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
         {
           Component[] components = go.GetComponents<Component>();
@@ -55,6 +62,9 @@ public class SaveSystemManager : MonoBehaviour
     /// </summary>
     public void LoadGame()
     {
+        if(IsDebug)
+            return;
+        
         string currentSceneName =cjr.Scence.SceneManager.Instance.GetCurrentScene();
         string BaseKey=SaveSlotName+currentSceneName;
     }
