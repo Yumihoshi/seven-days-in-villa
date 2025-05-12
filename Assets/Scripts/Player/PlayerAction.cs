@@ -19,6 +19,18 @@ public class PlayerAction : MonoBehaviour
    
    [SerializeField] Animator animator;
    
+   static PlayerAction playerAction;
+
+   public static PlayerAction Instance
+   {
+      get
+      {
+         if(playerAction == null)
+            playerAction = FindObjectOfType<PlayerAction>();
+         return playerAction;
+      }
+   }
+   
    private void Awake()
    {
       DontDestroyOnLoad(gameObject);
@@ -57,6 +69,10 @@ public class PlayerAction : MonoBehaviour
       animator.SetFloat("InputY", movement.y);
    }
 
+   public void SetInteract(InteractableItem item)
+   {
+      playerInteract.SetInteract(item);
+   }
 
    public void Interact(InputAction.CallbackContext context)
    {

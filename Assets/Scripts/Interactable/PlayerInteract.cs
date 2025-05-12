@@ -6,6 +6,12 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] InteractableItem curInteract;
 
+
+    public void SetInteract(InteractableItem interact)
+    {
+        curInteract = interact;
+    }
+    
     public void Interact()
     {
         curInteract?.Interact();

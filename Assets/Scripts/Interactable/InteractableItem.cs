@@ -5,13 +5,22 @@ using UnityEngine;
 
 public class InteractableItem : MonoBehaviour
 {
-    protected void Awake()
+    protected virtual void Awake()
     {
         
     }
 
+    public virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        PlayerAction.Instance.SetInteract(this);
+    }
+
+    public virtual void OnTriggerExit2D(Collider2D other)
+    {
+        PlayerAction.Instance.SetInteract(null);
+    }
     public virtual void Interact()
     {
-        
+        Debug.Log("Interact");
     } 
 }

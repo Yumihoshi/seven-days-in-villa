@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 
@@ -7,7 +10,15 @@ namespace cjr.Scence
 {
     public class SceneManager : MonoBehaviour
     {
-        public static SceneManager Instance
+        [SerializeField] CanvasGroup Mask;
+
+        public TweenerCore<float,float,FloatOptions> FainOut(float targetAlpha, float duration)
+        {
+            return  Mask.DOFade(targetAlpha, duration);
+        }
+
+
+    public static SceneManager Instance
         {
             get
             {
