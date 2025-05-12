@@ -8,6 +8,7 @@ public class SaveSystemManager : MonoBehaviour
     public string SaveSlotName;
     static SaveSystemManager instance;
 
+    [SerializeField] GameData_So gameData_SO;
     public static SaveSystemManager Instance
     {
         get
@@ -20,7 +21,11 @@ public class SaveSystemManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        SaveSlotName = nameof(SlotName.Default);
+        SaveSlotName = gameData_SO.CurrentSaveSlotName;
+        if (SaveSlotName == "")
+        {
+            SaveSlotName = gameData_SO.SaveSlotNames[0];
+        }
     }
 
     public List<GameObject> rootObjects = new List<GameObject>();

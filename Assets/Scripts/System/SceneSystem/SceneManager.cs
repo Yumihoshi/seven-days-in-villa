@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -30,6 +31,10 @@ namespace cjr.Scence
         string CurrentScene;
         static SceneManager instance;
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
 
         /// <summary>
         /// 获取当前激活的场景名称
