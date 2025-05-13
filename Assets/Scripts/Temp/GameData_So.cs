@@ -7,9 +7,11 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(menuName = "Data/GameData_So")]
 public class GameData_So : ScriptableObject
 {
-    [FormerlySerializedAs("SaveSlotName")] public List<string> SaveSlotNames;
+    public List<string> SaveSlotNames;
     public string CurrentSaveSlotName;
 
+    public List<InventoryItem>InventoryItems;
+    
     private void Awake()
     {
         SaveSlotNames.Add(nameof(SlotName.Default));

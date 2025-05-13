@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SaveSlotNames:
   - Default
+  - Default
+  - Default
   CurrentSaveSlotName: 
+  InventoryItems:
+  - {fileID: 2779537555320565787, guid: 67e89aabbe269df4fb73714b0336c5b1, type: 3}
