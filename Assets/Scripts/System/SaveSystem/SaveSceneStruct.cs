@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/*
+ * 是一个中间体
+ */
 [Serializable]
 public struct SaveSceneStruct 
 {
