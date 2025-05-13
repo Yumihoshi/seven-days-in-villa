@@ -24765,8 +24765,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDebug: 1
   SaveSlotName: 
+  items: []
+  saved: []
   gameData_SO: {fileID: 11400000, guid: cc48aefe91e88b04c869981a4b3bd62a, type: 2}
-  rootObjects: []
 --- !u!114 &2072186896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25457,15 +25458,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484286818455835270, guid: 67e89aabbe269df4fb73714b0336c5b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.974895
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6484286818455835270, guid: 67e89aabbe269df4fb73714b0336c5b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9032462
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6484286818455835270, guid: 67e89aabbe269df4fb73714b0336c5b1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.112540066
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6484286818455835270, guid: 67e89aabbe269df4fb73714b0336c5b1, type: 3}
       propertyPath: m_LocalRotation.w

@@ -19,7 +19,8 @@ namespace cjr.Scence
         }
 
 
-    public static SceneManager Instance
+        #region µ¥Àý
+        public static SceneManager Instance
         {
             get
             {
@@ -28,8 +29,13 @@ namespace cjr.Scence
                 return instance;
             }
         }
-        string CurrentScene;
         static SceneManager instance;
+
+        
+
+        #endregion
+        
+        string CurrentScene;
 
         private void Awake()
         {
