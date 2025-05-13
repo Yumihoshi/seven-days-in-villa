@@ -24763,7 +24763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4dd857816d41e4797809a14a643c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDebug: 1
+  IsDebug: 0
   SaveSlotName: 
   items: []
   saved: []

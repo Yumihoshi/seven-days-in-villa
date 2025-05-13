@@ -27,9 +27,14 @@ public class SaveSystemManager : MonoBehaviour
 
     public const string InventoryItemDic = "InventoryItemDic";
 
- 
-    [SerializeField] InventoryItem[] items;
-    [SerializeField] List<SaveSceneStruct> saved;
+    #region ต๗สิ
+
+    
+        [SerializeField] InventoryItem[] items;
+        [SerializeField] List<SaveSceneStruct> saved;
+
+    #endregion
+    
     public  IReadOnlyList<SaveSceneStruct> GetCurrentLists()
     {
         return   SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()];
@@ -83,6 +88,11 @@ public class SaveSystemManager : MonoBehaviour
         }
     }
 
+
+    public void ClearData()
+    {
+        ES3.DeleteFile();
+    }
     public void RemoveItems(int ID)
     {
         var saveData = SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()];
@@ -133,6 +143,8 @@ public class SaveSystemManager : MonoBehaviour
     [SerializeField] GameData_So gameData_SO;
     private void Awake()
     {
+        if(IsDebug)
+            ClearData();
         DontDestroyOnLoad(gameObject);
         SaveSlotName = gameData_SO.CurrentSaveSlotName;
         if (SaveSlotName == "")
