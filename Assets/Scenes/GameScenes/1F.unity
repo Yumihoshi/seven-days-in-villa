@@ -23126,6 +23126,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 2.5
   isMoving: 0
+  Speeding: 2
   playerInteract: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &1974379323

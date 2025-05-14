@@ -10,6 +10,7 @@ public class PlayerAction : MonoBehaviour
    [Header("Movement")]
    [SerializeField] private float speed = 3f;
    [SerializeField] bool isMoving = false;
+   [SerializeField] private float Speeding = 1.5f;
    private Vector2 movement;
    
    
@@ -45,10 +46,21 @@ public class PlayerAction : MonoBehaviour
       if (isMoving)
       {
          rb.velocity = new Vector2(movement.x * speed, movement.y * speed);
+         if (Input.GetKey(KeyCode.LeftShift))
+         {
+            Debug.Log("Left Shift");
+            rb.velocity *= Speeding;
+            animator.speed *= Speeding;
+         }
       }
       else
       {
          rb.velocity = Vector2.zero;
+      }
+
+      if (!Input.GetKeyDown(KeyCode.LeftShift))
+      {
+         animator.speed = 1;
       }
    }
 
