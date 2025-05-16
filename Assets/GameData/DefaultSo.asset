@@ -18,5 +18,9 @@ MonoBehaviour:
   - Default
   - Default
   - Default
+  - Default
   CurrentSaveSlotName: 
-  InventoryItems: []
+  InventoryItems:
+  - {fileID: 8256130011947543882, guid: c653863d60a93004ea3621a33de13ea4, type: 3}
+  - {fileID: 5039516972981299395, guid: b6f10e26457ebc84a9c15d9f8bc94765, type: 3}
+  - {fileID: 2711521616461251339, guid: 9c43d910a2bce524dbc8e040de30be72, type: 3}

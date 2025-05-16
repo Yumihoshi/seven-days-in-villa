@@ -44,6 +44,9 @@ public class SaveSystemManager : MonoBehaviour
     [Button("SaveSceneItem")]
     public void SaveSceneItem()
     {
+        
+        ClearCurrentSceneData();
+        
         items = FindObjectsOfType<InventoryItem>();
         for (int i = 0; i < items.Length; i++)
         {
@@ -65,7 +68,6 @@ public class SaveSystemManager : MonoBehaviour
         for (int i = 0; i < saved.Count; i++)
         {
             int id = saved[i].ItemID;
-            Debug.LogWarning(id);
             bool exi=false;
             for (int ii = 0; ii < items.Length; ii++)
             {
@@ -86,12 +88,38 @@ public class SaveSystemManager : MonoBehaviour
                 Games.transform.position = saved[i].ItemPosition;
             }
         }
-    }
 
+        for (int i = 0; i < items.Length; i++)
+        {
+            Debug.LogWarning(items[i].gameObject.name);
+            bool need=true;
+            for (int ii = 0; ii < saved.Count; ii++)
+            {
+                if (saved[ii].ItemID == items[i].ID)
+                {
+                    need=false;
+                    break;
+                }
+            }
+
+            if (need)
+            {
+                Destroy(items[i].gameObject);
+            }
+        }
+    }
 
     public void ClearData()
     {
         ES3.DeleteFile();
+    }
+
+    public void ClearCurrentSceneData()
+    {
+        // ES3.DeleteFile();
+        
+        
+        SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()].Clear();
     }
     public void RemoveItems(int ID)
     {
@@ -144,7 +172,7 @@ public class SaveSystemManager : MonoBehaviour
     private void Awake()
     {
         if(IsDebug)
-            ClearData();
+           ClearData();
         DontDestroyOnLoad(gameObject);
         SaveSlotName = gameData_SO.CurrentSaveSlotName;
         if (SaveSlotName == "")
