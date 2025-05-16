@@ -7,12 +7,12 @@ using UnityEngine;
 public class VcmManager :cjr.Single.Singleton<VcmManager>
 {
     public CinemachineConfiner2D Confiner2D;
-
-    private void Awake()
+    
+    protected override void Awake()
     {
+        base.Awake();
         Confiner2D = GetComponentInChildren<CinemachineConfiner2D>();
     }
-
 
     public void GetClosestConfiner()
     {

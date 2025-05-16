@@ -11,14 +11,21 @@ public class PlayerSaving :cjr.Single. Singleton<PlayerSaving>,RequireSavingItem
    [SerializeField] string LastSceneName;
    public const string LAST_Position = "lastPosition"; 
    public const string LAST_SCENE = "lastScene";
-   private void Awake()
+   protected override void Awake()
    {
-     Load();
+      base.Awake();
+      Load();
+     
    }
 
+   public string GetLastSceneName()
+   {
+      if (!ES3.KeyExists(SaveSystemManager.Instance.SaveSlotName + LAST_SCENE))
+         return "";
+      return ES3.Load<string>(SaveSystemManager.Instance.SaveSlotName+LAST_SCENE);
+   } 
    public void Save()
    {
-      Debug.LogWarning("SVAe");
       ES3.Save(SaveSystemManager.Instance.SaveSlotName+LAST_Position, transform.position);
       ES3.Save(SaveSystemManager.Instance.SaveSlotName+LAST_SCENE,cjr.Scence.SceneManager.Instance.GetCurrentScene());
       
@@ -26,13 +33,17 @@ public class PlayerSaving :cjr.Single. Singleton<PlayerSaving>,RequireSavingItem
 
    public void Load()
    {
+      Debug.LogWarning("Load");
       if (!SaveSystemManager.Instance.IsDebug)
       {
          if (ES3.KeyExists(SaveSystemManager.Instance.SaveSlotName +LAST_Position))
          {
             lastPosition = ES3.Load<Vector3>(SaveSystemManager.Instance.SaveSlotName +LAST_Position);
          }
-
+         else
+         {
+            lastPosition = Vector3.zero;
+         }
          if (ES3.KeyExists(SaveSystemManager.Instance.SaveSlotName + LAST_SCENE))
          {
             LastSceneName = ES3.Load<string>(SaveSystemManager.Instance.SaveSlotName + LAST_SCENE);

@@ -20,9 +20,7 @@ public class SaveSystemManager : MonoBehaviour
 
     public bool IsDebug = true;
     
-    [Header("每次游戏选择的存档名称" +
-            "从dataso中读取")]
-    public string SaveSlotName;
+    public string SaveSlotName=>gameData_SO.CurrentSaveSlotName;
 
     [SerializeField] Dictionary<string,Dictionary<string,List<SaveSceneStruct>>>SaveDatas = new Dictionary<string, Dictionary<string,List<SaveSceneStruct>>>();
 
@@ -169,18 +167,19 @@ public class SaveSystemManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] GameData_So gameData_SO;
+    public GameData_So gameData_SO;
     private void Awake()
     {
         if(IsDebug)
            ClearData();
         DontDestroyOnLoad(gameObject);
-        SaveSlotName = gameData_SO.CurrentSaveSlotName;
-        if (SaveSlotName == "")
-        {
-            SaveSlotName = gameData_SO.SaveSlotNames[0];
-        }
+        // SaveSlotName = gameData_SO.CurrentSaveSlotName;
+        // if (SaveSlotName == "")
+        // {
+        //     SaveSlotName = gameData_SO.SaveSlotNames[0];
+        // }
 
+        LoadGame();
         if (ES3.KeyExists(InventoryItemDic))
         {
             // var mid=new Dictionary<string, Dictionary<string,List<SaveSceneStruct>>>();
@@ -233,8 +232,17 @@ public class SaveSystemManager : MonoBehaviour
         if(IsDebug)
             return;
         {
-            string currentSceneName =cjr.Scence.SceneManager.Instance.GetCurrentScene();
-            string BaseKey=SaveSlotName+currentSceneName;
+            foreach (GameObject go in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
+            { 
+                Component[] components = go.GetComponents<Component>();
+                for (int i = 0; i < components.Length; i++)
+                {
+                    if (components[i] is RequireSavingItem savingItem)
+                    {
+                        savingItem.Load();
+                    }
+                }
+            }
         }
     }
     
