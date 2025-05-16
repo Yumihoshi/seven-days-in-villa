@@ -26,8 +26,12 @@ public class VcmManager :cjr.Single.Singleton<VcmManager>
             if (dis < minDist)
             {
                 minDist = dis;
-                if(obj.GetComponent<PolygonCollider2D>())
+                if (obj.GetComponent<PolygonCollider2D>())
+                {
+                    obj.GetComponent<PolygonCollider2D>().isTrigger = true;
                     Confiner2D.m_BoundingShape2D= obj.GetComponent<PolygonCollider2D>();
+                    
+                }
             }
         }
     }

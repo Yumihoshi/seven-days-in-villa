@@ -14,7 +14,6 @@ public class PlayerSaving :cjr.Single. Singleton<PlayerSaving>,RequireSavingItem
    protected override void Awake()
    {
       base.Awake();
-      Load();
      
    }
 
@@ -33,7 +32,6 @@ public class PlayerSaving :cjr.Single. Singleton<PlayerSaving>,RequireSavingItem
 
    public void Load()
    {
-      Debug.LogWarning("Load");
       if (!SaveSystemManager.Instance.IsDebug)
       {
          if (ES3.KeyExists(SaveSystemManager.Instance.SaveSlotName +LAST_Position))

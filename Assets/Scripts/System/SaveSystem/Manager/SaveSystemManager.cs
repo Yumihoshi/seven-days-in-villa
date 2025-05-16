@@ -14,7 +14,7 @@ using UnityEngine;
 
 
 
-public class SaveSystemManager : MonoBehaviour
+public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
 {
 
 
@@ -62,49 +62,55 @@ public class SaveSystemManager : MonoBehaviour
         items = FindObjectsOfType<InventoryItem>();
         if(!ES3.KeyExists(InventoryItemDic))
             return;
-        ES3.Load(InventoryItemDic);
-        saved=SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()];
-        for (int i = 0; i < saved.Count; i++)
+        SaveDatas = ES3.Load(InventoryItemDic,SaveDatas);
+           
+        if (SaveDatas.ContainsKey(SaveSlotName) &&
+            SaveDatas[SaveSlotName].ContainsKey(cjr.Scence.SceneManager.Instance.GetCurrentScene()))
         {
-            int id = saved[i].ItemID;
-            bool exi=false;
-            for (int ii = 0; ii < items.Length; ii++)
+            Debug.LogWarning("item scebe");
+            saved=SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()];
+            for (int i = 0; i < saved.Count; i++)
             {
-                if (items[ii].ID == id)
+                int id = saved[i].ItemID;
+                bool exi=false;
+                for (int ii = 0; ii < items.Length; ii++)
                 {
-                    items[ii].transform.position = saved[i].ItemPosition;
-                    exi=true;
-                    break;
+                    if (items[ii].ID == id)
+                    {
+                        items[ii].transform.position = saved[i].ItemPosition;
+                        exi=true;
+                        break;
+                    }
                 }
-            }
-            if (!exi)
-            {
-                int offset = id - 1000;
-                var Games=Instantiate(gameData_SO.InventoryItems[offset],saved[i].ItemPosition,Quaternion.identity);
-                Games.Name=saved[i].ItemName;
-                //todo
-                //具体一些变量的赋值
-                Games.transform.position = saved[i].ItemPosition;
-            }
-        }
-
-        for (int i = 0; i < items.Length; i++)
-        {
-            Debug.LogWarning(items[i].gameObject.name);
-            bool need=true;
-            for (int ii = 0; ii < saved.Count; ii++)
-            {
-                if (saved[ii].ItemID == items[i].ID)
+                if (!exi)
                 {
-                    need=false;
-                    break;
+                    int offset = id - 1000;
+                    var Games=Instantiate(gameData_SO.InventoryItems[offset],saved[i].ItemPosition,Quaternion.identity);
+                    Games.Name=saved[i].ItemName;
+                    //todo
+                    //具体一些变量的赋值
+                    Games.transform.position = saved[i].ItemPosition;
                 }
             }
 
-            if (need)
+            for (int i = 0; i < items.Length; i++)
             {
-                Destroy(items[i].gameObject);
-            }
+                Debug.LogWarning(items[i].gameObject.name);
+                bool need=true;
+                for (int ii = 0; ii < saved.Count; ii++)
+                {
+                    if (saved[ii].ItemID == items[i].ID)
+                    {
+                        need=false;
+                        break;
+                    }
+                }
+
+                if (need)
+                {
+                    Destroy(items[i].gameObject);
+                }
+            }   
         }
     }
 
@@ -116,9 +122,12 @@ public class SaveSystemManager : MonoBehaviour
     public void ClearCurrentSceneData()
     {
         // ES3.DeleteFile();
-        
-        
-        SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()].Clear();
+        if (SaveDatas.ContainsKey(SaveSlotName) &&
+            SaveDatas[SaveSlotName].ContainsKey(cjr.Scence.SceneManager.Instance.GetCurrentScene()))
+        {
+            
+            SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()].Clear();
+        }
     }
     public void RemoveItems(int ID)
     {
@@ -136,6 +145,15 @@ public class SaveSystemManager : MonoBehaviour
 
     public void AddItem(SaveSceneStruct item)
     {
+        if (!SaveDatas.ContainsKey(SaveSlotName))
+        {
+            SaveDatas[SaveSlotName] = new Dictionary<string, List<SaveSceneStruct>>();
+        }
+
+        if (!SaveDatas[SaveSlotName].ContainsKey(cjr.Scence.SceneManager.Instance.GetCurrentScene()))
+        {
+            SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()] = new List<SaveSceneStruct>();
+        }
         var saveData = SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()];
         if (saveData.Contains(item))
         {
@@ -168,8 +186,10 @@ public class SaveSystemManager : MonoBehaviour
     #endregion
 
     public GameData_So gameData_SO;
-    private void Awake()
+    // private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if(IsDebug)
            ClearData();
         DontDestroyOnLoad(gameObject);
@@ -221,6 +241,7 @@ public class SaveSystemManager : MonoBehaviour
                   }
               }
         }
+        SaveSceneItem();
         PlayerSaving.Instance.Save();
     }
     //todo
@@ -244,6 +265,8 @@ public class SaveSystemManager : MonoBehaviour
                 }
             }
         }
+        LoadSceneItem();
+        PlayerSaving.Instance.Load();
     }
     
 
