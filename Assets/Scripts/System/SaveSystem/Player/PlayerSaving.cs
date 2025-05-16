@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using cjr.Scence;
+using cjr.Single;
 using UnityEngine;
 
-public class PlayerSaving : MonoBehaviour,RequireSavingItem
+public class PlayerSaving :cjr.Single. Singleton<PlayerSaving>,RequireSavingItem
 {
    [SerializeField] Vector3 lastPosition;
    [SerializeField] string LastSceneName;
@@ -17,6 +18,7 @@ public class PlayerSaving : MonoBehaviour,RequireSavingItem
 
    public void Save()
    {
+      Debug.LogWarning("SVAe");
       ES3.Save(SaveSystemManager.Instance.SaveSlotName+LAST_Position, transform.position);
       ES3.Save(SaveSystemManager.Instance.SaveSlotName+LAST_SCENE,cjr.Scence.SceneManager.Instance.GetCurrentScene());
       
@@ -38,11 +40,12 @@ public class PlayerSaving : MonoBehaviour,RequireSavingItem
          transform.position=lastPosition;
          VcmManager.Instance.GetClosestConfiner();
          //todo
-      }   }
+      }   
+   }
 
    private void OnApplicationQuit()
    {
-      Save();
+      // Save();
       //todo
       //±³°üÏµÍ³
    }

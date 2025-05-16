@@ -212,16 +212,17 @@ public class SaveSystemManager : MonoBehaviour
         if(IsDebug)
             return;
         foreach (GameObject go in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
-        {
-          Component[] components = go.GetComponents<Component>();
-          for (int i = 0; i < components.Length; i++)
-          {
-              if (components[i] is RequireSavingItem savingItem)
+        { 
+            Component[] components = go.GetComponents<Component>();
+              for (int i = 0; i < components.Length; i++)
               {
-                  savingItem.Save();
+                  if (components[i] is RequireSavingItem savingItem)
+                  {
+                      savingItem.Save();
+                  }
               }
-          }
         }
+        PlayerSaving.Instance.Save();
     }
     //todo
     /// <summary>
@@ -241,7 +242,7 @@ public class SaveSystemManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         gameData_SO.CurrentSaveSlotName = SlotName.Default.ToString();
-        // SaveGame();
+        SaveGame();
     }
 }
 
