@@ -48,7 +48,6 @@ public class PlayerAction : MonoBehaviour
          rb.velocity = new Vector2(movement.x * speed, movement.y * speed);
          if (Input.GetKey(KeyCode.LeftShift))
          {
-            Debug.Log("Left Shift");
             rb.velocity *= Speeding;
             animator.speed *= Speeding;
          }

@@ -18,9 +18,10 @@ public class SaveSystemManager : MonoBehaviour
 {
 
 
-    [SerializeField] private bool IsDebug = true;
+    public bool IsDebug = true;
     
-    [Header("每次游戏选择的存档名称")]
+    [Header("每次游戏选择的存档名称" +
+            "从dataso中读取")]
     public string SaveSlotName;
 
     [SerializeField] Dictionary<string,Dictionary<string,List<SaveSceneStruct>>>SaveDatas = new Dictionary<string, Dictionary<string,List<SaveSceneStruct>>>();
@@ -236,9 +237,20 @@ public class SaveSystemManager : MonoBehaviour
         }
     }
     
+
+    private void OnApplicationQuit()
+    {
+        gameData_SO.CurrentSaveSlotName = SlotName.Default.ToString();
+        // SaveGame();
+    }
 }
 
 public enum SlotName
 {
     Default,
+    Slot1,
+    Slot2,
+    Slot3,
+    Slot4,
+    Slot5,
 }
