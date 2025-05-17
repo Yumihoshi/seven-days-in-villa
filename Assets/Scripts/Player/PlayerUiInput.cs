@@ -10,6 +10,7 @@ public class PlayerUiInput : MonoBehaviour
 
     [SerializeField] PlayerInput playerInput;
 
+    [SerializeField] private Transform SavingUi;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -22,6 +23,12 @@ public class PlayerUiInput : MonoBehaviour
             SettingsUi.gameObject.SetActive(true);
             playerInput.SwitchCurrentActionMap("Menu");
         }
+    }
+
+    public void ShowOrhideSave(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            SavingUi.gameObject.SetActive(!SavingUi.gameObject.activeSelf);
     }
 
     public void HideSettingsUi(InputAction.CallbackContext context)

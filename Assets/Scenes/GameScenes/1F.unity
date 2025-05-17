@@ -1824,9 +1824,9 @@ RectTransform:
   - {fileID: 741552655}
   m_Father: {fileID: 1385489753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -94.61}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206327390
@@ -10950,6 +10950,7 @@ GameObject:
   - component: {fileID: 1018650538}
   - component: {fileID: 1018650537}
   - component: {fileID: 1018650536}
+  - component: {fileID: 1018650540}
   m_Layer: 5
   m_Name: Ui
   m_TagString: Untagged
@@ -11044,6 +11045,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1018650540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018650535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026b8f2fba4ba014fa4b4a9de2062be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1083766982
 GameObject:
   m_ObjectHideFlags: 0
@@ -21633,9 +21646,9 @@ RectTransform:
   - {fileID: 1278370905}
   m_Father: {fileID: 1385489753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736575206
@@ -23578,7 +23591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1854911723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24850,6 +24863,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b22493e0-2d42-4298-926f-75af9edacfaf
     m_ActionName: Menu/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1974379326}
+        m_TargetAssemblyTypeName: PlayerUiInput, Assembly-CSharp
+        m_MethodName: ShowOrhideSave
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7791ffa2-93b4-4652-9212-ed592ff71fb2
+    m_ActionName: GamePlay/OpenSave[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay
@@ -24927,6 +24956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SettingsUi: {fileID: 162796266}
   playerInput: {fileID: 0}
+  SavingUi: {fileID: 1854911723}
 --- !u!114 &1974379327
 MonoBehaviour:
   m_ObjectHideFlags: 0
