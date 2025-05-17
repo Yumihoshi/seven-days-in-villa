@@ -15,6 +15,11 @@ public class InteractableItem : MonoBehaviour
         PlayerAction.Instance.SetInteract(this);
     }
 
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        PlayerAction.Instance.SetInteract(this);
+    }
+
     public virtual void OnTriggerExit2D(Collider2D other)
     {
         PlayerAction.Instance.SetInteract(null);

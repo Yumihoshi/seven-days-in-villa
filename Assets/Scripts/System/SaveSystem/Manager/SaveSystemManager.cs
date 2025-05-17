@@ -272,8 +272,8 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
 
     private void OnApplicationQuit()
     {
-        gameData_SO.CurrentSaveSlotName = SlotName.Default.ToString();
         SaveGame();
+        gameData_SO.CurrentSaveSlotName = SlotName.Default.ToString();
     }
 }
 
