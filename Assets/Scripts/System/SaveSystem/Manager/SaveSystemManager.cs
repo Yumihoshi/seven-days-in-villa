@@ -1,4 +1,5 @@
 using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -67,7 +68,6 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         if (SaveDatas.ContainsKey(SaveSlotName) &&
             SaveDatas[SaveSlotName].ContainsKey(cjr.Scence.SceneManager.Instance.GetCurrentScene()))
         {
-            Debug.LogWarning("item scebe");
             saved=SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()];
             for (int i = 0; i < saved.Count; i++)
             {
@@ -95,7 +95,6 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
 
             for (int i = 0; i < items.Length; i++)
             {
-                Debug.LogWarning(items[i].gameObject.name);
                 bool need=true;
                 for (int ii = 0; ii < saved.Count; ii++)
                 {
@@ -243,6 +242,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         }
         SaveSceneItem();
         PlayerSaving.Instance.Save();
+        PlayerInventory.Instance.Save();
     }
     //todo
     /// <summary>
@@ -267,6 +267,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         }
         LoadSceneItem();
         PlayerSaving.Instance.Load();
+        PlayerInventory.Instance.Load();
     }
     
 

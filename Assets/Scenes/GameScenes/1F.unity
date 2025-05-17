@@ -24743,6 +24743,7 @@ GameObject:
   - component: {fileID: 1974379325}
   - component: {fileID: 1974379326}
   - component: {fileID: 1974379327}
+  - component: {fileID: 1974379328}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -25008,6 +25009,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastPosition: {x: 0, y: 0, z: 0}
   LastSceneName: 
+--- !u!114 &1974379328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974379319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f9c9b38b585a14ba04184c7249d098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: []
 --- !u!1 &1976338183
 GameObject:
   m_ObjectHideFlags: 0
@@ -26606,7 +26620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4dd857816d41e4797809a14a643c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDebug: 1
+  IsDebug: 0
   items: []
   saved: []
   gameData_SO: {fileID: 11400000, guid: cc48aefe91e88b04c869981a4b3bd62a, type: 2}

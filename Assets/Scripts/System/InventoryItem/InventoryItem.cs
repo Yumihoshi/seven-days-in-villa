@@ -16,10 +16,18 @@ public enum NumType
     Multiple,
 }
 
-public class InventoryItem : MonoBehaviour
+public class InventoryItem : InteractableItem
 { 
     public int ID;
     public string Name;
     public UseType Type;
     public NumType NumType;
+    public int Amount;
+
+    public override void Interact()
+    {
+        base.Interact();
+        PlayerInventory.Instance.AddItem(this);
+        gameObject.SetActive(false);
+    }
 }
