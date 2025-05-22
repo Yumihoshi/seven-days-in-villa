@@ -24995,6 +24995,7 @@ MonoBehaviour:
   SettingsUi: {fileID: 162796266}
   playerInput: {fileID: 0}
   SavingUi: {fileID: 1854911723}
+  inputState: 0
 --- !u!114 &1974379327
 MonoBehaviour:
   m_ObjectHideFlags: 0
