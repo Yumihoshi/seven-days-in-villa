@@ -28,6 +28,6 @@ public class InteractableItem : MonoBehaviour
     }
     public virtual void Interact()
     {
-        Debug.Log("Interact");
+      
     } 
 }

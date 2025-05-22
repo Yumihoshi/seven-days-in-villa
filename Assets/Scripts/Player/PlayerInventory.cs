@@ -9,7 +9,6 @@ public class PlayerInventory : cjr.Single.Singleton<PlayerInventory>,RequireSavi
     public const string playerInventoryName = "PlayerInventory";
     public void Save()
     {
-        Debug.Log(SaveSystemManager.Instance.SaveSlotName+playerInventoryName);
         
         ES3.Save(SaveSystemManager.Instance.SaveSlotName+playerInventoryName, playerInventory);
     }
@@ -23,10 +22,8 @@ public class PlayerInventory : cjr.Single.Singleton<PlayerInventory>,RequireSavi
         }
         else
         {
-            Debug.LogWarning("No player inventory found");
             playerInventory = new List<SaveSceneStruct>();
             playerInventory.Clear();
-            Debug.Log(playerInventory.Count);
         }
     }
 

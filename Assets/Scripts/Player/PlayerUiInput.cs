@@ -11,9 +11,11 @@ public class PlayerUiInput : MonoBehaviour
     [SerializeField] PlayerInput playerInput;
 
     [SerializeField] private Transform SavingUi;
+    [SerializeField] PutState inputState;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        inputState = PutState.Idle;
     }
 
     public void ShowSettingsUi(InputAction.CallbackContext context)
@@ -21,6 +23,7 @@ public class PlayerUiInput : MonoBehaviour
         if (context.performed)
         {
             SettingsUi.gameObject.SetActive(true);
+            inputState = PutState.InUi;
             playerInput.SwitchCurrentActionMap("Menu");
         }
     }
@@ -28,7 +31,12 @@ public class PlayerUiInput : MonoBehaviour
     public void ShowOrhideSave(InputAction.CallbackContext context)
     {
         if (context.performed)
-            SavingUi.gameObject.SetActive(!SavingUi.gameObject.activeSelf);
+        {
+            if (inputState == PutState.Idle)
+            {
+                SavingUi.gameObject.SetActive(!SavingUi.gameObject.activeSelf);
+            }
+        }
     }
 
     public void HideSettingsUi(InputAction.CallbackContext context)
@@ -36,7 +44,15 @@ public class PlayerUiInput : MonoBehaviour
         if (context.performed)
         {
             SettingsUi.gameObject.SetActive(false);
+            inputState = PutState.Idle;
             playerInput.SwitchCurrentActionMap("GamePlay");
         }
     }
+}
+
+
+public enum PutState
+{
+    Idle,
+    InUi
 }
