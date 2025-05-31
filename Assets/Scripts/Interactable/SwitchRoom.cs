@@ -17,12 +17,24 @@ public class SwitchRoom : InteractableItem
         Collider2D.isTrigger = true;
     }
 
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+        base.OnTriggerEnter2D(other);
+        UiGameobject.Instance.SetInteractableInfo("press E to enter Other",1.5f);
+    }
+
+    public override void OnTriggerExit2D(Collider2D other)
+    {
+        base.OnTriggerExit2D(other);
+    }
+
     public override void Interact()
     {
         base.Interact();
+        UiGameobject.Instance.SetInteractbleInfoClose();
         StartCoroutine(interactRoutine());
     }
-
+    
     IEnumerator interactRoutine()
     {
         cjr.Scence.SceneManager.Instance.FainOut(1, duration);

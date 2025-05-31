@@ -25,6 +25,7 @@ public class InteractableItem : MonoBehaviour
     public virtual void OnTriggerExit2D(Collider2D other)
     {
         PlayerAction.Instance.SetInteract(null);
+        UiGameobject.Instance.SetInteractbleInfoClose();
     }
     public virtual void Interact()
     {
