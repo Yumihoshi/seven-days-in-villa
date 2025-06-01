@@ -10,5 +10,6 @@ public static class EventHandler
   public static void LoadScene()
   {
       OnLoadScene?.Invoke();
+      
   }
 }
