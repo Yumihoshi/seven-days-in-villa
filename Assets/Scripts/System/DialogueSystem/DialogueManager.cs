@@ -32,7 +32,6 @@ public class DialogueManager : cjr.Single.Singleton<DialogueManager>
     }
     private void OnEnable()
     {
-        DialogueStart(needLoad);  
     }
 
     public void SetUp()
