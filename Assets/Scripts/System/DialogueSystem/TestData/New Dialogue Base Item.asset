@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6142f262ebb7a54e931f86753d9c1f4, type: 3}
   m_Name: New Dialogue Base Item
   m_EditorClassIdentifier: 
-  AllElements: []
+  AllElements:
+  - text: shdahdsahdkasldsakl  dasldjasldjalsjdaslkjdlaskjlks jaksdjaldjlsajd ldaldjskljdl
+      ajkldj
+    Speaker: 0
+    Mysprite: {fileID: -1126278013, guid: bd0c9ce274ef93f49a0e30deb67fbb3f, type: 3}
+    NextSprite: {fileID: -2809084237945837875, guid: f4a97bd0f67fb9242b20839d177d5540, type: 3}
+    SpeakerType: 0
+  - text: 'i am fine and you '
+    Speaker: 1
+    Mysprite: {fileID: -7769938240015617965, guid: 6a3ee237c661ab540bcbb5c517347a86, type: 3}
+    NextSprite: {fileID: 3985376378012917431, guid: f4a97bd0f67fb9242b20839d177d5540, type: 3}
+    SpeakerType: 1
+  - text: i am fine too !
+    Speaker: 0
+    Mysprite: {fileID: -2943368869531217807, guid: 1782ac533c59d80498503ee7eaa6f04e, type: 3}
+    NextSprite: {fileID: -9064433167985885267, guid: f3823c63c40227b498d4a31f182293cd, type: 3}
+    SpeakerType: 0

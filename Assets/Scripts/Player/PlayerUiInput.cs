@@ -48,6 +48,14 @@ public class PlayerUiInput : MonoBehaviour
             playerInput.SwitchCurrentActionMap("GamePlay");
         }
     }
+
+    public void SpeakingSpeeding(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            DialogueManager.Instance.SpeedUp();
+        }
+    }
 }
 
 
