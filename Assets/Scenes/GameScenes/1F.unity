@@ -2879,7 +2879,7 @@ RectTransform:
   m_GameObject: {fileID: 247933688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4318538, y: 1.3801, z: 1.3801}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1018650539}
@@ -7326,7 +7326,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1907498857}
-  - {fileID: 981454019}
   m_Father: {fileID: 1017890731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -10449,7 +10448,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981454018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10457,11 +10456,11 @@ RectTransform:
   - {fileID: 1006280955}
   - {fileID: 1301342568}
   - {fileID: 222208421}
-  m_Father: {fileID: 683181107}
+  m_Father: {fileID: 1017890731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -834, y: -331}
+  m_AnchoredPosition: {x: -849, y: -379}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &984249268
@@ -11383,6 +11382,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 981454019}
   - {fileID: 683181107}
   m_Father: {fileID: 1018650539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11608,13 +11608,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 247933689}
   - {fileID: 162796266}
   - {fileID: 1017890731}
   - {fileID: 1252087870}
   - {fileID: 1854911723}
   - {fileID: 440260083}
   - {fileID: 1058328873}
+  - {fileID: 247933689}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -25829,6 +25829,7 @@ GameObject:
   - component: {fileID: 1974379326}
   - component: {fileID: 1974379327}
   - component: {fileID: 1974379328}
+  - component: {fileID: 1974379329}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -26124,6 +26125,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: []
+--- !u!114 &1974379329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974379319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fd000047118b14eb63f4cd28f836f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HpBar: {fileID: 1907498857}
 --- !u!1 &1976338183
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,6 +41,7 @@ public class SwitchRoom : InteractableItem
         yield return new WaitForSeconds(duration);
         PlayerAction.Instance.transform.position = NextPoisition.position;
         VcmManager.Instance.SwitchConfiner2D(NextConfiner);
+        yield return new WaitForSeconds(duration);
         cjr.Scence.SceneManager.Instance.FainOut(0, duration);
     }
 }
