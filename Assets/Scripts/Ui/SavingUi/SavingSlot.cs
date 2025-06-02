@@ -18,6 +18,8 @@ public class SavingSlot : MonoBehaviour
 
    public void PointDown()
    {
+      
+      
       SaveSystemManager.Instance.SaveGame();
       SaveSystemManager.Instance.gameData_SO.CurrentSaveSlotName = slotName.ToString();
       string sceneName = PlayerSaving.Instance.GetLastSceneName();

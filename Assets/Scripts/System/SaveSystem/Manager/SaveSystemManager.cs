@@ -250,6 +250,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         SaveSceneItem();
         PlayerSaving.Instance.Save();
         PlayerInventory.Instance.Save();
+        PlayerHpSystem.Instance.Save();
     }
     //todo
     /// <summary>
@@ -276,6 +277,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         LoadSceneItem();
         PlayerSaving.Instance.Load();
         PlayerInventory.Instance.Load();
+        PlayerHpSystem.Instance.Load();
     }
     
 
