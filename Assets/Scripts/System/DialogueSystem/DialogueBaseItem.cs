@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// 基本的对话单元，有对话语句构成
+/// </summary>
 [CreateAssetMenu(menuName = "Dialogue System/Dialogue BaseItem/Default")]
 public class DialogueBaseItem : ScriptableObject
 {
@@ -9,7 +12,11 @@ public class DialogueBaseItem : ScriptableObject
     
 }
 
-
+/// <summary>
+/// 基本对话语句
+/// 包含内容，说话者
+/// 精灵图等
+/// </summary>
 [Serializable]
 public struct SingleDialogueElement
 {

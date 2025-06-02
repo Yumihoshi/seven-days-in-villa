@@ -13,7 +13,13 @@ using UnityEngine;
  * 
  */
 
-
+/*
+ *玩家的保存是特殊的
+ * 记得每次加在对应总函数的后面
+ *
+ *
+ * 
+ */
 
 public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
 {
@@ -224,6 +230,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
     /// <summary>
     /// 保存当前场景的数据
     /// 而具体的键值需要具体的类进行实现
+    /// 玩家的保存需要额外加入
     /// </summary>
     public void SaveGame()
     {
@@ -248,6 +255,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
     /// <summary>
     /// 加载下一个
     /// </summary>
+    /// 玩家的加载也需要额外的加入
     public void LoadGame()
     {
         if(IsDebug)

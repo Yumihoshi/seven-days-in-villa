@@ -42,7 +42,11 @@ public class DialogueManager : cjr.Single.Singleton<DialogueManager>
         dialogueUi.gameObject.SetActive(true);
     }
 
-
+    /// <summary>
+    /// 使用对话每次需要建立好对话单元的内容
+    /// 然后传入调用即可
+    /// </summary>
+    /// <param name="item"></param>
     public void DialogueStart(DialogueBaseItem item)
     {
         StartCoroutine(ChatAll(item));
