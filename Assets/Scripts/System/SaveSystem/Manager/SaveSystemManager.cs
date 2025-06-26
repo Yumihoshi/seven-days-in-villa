@@ -2,6 +2,7 @@ using System;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 /*
@@ -40,6 +41,9 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         [SerializeField] List<SaveSceneStruct> saved;
 
     #endregion
+
+
+    [SerializeField] private CanvasGroup SavingMask;
     
     public  IReadOnlyList<SaveSceneStruct> GetCurrentLists()
     {
@@ -234,24 +238,35 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
     /// </summary>
     public void SaveGame()
     {
+        StartCoroutine(SaveGameCoroutine());
+    }
+
+    IEnumerator SaveGameCoroutine()
+    {
         if(IsDebug)
-            return;
+            yield break;
+        SavingMask.alpha = 1;
         foreach (GameObject go in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
         { 
             Component[] components = go.GetComponents<Component>();
-              for (int i = 0; i < components.Length; i++)
-              {
-                  if (components[i] is RequireSavingItem savingItem)
-                  {
-                      savingItem.Save();
-                  }
-              }
+            for (int i = 0; i < components.Length; i++)
+            {
+                if (components[i] is RequireSavingItem savingItem)
+                {
+                    savingItem.Save();
+                    yield return null;
+                }
+            }
         }
         SaveSceneItem();
         PlayerSaving.Instance.Save();
         PlayerInventory.Instance.Save();
         PlayerHpSystem.Instance.Save();
+        yield return new WaitForSeconds(0.3f);
+        SavingMask.DOFade(0, 0.2f);
     }
+    
+    
     //todo
     /// <summary>
     /// 加载下一个
@@ -259,8 +274,15 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
     /// 玩家的加载也需要额外的加入
     public void LoadGame()
     {
+      StartCoroutine(LoadGameCoroutine());
+    }
+
+
+    IEnumerator LoadGameCoroutine()
+    {
         if(IsDebug)
-            return;
+            yield break;
+        SavingMask.alpha = 1;
         {
             foreach (GameObject go in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
             { 
@@ -270,6 +292,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
                     if (components[i] is RequireSavingItem savingItem)
                     {
                         savingItem.Load();
+                        yield return null;
                     }
                 }
             }
@@ -278,9 +301,11 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         PlayerSaving.Instance.Load();
         PlayerInventory.Instance.Load();
         PlayerHpSystem.Instance.Load();
+        yield return new WaitForSeconds(0.3f);
+        SavingMask.DOFade(0, 0.2f);
     }
     
-
+    
     private void OnApplicationQuit()
     {
         SaveGame();
