@@ -11404,7 +11404,7 @@ MonoBehaviour:
   interactbleInfo: {fileID: 795074959}
   Infotext: {fileID: 37368362}
   infoDuration: 0
-  singleWordInterval: 0.07
+  singleWordInterval: 0.02
 --- !u!1 &1058328872
 GameObject:
   m_ObjectHideFlags: 0

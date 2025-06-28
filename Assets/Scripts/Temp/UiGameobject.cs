@@ -36,6 +36,11 @@ public class UiGameobject : cjr.Single.Singleton<UiGameobject>
 
         });
     }
+    /// <summary>
+    /// 在上方弹出提示消息框
+    /// </summary>
+    /// <param name="info"></param>
+    /// <param name="waitingTime"></param>
     public void SetInteractableInfo(string info,float waitingTime)
     {
         

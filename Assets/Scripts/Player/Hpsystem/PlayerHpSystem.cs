@@ -47,16 +47,23 @@ public class PlayerHpSystem : cjr.Single.Singleton<PlayerHpSystem>,RequireSaving
   public void Save()
   {
     string key=SaveSystemManager.Instance.SaveSlotName+PlayerHp;
+    Debug.LogWarning(key);
     ES3.Save(key,HealthPoints);
   }
 
   public void Load()
   {
     string key = SaveSystemManager.Instance.SaveSlotName + PlayerHp;
+    Debug.LogWarning(key);
     if (ES3.KeyExists(key))
     {
       int hp = ES3.Load<int>(key);
       HealthPoints = hp;
+    }
+    else
+    {
+      Debug.LogWarning(key+"not exist");
+      HealthPoints = 4;
     }
     Initialize();
   }

@@ -16,11 +16,11 @@ public class SavingSlot : MonoBehaviour
       saveButton.onClick.AddListener(()=>PointDown());
    }
 
-   public void PointDown()
+
+   IEnumerator PointDownCorotinue()
    {
-      
-      
       SaveSystemManager.Instance.SaveGame();
+      yield return new WaitForSeconds(0.2f);
       SaveSystemManager.Instance.gameData_SO.CurrentSaveSlotName = slotName.ToString();
       string sceneName = PlayerSaving.Instance.GetLastSceneName();
       if (sceneName == "")
@@ -32,5 +32,11 @@ public class SavingSlot : MonoBehaviour
       //更好的场景切换
       UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
       SaveSystemManager.Instance.LoadGame();
+   }
+   public void PointDown()
+   {
+
+      StartCoroutine(PointDownCorotinue());
+
    }
 }

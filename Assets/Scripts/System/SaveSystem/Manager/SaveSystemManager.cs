@@ -245,7 +245,6 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
     {
         if(IsDebug)
             yield break;
-        SavingMask.alpha = 1;
         foreach (GameObject go in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
         { 
             Component[] components = go.GetComponents<Component>();
@@ -260,10 +259,11 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         }
         SaveSceneItem();
         PlayerSaving.Instance.Save();
+        yield return null;
         PlayerInventory.Instance.Save();
+        yield return null;
         PlayerHpSystem.Instance.Save();
-        yield return new WaitForSeconds(0.3f);
-        SavingMask.DOFade(0, 0.2f);
+        yield return null;
     }
     
     
@@ -299,9 +299,11 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         }
         LoadSceneItem();
         PlayerSaving.Instance.Load();
+        yield return null;
         PlayerInventory.Instance.Load();
+        yield return null;
         PlayerHpSystem.Instance.Load();
-        yield return new WaitForSeconds(0.3f);
+        yield return null;
         SavingMask.DOFade(0, 0.2f);
     }
     
