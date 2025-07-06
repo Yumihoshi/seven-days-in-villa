@@ -38,12 +38,16 @@ public class SwitchRoom : InteractableItem
     
     IEnumerator interactRoutine()
     {
+        PlayerUiInput.Instance.playerInput.SwitchCurrentActionMap("Menu");
         cjr.Scence.SceneManager.Instance.FainOut(1, duration);
         yield return  _waitForSeconds;
         PlayerAction.Instance.transform.position = NextPoisition.position;
         VcmManager.Instance.SwitchConfiner2D(NextConfiner);
         yield return _waitForSeconds;
         yield return _waitForSeconds;
-        cjr.Scence.SceneManager.Instance.FainOut(0, duration);
+        cjr.Scence.SceneManager.Instance.FainOut(0, duration).OnComplete(() =>
+        {
+            PlayerUiInput.Instance.playerInput.SwitchCurrentActionMap("GamePlay");
+        });
     }
 }

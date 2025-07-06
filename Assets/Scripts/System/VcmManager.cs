@@ -14,6 +14,11 @@ public class VcmManager :cjr.Single.Singleton<VcmManager>
         Confiner2D = GetComponentInChildren<CinemachineConfiner2D>();
     }
 
+    private void OnEnable()
+    {
+        GetClosestConfiner();
+    }
+
     public void GetClosestConfiner()
     {
         Confiner2D = GetComponentInChildren<CinemachineConfiner2D>();

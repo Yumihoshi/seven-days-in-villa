@@ -25,7 +25,7 @@ public class SavingSlot : MonoBehaviour
       string sceneName = PlayerSaving.Instance.GetLastSceneName();
       if (sceneName == "")
       {
-         sceneName = "1F";
+         sceneName = "GameScenes";
       }
 
       //todo

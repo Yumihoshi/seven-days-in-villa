@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerUiInput : MonoBehaviour
+public class PlayerUiInput : cjr.Single.Singleton<PlayerUiInput>
 {
     [SerializeField] private Transform SettingsUi;
 
-    [SerializeField] PlayerInput playerInput;
+    public PlayerInput playerInput;
 
     [SerializeField] private Transform SavingUi;
     [SerializeField] PutState inputState;
