@@ -7,16 +7,22 @@ namespace cjr.Single
    {
       private static T instance;
 
-  
+
+
+      protected virtual void OnDestroy()
+      {
+         
+      }
+      
       public static T Instance
       {
          get
          {
-            // ���ʵ�������ڣ����Դӳ����в���
+            
             if (instance == null)
             {
                instance = FindObjectOfType<T>();
-               // ���û���ҵ��������ڴ˴�ѡ���Ƿ��Զ�����ʵ��
+              
                // if (instance == null) Debug.LogError($"δ�ҵ� {typeof(T).Name} ��ʵ��");
             }
             return instance;
