@@ -18,11 +18,26 @@ namespace DialogueSystem
         [SerializeField] DialogueNode nextNode;
 
 
-     
+        public bool IsinOptions;
+        
+        int CurrentOption = -1;
+
+
+
+        public void DoChosen(int optionIndex)
+        {
+            if (IsinOptions)
+            {
+                // 处理选项选择逻辑
+                CurrentOption = optionIndex;
+            }
+        }
+
         protected override void Awake()
         {
             base.Awake();
             nextNode = null;
+            IsinOptions = false;
             _waitWordSecond = new WaitForSeconds(_wordInterval);
             _waitSentenceSecond = new WaitForSeconds(_sentenceInterval);
         }
@@ -51,8 +66,17 @@ namespace DialogueSystem
         }
 
         //todo
-        bool checkOptionEnd()
+        bool checkOptionEnd(DialogueNode currentNode)
         {
+            if(CurrentOption==-1)
+                return false;
+            if(CurrentOption>= currentNode.OptionNodes.Count)
+            {
+                // 选项索引无效
+                Debug.LogError("Invalid option index selected: " + CurrentOption);
+                return false;
+            }
+            nextNode = currentNode.OptionNodes[CurrentOption];
             return nextNode!= null;
         }
         
@@ -65,17 +89,19 @@ namespace DialogueSystem
             //ui的一些处理
             if(singleNode.nodeType==NodeType.option)
             {
+                IsinOptions = true;
                 //todo
                 //处理选项
+                
                 while (true)
                 {
                     
-                    if(checkOptionEnd())
+                    if(checkOptionEnd(singleNode))
                         break;
                     yield return null;
                 }
-                
-                
+
+                IsinOptions = false;
                 yield break;
             }
             textMeshPro.text = String.Empty;

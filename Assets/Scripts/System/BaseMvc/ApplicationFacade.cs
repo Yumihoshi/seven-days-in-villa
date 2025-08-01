@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using PureMVC.Patterns.Facade;
+using PureMVC.Patterns.Observer;
 using UnityEngine;
 
 public class ApplicationFacade: Facade
@@ -26,7 +27,13 @@ public class ApplicationFacade: Facade
         InitializeAudioFactory();
         // 延迟初始化AudioFactory，避免循环调用
     }
-   
+
+
+    public static Notification Unpackage(object param)
+    {
+        return param as Notification;
+    } 
+    
     /// <summary>
     /// 初始化音频工厂
     /// </summary>
