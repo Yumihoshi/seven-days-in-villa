@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-public class VcmManager :cjr.Single.Singleton<VcmManager>
+public class VcmManager :cjr.Single.SingleMon<VcmManager>
 {
     public CinemachineConfiner2D Confiner2D;
     

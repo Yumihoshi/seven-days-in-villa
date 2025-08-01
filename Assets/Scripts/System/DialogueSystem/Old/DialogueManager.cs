@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueManager : cjr.Single.Singleton<DialogueManager>
+public class DialogueManager : cjr.Single.SingleMon<DialogueManager>
 {
     [SerializeField] DialogueBaseItem needLoad;
     
@@ -43,8 +43,8 @@ public class DialogueManager : cjr.Single.Singleton<DialogueManager>
     }
 
     /// <summary>
-    /// Ê¹ÓÃ¶Ô»°Ã¿´ÎÐèÒª½¨Á¢ºÃ¶Ô»°µ¥ÔªµÄÄÚÈÝ
-    /// È»ºó´«Èëµ÷ÓÃ¼´¿É
+    /// Ê¹ï¿½Ã¶Ô»ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ã¶Ô»ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="item"></param>
     public void DialogueStart(DialogueBaseItem item)

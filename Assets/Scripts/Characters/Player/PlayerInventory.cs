@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class PlayerInventory : cjr.Single.Singleton<PlayerInventory>,RequireSavingItem
+public class PlayerInventory : cjr.Single.SingleMon<PlayerInventory>,RequireSavingItem
 {
     [SerializeField] List<SaveSceneStruct> playerInventory;
     public const string playerInventoryName = "PlayerInventory";

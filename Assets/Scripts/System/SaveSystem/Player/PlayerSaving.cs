@@ -5,7 +5,7 @@ using cjr.Scence;
 using cjr.Single;
 using UnityEngine;
 
-public class PlayerSaving :cjr.Single. Singleton<PlayerSaving>,RequireSavingItem
+public class PlayerSaving :cjr.Single. SingleMon<PlayerSaving>,RequireSavingItem
 {
    [SerializeField] Vector3 lastPosition;
    [SerializeField] string LastSceneName;
@@ -56,6 +56,6 @@ public class PlayerSaving :cjr.Single. Singleton<PlayerSaving>,RequireSavingItem
    {
       // Save();
       //todo
-      //背包系统
+      //锟斤拷锟斤拷系统
    }
 }

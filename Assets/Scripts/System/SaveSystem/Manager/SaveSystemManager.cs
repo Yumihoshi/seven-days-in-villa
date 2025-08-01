@@ -6,23 +6,23 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 /*
- *±£´æ¿ÉÒÔÏûÊ§»òÕß»ñÈ¡µÄÎïÌåÄØ
- *ÎÒµÄÏë·¨ÊÇÏÈ½«ËùÓĞµÄÎïÌå¶¼×ªÎªÔ¤ÖÆÌå
- *·ÅÈëdata_soÖĞ
- *ÕâÑùÎÒ¾ÍÖ»ĞèÒª±£´æÎïÌåµÄid£¬Î»ÖÃ¾ÍĞĞ
+ *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ß»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *ï¿½Òµï¿½ï¿½ë·¨ï¿½ï¿½ï¿½È½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½å¶¼×ªÎªÔ¤ï¿½ï¿½ï¿½ï¿½
+ *ï¿½ï¿½ï¿½ï¿½data_soï¿½ï¿½
+ *ï¿½ï¿½ï¿½ï¿½ï¿½Ò¾ï¿½Ö»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Î»ï¿½Ã¾ï¿½ï¿½ï¿½
  *
  * 
  */
 
 /*
- *Íæ¼ÒµÄ±£´æÊÇÌØÊâµÄ
- * ¼ÇµÃÃ¿´Î¼ÓÔÚ¶ÔÓ¦×Üº¯ÊıµÄºóÃæ
+ *ï¿½ï¿½ÒµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½Çµï¿½Ã¿ï¿½Î¼ï¿½ï¿½Ú¶ï¿½Ó¦ï¿½Üºï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½
  *
  *
  * 
  */
 
-public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
+public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
 {
 
 
@@ -34,7 +34,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
 
     public const string InventoryItemDic = "InventoryItemDic";
 
-    #region µ÷ÊÔ
+    #region ï¿½ï¿½ï¿½ï¿½
 
     
         [SerializeField] InventoryItem[] items;
@@ -98,7 +98,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
                     var Games=Instantiate(gameData_SO.InventoryItems[offset],saved[i].ItemPosition,Quaternion.identity);
                     Games.Name=saved[i].ItemName;
                     //todo
-                    //¾ßÌåÒ»Ğ©±äÁ¿µÄ¸³Öµ
+                    //ï¿½ï¿½ï¿½ï¿½Ò»Ğ©ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Öµ
                     Games.transform.position = saved[i].ItemPosition;
                 }
             }
@@ -178,7 +178,7 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
         }
     }
     
-    #region µ¥Àı
+    #region ï¿½ï¿½ï¿½ï¿½
 
     static SaveSystemManager instance;
     public static SaveSystemManager Instance
@@ -232,9 +232,9 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
 
     
     /// <summary>
-    /// ±£´æµ±Ç°³¡¾°µÄÊı¾İ
-    /// ¶ø¾ßÌåµÄ¼üÖµĞèÒª¾ßÌåµÄÀà½øĞĞÊµÏÖ
-    /// Íæ¼ÒµÄ±£´æĞèÒª¶îÍâ¼ÓÈë
+    /// ï¿½ï¿½ï¿½æµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Öµï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
+    /// ï¿½ï¿½ÒµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void SaveGame()
     {
@@ -269,9 +269,9 @@ public class SaveSystemManager : cjr.Single.Singleton<SaveSystemManager>
     
     //todo
     /// <summary>
-    /// ¼ÓÔØÏÂÒ»¸ö
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
     /// </summary>
-    /// Íæ¼ÒµÄ¼ÓÔØÒ²ĞèÒª¶îÍâµÄ¼ÓÈë
+    /// ï¿½ï¿½ÒµÄ¼ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
     public void LoadGame()
     {
       StartCoroutine(LoadGameCoroutine());

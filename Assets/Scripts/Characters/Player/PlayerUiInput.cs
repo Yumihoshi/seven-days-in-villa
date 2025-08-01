@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerUiInput : cjr.Single.Singleton<PlayerUiInput>
+public class PlayerUiInput : cjr.Single.SingleMon<PlayerUiInput>
 {
     [SerializeField] private Transform SettingsUi;
 

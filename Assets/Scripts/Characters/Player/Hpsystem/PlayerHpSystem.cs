@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class PlayerHpSystem : cjr.Single.Singleton<PlayerHpSystem>,RequireSavingItem
+public class PlayerHpSystem : cjr.Single.SingleMon<PlayerHpSystem>,RequireSavingItem
 {
 
-  #region UIÕ¹Ê¾²¿·Ö
+  #region UIÕ¹Ê¾ï¿½ï¿½ï¿½ï¿½
     [SerializeField] Transform HpBar;
     [SerializeField] Transform HpHolder;
     [SerializeField] private GameObject SinGleHp;
   #endregion
 
-  #region ¾ßÌåÂß¼­
+  #region ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
 
     [SerializeField] int HealthPoints;
     [SerializeField] const string PlayerHp = "PlayerHp";

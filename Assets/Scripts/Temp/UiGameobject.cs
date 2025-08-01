@@ -6,11 +6,11 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 /// <summary>
-/// 场景持久物体
+/// 锟斤拷锟斤拷锟街撅拷锟斤拷锟斤拷
 /// </summary>
-public class UiGameobject : cjr.Single.Singleton<UiGameobject>
+public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
 {
-    #region 有交互的提示
+    #region 锟叫斤拷锟斤拷锟斤拷锟斤拷示
 
     [SerializeField] private CanvasGroup interactbleInfo;
     [SerializeField] TMPro.TextMeshProUGUI Infotext;
@@ -37,7 +37,7 @@ public class UiGameobject : cjr.Single.Singleton<UiGameobject>
         });
     }
     /// <summary>
-    /// 在上方弹出提示消息框
+    /// 锟斤拷锟较凤拷锟斤拷锟斤拷锟斤拷示锟斤拷息锟斤拷
     /// </summary>
     /// <param name="info"></param>
     /// <param name="waitingTime"></param>

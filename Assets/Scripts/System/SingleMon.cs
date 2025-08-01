@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace cjr.Single 
 {
-   public class Singleton<T> : MonoBehaviour where T : Singleton<T>
+   public class SingleMon<T> : MonoBehaviour where T : SingleMon<T>
    {
       private static T instance;
 
-      // Í¨¹ýÊôÐÔ·ÃÎÊµ¥ÀýÊµÀý
+  
       public static T Instance
       {
          get
          {
-            // Èç¹ûÊµÀý²»´æÔÚ£¬³¢ÊÔ´Ó³¡¾°ÖÐ²éÕÒ
+            // ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ô´Ó³ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½
             if (instance == null)
             {
                instance = FindObjectOfType<T>();
-               // Èç¹ûÃ»ÓÐÕÒµ½£¬¿ÉÒÔÔÚ´Ë´¦Ñ¡ÔñÊÇ·ñ×Ô¶¯´´½¨ÊµÀý
-               // if (instance == null) Debug.LogError($"Î´ÕÒµ½ {typeof(T).Name} µÄÊµÀý");
+               // ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´Ë´ï¿½Ñ¡ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
+               // if (instance == null) Debug.LogError($"Î´ï¿½Òµï¿½ {typeof(T).Name} ï¿½ï¿½Êµï¿½ï¿½");
             }
             return instance;
          }
@@ -25,17 +25,17 @@ namespace cjr.Single
 
       protected virtual void Awake()
       {
-         // Èç¹ûÊµÀýÒÑ´æÔÚÇÒ²»ÊÇµ±Ç°¶ÔÏó£¬Ïú»Ù¶àÓàµÄÊµÀý
+         // ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Çµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
          if (instance != null && instance != this)
          {
             Destroy(gameObject);
             return;
          }
 
-         // ³õÊ¼»¯µ¥ÀýÊµÀý
+         // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
          instance = this as T;
 
-         // ¿ÉÑ¡£º¿ç³¡¾°±£Áôµ¥Àý¶ÔÏó
+         // ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ç³¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          DontDestroyOnLoad(gameObject);
       }
    }
