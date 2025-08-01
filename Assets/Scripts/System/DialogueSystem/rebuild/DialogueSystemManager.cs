@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace DialogueSystem
@@ -9,8 +10,13 @@ namespace DialogueSystem
     {
         
         public TMPro.TextMeshProUGUI textMeshPro;
-        [SerializeField] float _wordInterval = 0.1f; // 每个字的间隔时间
-        [SerializeField] float _sentenceInterval = 1.0f; // 每句话的间隔时间
+        
+        
+        
+        [SerializeField] private float _wordInterval = 0.1f; // 每个字的间隔时间
+        [SerializeField] private float _sentenceInterval = 1.0f; // 每句话的间隔时间
+        
+        [SerializeField] DialogueTree currentDialogueTree;
         
         WaitForSeconds _waitWordSecond     ;
         WaitForSeconds _waitSentenceSecond ;
@@ -44,7 +50,7 @@ namespace DialogueSystem
         
         public void StartDialogue(DialogueTree dialogueTree)
         {
-            if (dialogueTree == null || dialogueTree.DialogueNodes.Count == 0)
+            if (dialogueTree == null || dialogueTree.nodes.Count == 0)
             {
                 Debug.LogError("Dialogue tree is empty or null.");
                 return;
@@ -52,7 +58,7 @@ namespace DialogueSystem
 
             nextNode = null;
             // Start the dialogue with the first node
-            CoroutineFactory.Instance.RunCoroutine(ShowDialogueNodes(dialogueTree.DialogueNodes[0]));
+            CoroutineFactory.Instance.RunCoroutine(ShowDialogueNodes(dialogueTree.nodes[0]));
         }
 
         //todo
@@ -76,7 +82,7 @@ namespace DialogueSystem
                 Debug.LogError("Invalid option index selected: " + CurrentOption);
                 return false;
             }
-            nextNode = currentNode.OptionNodes[CurrentOption];
+            nextNode = currentDialogueTree.nodes [CurrentOption];
             return nextNode!= null;
         }
         
@@ -116,6 +122,7 @@ namespace DialogueSystem
             }
             
             textMeshPro.text=singleNode.Content;
+            nextNode=currentDialogueTree.nodes[int.Parse(singleNode.nextNode)];
             yield return null;
         }
         
@@ -140,5 +147,14 @@ namespace DialogueSystem
             yield return null;
         }
         
+        
+        [Button("Test Start Dialogue")]
+        public void TestStartDialogue()
+        { 
+            StartDialogue(currentDialogueTree);   
+        }
+        
     }
+    
+    
 }

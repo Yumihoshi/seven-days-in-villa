@@ -26020,11 +26020,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2072186893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dde4c6881fb8f14d9c77cad3e48717e, type: 3}
+  m_Script: {fileID: 11500000, guid: cf9ad9e59871f6a4194cb62b897e7a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetPosition: Assets\Resources\DialogueData
-  SourcePosition: F:\Gametry\FIveFishes\seven-days-in-villa\Assets\Resources\DialogueData\test.CSV
+  textMeshPro: {fileID: 1934659798}
+  _wordInterval: 0.1
+  _sentenceInterval: 1
+  currentDialogueTree: {fileID: 0}
+  nextNode:
+    id: 
+    nodeType: 0
+    SpeakerName: 
+    Content: 
+    nextNode: 
+    OptionNodes: []
+  IsinOptions: 0
 --- !u!1 &2095445343
 GameObject:
   m_ObjectHideFlags: 0
