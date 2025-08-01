@@ -26,7 +26,7 @@ namespace DialogueSystem
       public string Content;
       
       
-      public DialogueNode nextNode;
+      public string nextNode;
       public List<DialogueNode> OptionNodes;
 
 
