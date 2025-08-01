@@ -150,8 +150,8 @@ namespace DialogueSystem
         
         [Button("Test Start Dialogue")]
         public void TestStartDialogue()
-        { 
-            StartDialogue(currentDialogueTree);   
+        {
+           
         }
         
     }
