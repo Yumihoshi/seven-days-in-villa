@@ -27,12 +27,34 @@ namespace DialogueSystem
       
       public string nextNode;
       public List<DialogueOptionNode> OptionNodes;
+      
+      
+      public DialogueNode()
+      {
+         id = String.Empty;
+         nodeType = NodeType.dialogue;
+         SpeakerName = string.Empty;
+         Content = string.Empty;
+         nextNode = string.Empty;
+         OptionNodes = new List<DialogueOptionNode>();
+         OptionNodes.Clear();
+      }
+      
+      
    }
 
-   public class DialogueOptionNode : DialogueNode
+   public class DialogueOptionNode
    {
+       public string id;
        public string OptionText;
        public string nextNodeId;
+
+       public DialogueOptionNode()
+       {
+           OptionText= string.Empty;
+           nextNodeId = string.Empty;
+       }
+       
    }
    
 

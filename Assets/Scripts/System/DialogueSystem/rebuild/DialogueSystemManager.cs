@@ -29,6 +29,13 @@ namespace DialogueSystem
         int CurrentOption = -1;
 
 
+        [SerializeField] private string testFilePath;
+
+        [Button("Load Dialogue Tree")]
+        public void LoadDialogueTree()
+        {
+            currentDialogueTree.nodes = DialogueParser.ParseDialogueNodes(testFilePath);
+        }
 
         public void DoChosen(int optionIndex)
         {
@@ -39,6 +46,10 @@ namespace DialogueSystem
             }
         }
 
+        
+        
+        
+        
         protected override void Awake()
         {
             base.Awake();
