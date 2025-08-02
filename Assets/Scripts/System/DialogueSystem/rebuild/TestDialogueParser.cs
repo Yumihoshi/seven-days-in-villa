@@ -55,7 +55,7 @@ namespace DialogueSystem
                 // 递归处理所有选项节点
                 if (node.OptionNodes != null && node.OptionNodes.Count > 0)
                 {
-                    ProcessOptionNodes(node.OptionNodes);
+                    //ProcessOptionNodes(node.OptionNodes);
                 }
             }
         }

@@ -25,12 +25,16 @@ namespace DialogueSystem
       [TextArea(3, 10)]
       public string Content;
       
-      
       public string nextNode;
-      public List<DialogueNode> OptionNodes;
-
-
+      public List<DialogueOptionNode> OptionNodes;
    }
-  
+
+   public class DialogueOptionNode : DialogueNode
+   {
+       public string OptionText;
+       public string nextNodeId;
+   }
+   
+
 }
 

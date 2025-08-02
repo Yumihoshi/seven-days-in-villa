@@ -82,7 +82,8 @@ namespace DialogueSystem
                 Debug.LogError("Invalid option index selected: " + CurrentOption);
                 return false;
             }
-            nextNode = currentDialogueTree.nodes [CurrentOption];
+            DialogueOptionNode currentDialogueOption = currentNode.OptionNodes[CurrentOption];
+            nextNode = currentDialogueTree.nodes [int.Parse(currentDialogueOption.nextNodeId) ];
             return nextNode!= null;
         }
         
