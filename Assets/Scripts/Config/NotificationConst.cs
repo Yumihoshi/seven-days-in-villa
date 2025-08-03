@@ -9,5 +9,6 @@ public class NotificationConst
     public  const string Player_After_Choose_Dialogue_Option = "Player_Choose_Dialogue_Option";
     public  const string Player_Do_Choose_Dialogue_Option = "Player_Do_Choose_Dialogue_Option";
     
-    
+    public const string Start_Dialogue = "Start_Dialogue";
+    public const string End_Dialogue = "End_Dialogue";
 }

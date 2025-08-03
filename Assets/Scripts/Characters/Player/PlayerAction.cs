@@ -11,6 +11,7 @@ public class PlayerAction : MonoBehaviour
    [SerializeField] private float speed = 3f;
    [SerializeField] bool isMoving = false;
    [SerializeField] private float Speeding = 1.5f;
+   public PlayerInput playerInput; 
    private Vector2 movement;
    
    
@@ -38,6 +39,7 @@ public class PlayerAction : MonoBehaviour
       rb = GetComponent<Rigidbody2D>();
       animator = GetComponentInChildren<Animator>();
       playerInteract = GetComponent<PlayerInteract>();
+      playerInput = GetComponent<PlayerInput>();
    }
 
 

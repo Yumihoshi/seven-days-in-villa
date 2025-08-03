@@ -26033,7 +26033,7 @@ MonoBehaviour:
   OptionRoot: {fileID: 1243688321}
   _wordInterval: 0.1
   _sentenceInterval: 1
-  currentDialogueTree: {fileID: 11400000, guid: 0ace7b6abf3ec1042a31a411d597944f, type: 2}
+  currentDialogueTree: {fileID: 11400000, guid: acbe4e5fbc1110548b8c78116a122819, type: 2}
   nextNode:
     id: 
     nodeType: 0

@@ -64,6 +64,7 @@ namespace DialogueSystem
                 Debug.LogError("Dialogue tree is empty or null.");
                 return;
             }
+            ApplicationFacade.Instance.SendNotification(NotificationConst.Start_Dialogue);
             DialogueRoot.gameObject.SetActive(true);
             startIndex =int.Parse(dialogueTree.nodes[0].id);
             nextNode = null;
@@ -116,29 +117,6 @@ namespace DialogueSystem
             }
             //todo
             //ui的一些处理
-            
-            
-            if(singleNode.nodeType==NodeType.option)
-            {
-                IsinOptions = true;
-                //todo
-                //处理选项
-                foreach (var optionNode in singleNode.OptionNodes)
-                {
-                    SetOptionContent(optionNode,ResoureManager.
-                        LoadGameobject(OptionPrefabPath,OptionRoot));
-                }
-                while (true)
-                {
-                    
-                    if(checkOptionEnd(singleNode))
-                        break;
-                    yield return null;
-                }
-            
-                IsinOptions = false;
-                yield break;
-            }
             textMeshPro.text = String.Empty;
 
             foreach (var word in singleNode.Content)
@@ -158,6 +136,32 @@ namespace DialogueSystem
                 nextNode=null;
             }
             yield return null;
+            
+            if(singleNode.nodeType==NodeType.option)
+            {
+                textMeshPro.text = String.Empty;
+                IsinOptions = true;
+                //todo
+                //处理选项
+                
+                foreach (var optionNode in singleNode.OptionNodes)
+                {
+                    SetOptionContent(optionNode,ResoureManager.
+                        LoadGameobject(OptionPrefabPath,OptionRoot));
+                }
+                while (true)
+                {
+                    
+                    if(checkOptionEnd(singleNode))
+                        break;
+                    yield return null;
+                }
+            
+                IsinOptions = false;
+                yield break;
+            }
+            
+            
         }
         
         
@@ -181,6 +185,7 @@ namespace DialogueSystem
             //ui的一些处理
             yield return _waitSentenceSecond;
             DialogueRoot.gameObject.SetActive(false);
+            ApplicationFacade.Instance.SendNotification(NotificationConst.End_Dialogue);
         }
         
         

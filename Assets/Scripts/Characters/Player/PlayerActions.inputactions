@@ -182,6 +182,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Chosen",
+                    "type": "Value",
+                    "id": "75ed5a5f-bf0e-4c2b-aea2-2cf4445b639e",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -283,6 +292,39 @@
                     "action": "ChosenOption",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "ba477d1e-dbdc-4b7f-b6ac-9b7437b62367",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chosen",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "040d5e9e-a44f-4581-9bc9-626b0092580b",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chosen",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "8d8f28cb-8aca-4357-980f-4b87f53cee3b",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chosen",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
