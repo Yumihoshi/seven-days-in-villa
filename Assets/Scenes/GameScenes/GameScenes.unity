@@ -24623,6 +24623,7 @@ MonoBehaviour:
   speed: 2.5
   isMoving: 0
   Speeding: 2
+  playerInput: {fileID: 0}
   playerInteract: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &1974379323
@@ -24746,6 +24747,42 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8e0d7d78-ca11-4178-b6ef-a79f25d2790b
     m_ActionName: Dialogue/SpeedUp[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c39432e2-e17e-4b89-a5a1-990f5e0f2307
+    m_ActionName: Dialogue/ChosenOption[/Keyboard/1,/Keyboard/numpad1,/Keyboard/2,/Keyboard/numpad2,/Keyboard/3,/Keyboard/numpad3,/Keyboard/4,/Keyboard/numpad4]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1974379322}
+        m_TargetAssemblyTypeName: PlayerAction, Assembly-CSharp
+        m_MethodName: DialogueMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 75ed5a5f-bf0e-4c2b-aea2-2cf4445b639e
+    m_ActionName: Dialogue/Chosen[/Keyboard/downArrow,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1974379322}
+        m_TargetAssemblyTypeName: PlayerAction, Assembly-CSharp
+        m_MethodName: DialogueEnd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aa580909-0e29-4d23-83e3-999e77dfa7e2
+    m_ActionName: Dialogue/Confrim[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay
@@ -26042,7 +26079,10 @@ MonoBehaviour:
     nextNode: 
     OptionNodes: []
   IsinOptions: 0
+  CurrentOption: 0
+  CurrentoptionNodes: []
   testFilePath: "F:\\Gametry\\FIveFishes\\seven-days-in-villa\\Assets\\Resources\\117.72.179.129\\\u300A\u522B\u5885\u4E03\u65E5\u300B\u6587\u6848\\\u5BF9\u8BDDcsv\\\u5BF9\u8BDD\u8868\u683C.CSV"
+  optionConfirm: 0
 --- !u!1 &2092173034
 GameObject:
   m_ObjectHideFlags: 0

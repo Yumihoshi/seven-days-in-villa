@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DialogueSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -65,6 +66,7 @@ public class PlayerAction : MonoBehaviour
       }
    }
 
+   #region PlayerAt
    public void Move(InputAction.CallbackContext context)
    {
       movement = context.ReadValue<Vector2>();
@@ -94,5 +96,33 @@ public class PlayerAction : MonoBehaviour
          playerInteract.Interact();
       }
    }
+   
+
+   #endregion
+
+
+   #region Dialogue
+
+   public void DialogueMove(InputAction.CallbackContext context)
+   {
+      if (context.performed)
+      {
+         ApplicationFacade.Instance.SendNotification(NotificationConst.
+            Player_After_Choose_Dialogue_Option,
+            context.ReadValue<Vector2>().y>0?-1:1);
+      }
+   }
+
+   public void DialogueEnd(InputAction.CallbackContext context)
+   {
+      if (context.performed)
+      {
+         ApplicationFacade.Instance.SendNotification(NotificationConst.
+            Player_Confirm_Choose_Dialogue_Option);
+      }
+   }
+
+   #endregion
+ 
    
 }

@@ -187,10 +187,19 @@
                     "name": "Chosen",
                     "type": "Value",
                     "id": "75ed5a5f-bf0e-4c2b-aea2-2cf4445b639e",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Confrim",
+                    "type": "Button",
+                    "id": "aa580909-0e29-4d23-83e3-999e77dfa7e2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -294,9 +303,20 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "ba477d1e-dbdc-4b7f-b6ac-9b7437b62367",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "b84e4a31-3922-4929-a7a6-5227ba5c55cc",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confrim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "89ca4087-6855-4ba3-9550-8136c77e0428",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -305,8 +325,19 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "040d5e9e-a44f-4581-9bc9-626b0092580b",
+                    "name": "up",
+                    "id": "6aba8b92-6637-4a6d-8251-7f34ecb87493",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chosen",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "2a757b05-ed33-4fac-b857-c8dcdc8e7f81",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
@@ -316,9 +347,20 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
-                    "id": "8d8f28cb-8aca-4357-980f-4b87f53cee3b",
-                    "path": "<Keyboard>/upArrow",
+                    "name": "left",
+                    "id": "e86f1f2d-a7dd-4fd1-b111-16e29c06182d",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chosen",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "4e33f547-9dd2-4444-be6c-a2ab75f1aae1",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

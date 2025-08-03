@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DialogueSystem
 {
     public class DialogueSystemManager : cjr.Single.SingleMon<DialogueSystemManager>
     {
         
-        public TMPro.TextMeshProUGUI textMeshPro;
-        public TMPro.TextMeshProUGUI speakerName;
+        [SerializeField] TMPro.TextMeshProUGUI textMeshPro;
+        [SerializeField] TMPro.TextMeshProUGUI speakerName;
         
         [ReadOnly] string OptionPrefabPath = "Prefabs/UI/Dialogue/ChosnOption";
         
@@ -30,10 +32,13 @@ namespace DialogueSystem
 
         public bool IsinOptions;
         
-        int CurrentOption = -1;
+        public int CurrentOption = 0;
 
+        [FormerlySerializedAs("optionNodes")] public List<DialogueOptionNode> CurrentoptionNodes = new List<DialogueOptionNode>();
 
         [SerializeField] private string testFilePath;
+        
+        public bool optionConfirm;
         
         public void DoChosen(int optionIndex)
         {
@@ -44,8 +49,22 @@ namespace DialogueSystem
             }
         }
 
-        
-        
+
+        public void ReadyChosen()
+        {
+            ChosenColorClear();
+            OptionRoot.GetChild(CurrentOption).GetChild(2).gameObject.SetActive(true);
+        }
+
+        public void ChosenColorClear()
+        {
+            int count=OptionRoot.childCount;
+            for (int i = 0; i < count; i++)
+            {
+                var child = OptionRoot.GetChild(i);
+                child.GetChild(2).gameObject.SetActive(false);
+            }
+        }
         
         
         protected override void Awake()
@@ -85,8 +104,6 @@ namespace DialogueSystem
         //todo
         bool checkOptionEnd(DialogueNode currentNode)
         {
-            if(CurrentOption==-1)
-                return false;
             if(CurrentOption>= currentNode.OptionNodes.Count)
             {
                 // 选项索引无效
@@ -94,7 +111,7 @@ namespace DialogueSystem
                 return false;
             }
             DialogueOptionNode currentDialogueOption = currentNode.OptionNodes[CurrentOption];
-            nextNode = currentDialogueTree.nodes [int.Parse(currentDialogueOption.nextNodeId) ];
+            nextNode = currentDialogueTree.nodes [int.Parse(currentDialogueOption.nextNodeId)-startIndex ];
             return nextNode!= null;
         }
 
@@ -103,6 +120,15 @@ namespace DialogueSystem
             var textMeshPros = dialogueObject.GetComponentsInChildren<TextMeshProUGUI>();
             textMeshPros[0].text = optionNode.OptionText;
             textMeshPros[1].text = optionNode.id;
+        }
+
+        public void ClearOptionContent()
+        {
+            int count = OptionRoot.childCount;
+            for (int i = 0; i < count; i++)
+            {
+                Destroy(OptionRoot.GetChild(i).gameObject);
+            }
         }
         
         IEnumerator ShowDialogueNode(DialogueNode singleNode)
@@ -141,9 +167,10 @@ namespace DialogueSystem
             {
                 textMeshPro.text = String.Empty;
                 IsinOptions = true;
+                CurrentoptionNodes.Clear();
                 //todo
                 //处理选项
-                
+                CurrentoptionNodes = singleNode.OptionNodes;
                 foreach (var optionNode in singleNode.OptionNodes)
                 {
                     SetOptionContent(optionNode,ResoureManager.
@@ -151,14 +178,17 @@ namespace DialogueSystem
                 }
                 while (true)
                 {
-                    
-                    if(checkOptionEnd(singleNode))
-                        break;
+                    ReadyChosen();   
+                    checkOptionEnd(singleNode);
                     yield return null;
+                    if(optionConfirm)
+                        break;
                 }
-            
+
+                optionConfirm = false;
+                checkOptionEnd(singleNode);
                 IsinOptions = false;
-                yield break;
+                ClearOptionContent();
             }
             
             

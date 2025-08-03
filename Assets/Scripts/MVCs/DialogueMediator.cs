@@ -26,9 +26,15 @@ public class DialogueMediator : BaseMediator
     {
         RegisterEntityAction(NotificationConst.Player_After_Choose_Dialogue_Option,OnbeginChosenOption);
         RegisterEntityAction(NotificationConst.Start_Dialogue,OnActionChange2Menu);
+        RegisterEntityAction(NotificationConst.Player_Confirm_Choose_Dialogue_Option,OnConfirm_Choose_Dialogue_Option);
     }
 
 
+    void OnConfirm_Choose_Dialogue_Option(object data)
+    {
+        DialogueSystemManager.Instance.optionConfirm = DialogueSystemManager.Instance.IsinOptions;
+    }
+    
     void OnActionChange2Menu(object parma)
     {
         PlayerAction.Instance.playerInput.SwitchCurrentActionMap("Dialogue");
@@ -42,7 +48,14 @@ public class DialogueMediator : BaseMediator
         object body = ApplicationFacade.Unpackage(param).Body;
         if(body is int optionIndex)
         {
-            _dialogueManager.DoChosen(optionIndex);
+            DialogueSystemManager.Instance.CurrentOption+=optionIndex;
+            DialogueSystemManager.Instance.CurrentOption %= DialogueSystemManager.
+                Instance.CurrentoptionNodes.Count;
+            if (DialogueSystemManager.Instance.CurrentOption < 0)
+            {
+                DialogueSystemManager.Instance.CurrentOption = DialogueSystemManager.
+                    Instance.CurrentoptionNodes.Count-1;
+            }
         }
         else
         {
