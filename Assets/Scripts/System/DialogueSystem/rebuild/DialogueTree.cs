@@ -5,7 +5,7 @@ using System;
 namespace DialogueSystem
 {
     
-    
+    [CreateAssetMenu(fileName = "DialogueTree", menuName = "Dialogue System/Dialogue Tree")]
     public class DialogueTree : ScriptableObject
     {
 

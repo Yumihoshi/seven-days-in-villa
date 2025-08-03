@@ -43,9 +43,11 @@ namespace DialogueSystem
       
    }
 
+   [Serializable]
    public class DialogueOptionNode
    {
        public string id;
+       [TextArea(3, 10)]
        public string OptionText;
        public string nextNodeId;
 

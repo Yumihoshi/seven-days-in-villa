@@ -14,19 +14,21 @@ namespace DialogueSystem
            dialogueNode.nodeType= varas[1]=="dialogue" ? NodeType.dialogue : NodeType.option;
            dialogueNode.SpeakerName = varas[2];
            dialogueNode.Content = varas[3];
-           dialogueNode.OptionNodes = ParseDialogueOptionNodes(varas[4]);
+           dialogueNode.nextNode = varas[4];
+           if(varas[5]!="null")
+            dialogueNode.OptionNodes = ParseDialogueOptionNodes(varas[5]);
            return dialogueNode;
         }
 
 
         public static List<DialogueNode> ParseDialogueNodes(string filePath)
         {
-            var fileContent = System.IO.File.ReadAllLines(filePath);
+            var fileContent = System.IO.File.ReadAllLines(filePath,System.Text.Encoding.UTF8);
           
             List<DialogueNode> dialogueNodes = new List<DialogueNode>();
-            foreach (var line in fileContent)
+            for (int i = 1; i < fileContent.Length; i++)
             {
-                dialogueNodes.Add(ParseDialogueNode(line));
+                dialogueNodes.Add(ParseDialogueNode(fileContent[i]));
             }
             return dialogueNodes;
         }

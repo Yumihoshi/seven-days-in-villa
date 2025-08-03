@@ -34,6 +34,7 @@ namespace DialogueSystem
         [Button("Load Dialogue Tree")]
         public void LoadDialogueTree()
         {
+         
             currentDialogueTree.nodes = DialogueParser.ParseDialogueNodes(testFilePath);
         }
 
