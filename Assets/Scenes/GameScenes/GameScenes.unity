@@ -11481,7 +11481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de93f4337f0547a41ae4d9b2a1ee9426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Confiner2D: {fileID: 0}
 --- !u!1 &1181747927
 GameObject:
   m_ObjectHideFlags: 0
@@ -12243,6 +12242,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1769739156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1243688321 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2376357225195959202, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
+  m_PrefabInstance: {fileID: 3227454560328528799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1246450616
 GameObject:
   m_ObjectHideFlags: 0
@@ -26024,9 +26028,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1934659798}
+  speakerName: {fileID: 1100205770}
+  DialogueRoot: {fileID: 1058328873}
+  OptionRoot: {fileID: 1243688321}
   _wordInterval: 0.1
   _sentenceInterval: 1
-  currentDialogueTree: {fileID: 0}
+  currentDialogueTree: {fileID: 11400000, guid: 0ace7b6abf3ec1042a31a411d597944f, type: 2}
   nextNode:
     id: 
     nodeType: 0
@@ -26035,6 +26042,52 @@ MonoBehaviour:
     nextNode: 
     OptionNodes: []
   IsinOptions: 0
+  testFilePath: "F:\\Gametry\\FIveFishes\\seven-days-in-villa\\Assets\\Resources\\117.72.179.129\\\u300A\u522B\u5885\u4E03\u65E5\u300B\u6587\u6848\\\u5BF9\u8BDDcsv\\\u5BF9\u8BDD\u8868\u683C.CSV"
+--- !u!1 &2092173034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2092173036}
+  - component: {fileID: 2092173035}
+  m_Layer: 0
+  m_Name: Factorys
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2092173035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092173034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ac3b44779a0524bb625d524f6643e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _logLevel: 1
+--- !u!4 &2092173036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092173034}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 327.76254, y: 569.6271, z: -6.4825473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2095445343
 GameObject:
   m_ObjectHideFlags: 0
@@ -27198,3 +27251,4 @@ SceneRoots:
   - {fileID: 1178358682}
   - {fileID: 2072186894}
   - {fileID: 228034343}
+  - {fileID: 2092173036}
