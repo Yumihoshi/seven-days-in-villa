@@ -51,7 +51,7 @@ public class DialogueEditor : OdinEditorWindow
     [Button("选择目录", ButtonSizes.Small)]
     private void SelectDirectory()
     {
-        string path = EditorUtility.OpenFolderPanel("选择输出目录", "", "");
+        string path = EditorUtility.OpenFolderPanel("选择输出目录", Application.dataPath, "");
         if (!string.IsNullOrEmpty(path))
         {
             outputDirectory = path;
@@ -91,11 +91,24 @@ public class DialogueEditor : OdinEditorWindow
             dialogueTree.dialogueName = Path.GetFileNameWithoutExtension(filePath);
             dialogueTree.nodes = nodes;
 
-            // 生成输出文件路径
-            string outputPath = Path.Combine(outputDirectory, $"{dialogueTree.dialogueName}.asset");
+            // 将绝对路径转换为相对于Assets的路径
+            string relativePath = "";
+            if (outputDirectory.StartsWith(Application.dataPath))
+            {
+                // 如果输出目录在Assets文件夹内，转换为相对路径
+                relativePath = "Assets" + outputDirectory.Substring(Application.dataPath.Length);
+            }
+            else
+            {
+                // 如果不在Assets文件夹内，默认保存到Assets文件夹
+                relativePath = "Assets/DialogueTrees";
+                Directory.CreateDirectory(Path.Combine(Application.dataPath, "DialogueTrees"));
+            }
             
-            // 确保输出目录存在
-            Directory.CreateDirectory(outputDirectory);
+            // 生成输出文件路径
+            string outputPath = Path.Combine(relativePath, $"{dialogueTree.dialogueName}.asset");
+            
+            Debug.LogWarning($"相对路径: {outputPath}");
             
             // 保存ScriptableObject
             AssetDatabase.CreateAsset(dialogueTree, outputPath);
