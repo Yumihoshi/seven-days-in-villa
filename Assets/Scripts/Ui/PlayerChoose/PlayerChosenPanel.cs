@@ -60,8 +60,8 @@ public class PlayerChosenPanel : MonoBehaviour
       {
          choice +=2;
       }
-      doChosing(choice);
       choice %= 2;
+      doChosing(choice);
       if (Input.GetKeyDown(KeyCode.Return))
       {
         dochosed();

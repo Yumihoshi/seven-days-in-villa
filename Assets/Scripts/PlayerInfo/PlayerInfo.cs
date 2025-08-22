@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    // Start is called before the first frame update
-   
+    public Sex Mysex;
+
+}
+
+public enum Sex
+{
+    male = 0,
+    female = 1
 }
