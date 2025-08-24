@@ -55,7 +55,7 @@ ExportedObj/
 *.mdb.meta
 SvnResource/*
 !SvnResource/.gitkeep
-
+SvnResource/*
 # Unity3D generated file on crash reports
 sysinfo.txt
 
