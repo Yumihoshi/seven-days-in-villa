@@ -66,6 +66,12 @@ sysinfo.txt
 *.unitypackage.meta
 *.app
 
+# 忽略 svnResource 文件夹内所有内容
+Assets/Resources/svnResource/*
+
+# 但保留空文件夹占位文件
+!Assets/Resources/svnResource/.gitkeep
+
 # Crashlytics generated file
 crashlytics-build.properties
 

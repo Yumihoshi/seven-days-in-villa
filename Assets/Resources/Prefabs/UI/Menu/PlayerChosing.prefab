@@ -177,7 +177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4619e47abbd222e4b885282cde23b921, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 761c9c99b8109ec45b1c0afa9e9f1cad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 928164650718910700}
   - component: {fileID: 205459252758871555}
   - component: {fileID: 1181548314150298294}
+  - component: {fileID: 1130531174783832130}
   m_Layer: 5
   m_Name: PlayerChosing
   m_TagString: Untagged
@@ -517,6 +518,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
+--- !u!114 &1130531174783832130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705489481391088438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d850bb421ee564d9dffd16b4660eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choosing: {fileID: 1599702370226498879}
+  chosed: {fileID: 6506256756306454444}
+  isChosen: 0
+  choice: 0
 --- !u!1 &7901598588009680954
 GameObject:
   m_ObjectHideFlags: 0
