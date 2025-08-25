@@ -6,11 +6,11 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 /// <summary>
-/// ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½
+/// ???????????
 /// </summary>
 public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
 {
-    #region ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+    #region ?§ß????????
 
     [SerializeField] private CanvasGroup interactbleInfo;
     [SerializeField] TMPro.TextMeshProUGUI Infotext;
@@ -25,7 +25,7 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
         IntervalCoroutine = null;
     }
 
-
+    #region ÌáÊ¾ÐÅÏ¢
     public void SetInteractbleInfoClose()
     {
         if(IntervalCoroutine != null)
@@ -37,7 +37,7 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
         });
     }
     /// <summary>
-    /// ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½
+    /// ?????????????????
     /// </summary>
     /// <param name="info"></param>
     /// <param name="waitingTime"></param>
@@ -76,6 +76,10 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
         });
     }
 
+    
+
+    #endregion
+    
     public void Update()
     {
         
