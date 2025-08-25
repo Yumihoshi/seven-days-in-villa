@@ -55,7 +55,7 @@ public class CoroutineFactory : cjr.Single.SingleMon<CoroutineFactory>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
+      
     }
 
     /// <summary>

@@ -7,11 +7,10 @@ using UnityEngine.U2D;
 
 public class ResourceLoader : cjr.Single.Singleton<ResourceLoader>
 {
-    private Transform ojbectHolders;
-
+   
     public ResourceLoader()
     {
-        ojbectHolders = GameObject.FindGameObjectWithTag("PopObjects").transform;
+       
     }
     
     

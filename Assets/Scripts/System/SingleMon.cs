@@ -42,7 +42,7 @@ namespace cjr.Single
          instance = this as T;
 
          // ��ѡ���糡��������������
-         DontDestroyOnLoad(gameObject);
+        
       }
    }
 

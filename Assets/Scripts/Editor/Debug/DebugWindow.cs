@@ -139,14 +139,11 @@ public class OdinDebugWindow : OdinMenuEditorWindow
         // 执行按钮
         if (GUILayout.Button("Execute", GUILayout.Height(30)))
         {
-            try
-            {
-                function.Method.Invoke(null, null);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Error executing debug function: {e.Message}\n{e.StackTrace}");
-            }
+            
+            
+            function.Method.Invoke(null, null);
+            
+           
         }
     }
 

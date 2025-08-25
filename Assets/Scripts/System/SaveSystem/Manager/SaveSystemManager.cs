@@ -201,7 +201,7 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
         base.Awake();
         if(IsDebug)
            ClearData();
-        DontDestroyOnLoad(gameObject);
+       
         // SaveSlotName = gameData_SO.CurrentSaveSlotName;
         // if (SaveSlotName == "")
         // {

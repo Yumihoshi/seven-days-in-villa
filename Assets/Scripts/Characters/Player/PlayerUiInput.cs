@@ -43,6 +43,11 @@ public class PlayerUiInput : cjr.Single.SingleMon<PlayerUiInput>
     {
         if (context.performed)
         {
+            if (PopUiPanelController.Instance.PopStack.Count > 0)
+            {
+                PopUiPanelController.Instance.CloseCurrentPopUiPanel();
+                return;
+            }
             SettingsUi.gameObject.SetActive(false);
             inputState = PutState.Idle;
             playerInput.SwitchCurrentActionMap("GamePlay");

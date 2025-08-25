@@ -37,10 +37,7 @@ namespace cjr.Scence
         
         string CurrentScene;
 
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+  
 
         /// <summary>
         /// 获取当前激活的场景名称

@@ -41,7 +41,7 @@ namespace HoshiVerseFramework.Base
         {
             if (_instance != null && _instance != this) Destroy(gameObject);
             else _instance = this as T;
-            // DontDestroyOnLoad(gameObject);
+           
         }
 
         protected virtual void OnDestroy()

@@ -8,11 +8,11 @@ using UnityEditor;
 public static class DebugFunctions
 {
   
-    [DebugFunction(name: "测试weapen 的精灵图", 
-        description: "在场景中生成随机位置的立方体", category: "工具")]
+    [DebugFunction(name: "生成poplayer", 
+        description: "", category: "工具")]
     public static void CreateWeapenSprite()
     {
-      Debug.Log("aaaa");
+      PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.InventoryPanel);
     }
   
    
