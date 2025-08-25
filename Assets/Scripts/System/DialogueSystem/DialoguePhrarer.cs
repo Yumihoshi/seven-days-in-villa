@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FlexFramework.Excel;
 namespace DialogueSystem
 {
     public class DialogueParser
