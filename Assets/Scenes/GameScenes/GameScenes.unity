@@ -16285,17 +16285,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.24247432}
   m_EdgeRadius: 0
---- !u!114 &1588441717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3723543696255645471, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-  m_PrefabInstance: {fileID: 3227454560328528799}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1617201278
 GameObject:
   m_ObjectHideFlags: 0
@@ -22032,17 +22021,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55760574, y: 0.5466541}
   m_EdgeRadius: 0
---- !u!114 &1755927434 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7172373431364602919, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-  m_PrefabInstance: {fileID: 3227454560328528799}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1765721099
 GameObject:
   m_ObjectHideFlags: 0
@@ -26060,7 +26038,6 @@ GameObject:
   - component: {fileID: 2072186894}
   - component: {fileID: 2072186895}
   - component: {fileID: 2072186896}
-  - component: {fileID: 2072186897}
   - component: {fileID: 2072186898}
   m_Layer: 0
   m_Name: Managers
@@ -26114,28 +26091,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mask: {fileID: 247933692}
---- !u!114 &2072186897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072186893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a60c8d3a0575d438d87ca13444d863, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needLoad: {fileID: 11400000, guid: 8e5ce9118a43fb943bace3eddde3a147, type: 2}
-  dialogueUi: {fileID: 1058328873}
-  textContent: {fileID: 1934659798}
-  SpeakerName: {fileID: 1100205770}
-  speaker1Image: {fileID: 1755927434}
-  speaker2Image: {fileID: 1588441717}
-  scale_ori: 0.8
-  scale_tar: 1.2
-  singleInterval: 0.06
-  IsSpeedUp: 0
 --- !u!114 &2072186898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26154,7 +26109,7 @@ MonoBehaviour:
   OptionRoot: {fileID: 1243688321}
   _wordInterval: 0.1
   _sentenceInterval: 1
-  currentDialogueTree: {fileID: 11400000, guid: acbe4e5fbc1110548b8c78116a122819, type: 2}
+  currentDialogueTree: {fileID: 11400000, guid: 6dd6819a945f96c4f99c5afd747909d1, type: 2}
   nextNode:
     id: 
     nodeType: 0

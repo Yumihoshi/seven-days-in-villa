@@ -34,7 +34,7 @@ namespace DialogueSystem
         
         public int CurrentOption = 0;
 
-        [FormerlySerializedAs("optionNodes")] public List<DialogueOptionNode> CurrentoptionNodes = new List<DialogueOptionNode>();
+        public List<DialogueOptionNode> CurrentoptionNodes = new List<DialogueOptionNode>();
 
         [SerializeField] private string testFilePath;
         
@@ -133,9 +133,10 @@ namespace DialogueSystem
         
         IEnumerator ShowDialogueNode(DialogueNode singleNode)
         {
-
+            CurrentOption = 0;
             nextNode = null;
             speakerName.text = singleNode.SpeakerName;
+           
             if (speakerName.text == "null")
             {
                 nextNode = null;
@@ -145,13 +146,25 @@ namespace DialogueSystem
             //ui的一些处理
             textMeshPro.text = String.Empty;
 
-            foreach (var word in singleNode.Content)
+            
+            
+
+            if (singleNode.Content != "null")
             {
-                textMeshPro.text += word;
-                if(InterruptDialogueNode())
-                    break;
-                yield return _waitWordSecond;
-                
+                int nums=singleNode.Content.Length/2==0?1:singleNode.Content.Length/2;
+                foreach (var word in singleNode.Content)
+                {
+                    textMeshPro.text += word;
+                    if(InterruptDialogueNode())
+                        break;
+                    yield return _waitWordSecond;
+                    
+                }
+                _waitSentenceSecond = new WaitForSeconds(_wordInterval*nums);
+            }
+            else
+            {
+                _waitSentenceSecond= new WaitForSeconds(0);
             }
             
             textMeshPro.text=singleNode.Content;
@@ -162,6 +175,9 @@ namespace DialogueSystem
                 nextNode=null;
             }
             yield return null;
+
+
+           
             
             if(singleNode.nodeType==NodeType.option)
             {
@@ -170,13 +186,13 @@ namespace DialogueSystem
                 CurrentoptionNodes.Clear();
                 //todo
                 //处理选项
-                CurrentoptionNodes = singleNode.OptionNodes;
+                CurrentoptionNodes =new List<DialogueOptionNode>(singleNode.OptionNodes);
                 foreach (var optionNode in singleNode.OptionNodes)
                 {
                     SetOptionContent(optionNode,ResoureManager.
                         LoadGameobject(OptionPrefabPath,OptionRoot));
                 }
-                while (true)
+                while (singleNode.OptionNodes.Count>0&&true)
                 {
                     ReadyChosen();   
                     checkOptionEnd(singleNode);
@@ -205,8 +221,17 @@ namespace DialogueSystem
                //每句话停顿也是不一定相同的
                 yield return null;
                 yield return (ShowDialogueNode(currentNode));
+                
+                if(currentNode!=null)
+                    Debug.LogWarning(currentNode.id);
+                
                 currentNode = nextNode;
-               if(currentNode==null)
+                
+                
+                if(currentNode!=null)
+                    Debug.LogWarning(currentNode.id);
+               
+                if(currentNode==null)
                    break;
                 yield return _waitSentenceSecond;
 

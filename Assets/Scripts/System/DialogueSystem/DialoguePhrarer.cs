@@ -21,15 +21,43 @@ namespace DialogueSystem
         }
 
 
-        public static List<DialogueNode> ParseDialogueNodes(string filePath)
+        public static List<DialogueNode> ParseDialogueNodes(string filePath,int sheetIndex=0)
         {
             var fileContent = System.IO.File.ReadAllLines(filePath,System.Text.Encoding.UTF8);
-          
+            WorkBook book = new FlexFramework.Excel.WorkBook(filePath);
+            var sheet = book[sheetIndex];
+            
             List<DialogueNode> dialogueNodes = new List<DialogueNode>();
-            for (int i = 1; i < fileContent.Length; i++)
+            // for (int i = 1; i < fileContent.Length; i++)
+            // {
+            //     dialogueNodes.Add(ParseDialogueNode(fileContent[i]));
+            // }
+
+
+          
+            
+            for (int r = 1; r < sheet.Rows.Count; r++)
             {
-                dialogueNodes.Add(ParseDialogueNode(fileContent[i]));
+                var row = sheet.Rows[r];
+
+                // 用 StringBuilder 拼当前行
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                for (int c = 0; c < row.Cells.Count; c++)
+                {
+                    sb.Append(row.Cells[c].Value);
+                    if (c < row.Cells.Count - 1) sb.Append(',');
+                }
+
+                dialogueNodes.Add(ParseDialogueNode(sb.ToString()));
+               
             }
+            
+            
+            
+            
+            
+            
+            
             return dialogueNodes;
         }
        
