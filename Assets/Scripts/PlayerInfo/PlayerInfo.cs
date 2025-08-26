@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerInfo : MonoBehaviour
+[Serializable]
+public class PlayerInfo
 {
     public Sex Mysex;
-
+    public int Hp;
+    public int San;
 }
 
 public enum Sex

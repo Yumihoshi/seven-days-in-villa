@@ -50,8 +50,7 @@ public class ResoureManager
         
             // 实例化预制体
             GameObject instance = Object.Instantiate(prefab, parent);
-        
-            Debug.Log($"成功实例化预制体: {resourcePath}");
+            
             return instance;
         }
         catch (System.Exception e)

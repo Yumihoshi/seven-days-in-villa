@@ -222,14 +222,10 @@ namespace DialogueSystem
                 yield return null;
                 yield return (ShowDialogueNode(currentNode));
                 
-                if(currentNode!=null)
-                    Debug.LogWarning(currentNode.id);
+              
                 
                 currentNode = nextNode;
                 
-                
-                if(currentNode!=null)
-                    Debug.LogWarning(currentNode.id);
                
                 if(currentNode==null)
                    break;

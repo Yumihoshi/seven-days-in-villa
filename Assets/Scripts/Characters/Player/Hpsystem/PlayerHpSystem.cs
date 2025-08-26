@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlayerHpSystem : cjr.Single.SingleMon<PlayerHpSystem>,RequireSavingItem
 {
 
-  #region UIչʾ����
+  #region UI
     [SerializeField] Transform HpBar;
     [SerializeField] Transform HpHolder;
     [SerializeField] private GameObject SinGleHp;
   #endregion
 
-  #region �����߼�
+  #region 数值
 
     [SerializeField] int HealthPoints;
     [SerializeField] const string PlayerHp = "PlayerHp";
