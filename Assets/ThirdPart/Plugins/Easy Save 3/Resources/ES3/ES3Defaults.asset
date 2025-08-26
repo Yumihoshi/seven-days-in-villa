@@ -35,7 +35,6 @@ MonoBehaviour:
     assemblyNames:
     - andywiecko.BurstTriangulator
     - Assembly-CSharp
-    - Assembly-CSharp-firstpass
     - AstarPathfindingProject
     - Cinemachine
     - Drawing

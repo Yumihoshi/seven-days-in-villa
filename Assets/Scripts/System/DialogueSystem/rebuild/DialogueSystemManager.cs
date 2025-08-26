@@ -39,7 +39,13 @@ namespace DialogueSystem
         [SerializeField] private string testFilePath;
         
         public bool optionConfirm;
+
+        [SerializeField] private bool isDospeedUp;
         
+        public void DoSpeedUp()
+        {
+            isDospeedUp = true;
+        }
         public void DoChosen(int optionIndex)
         {
             if (IsinOptions)
@@ -98,6 +104,12 @@ namespace DialogueSystem
         /// <returns></returns>
         public bool InterruptDialogueNode()
         {
+            if (isDospeedUp)
+            {
+                isDospeedUp = false;
+                return true;
+            }
+            isDospeedUp = false;
             return false;
         }
 
@@ -136,10 +148,13 @@ namespace DialogueSystem
             CurrentOption = 0;
             nextNode = null;
             speakerName.text = singleNode.SpeakerName;
-           
+
+            isDospeedUp = false;
             if (speakerName.text == "null")
             {
                 nextNode = null;
+                _waitSentenceSecond = new WaitForSeconds(0);
+                speakerName.text = "";
                 yield break;
             }
             //todo

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DialogueSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -58,7 +59,7 @@ public class PlayerUiInput : cjr.Single.SingleMon<PlayerUiInput>
     {
         if (context.performed)
         {
-            DialogueManager.Instance.SpeedUp();
+           DialogueSystemManager.Instance.DoSpeedUp();
         }
     }
 }

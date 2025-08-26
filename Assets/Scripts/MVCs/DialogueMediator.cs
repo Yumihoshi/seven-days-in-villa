@@ -27,8 +27,14 @@ public class DialogueMediator : BaseMediator
         RegisterEntityAction(NotificationConst.Player_After_Choose_Dialogue_Option,OnbeginChosenOption);
         RegisterEntityAction(NotificationConst.Start_Dialogue,OnActionChange2Menu);
         RegisterEntityAction(NotificationConst.Player_Confirm_Choose_Dialogue_Option,OnConfirm_Choose_Dialogue_Option);
+        RegisterEntityAction(NotificationConst.End_Dialogue,OnActionChange2game);
     }
 
+
+    void OnActionChange2game(object o)
+    {
+        PlayerAction.Instance.playerInput.SwitchCurrentActionMap("GamePlay");
+    }
 
     void OnConfirm_Choose_Dialogue_Option(object data)
     {
