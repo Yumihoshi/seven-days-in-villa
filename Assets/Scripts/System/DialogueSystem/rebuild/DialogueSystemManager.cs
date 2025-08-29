@@ -6,7 +6,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
-
 namespace DialogueSystem
 {
     public class DialogueSystemManager : cjr.Single.SingleMon<DialogueSystemManager>
@@ -266,3 +265,4 @@ namespace DialogueSystem
     
     
 }
+

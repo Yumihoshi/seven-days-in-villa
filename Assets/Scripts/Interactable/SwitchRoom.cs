@@ -21,7 +21,8 @@ public class SwitchRoom : InteractableItem
     public override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
-        UiGameobject.Instance.SetInteractableInfo("press E to enter Other",1.5f);
+        if(other.GetComponent<PlayerAction>())
+            UiGameobject.Instance.SetInteractableInfo("press E to enter Other",1.5f);
     }
 
     public override void OnTriggerExit2D(Collider2D other)

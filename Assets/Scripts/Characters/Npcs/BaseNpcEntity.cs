@@ -1,0 +1,150 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using Pathfinding;
+using Sirenix.OdinInspector;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class BaseNpcEntity : MonoBehaviour
+{
+   public Animator animator;
+   public int grade;
+   
+   public Seeker seeker;
+
+   public bool IsMove;
+   
+   public List<Vector3> waypoints;
+
+   public float radius = 0.5f;
+   
+   [SerializeField] private float Speed = 1.5f;
+   
+   public Rigidbody2D rb;
+
+   int currentIndex = 0;
+
+   [SerializeField] private Transform LeftUp;
+   [SerializeField] private Transform RightDown;
+
+   [SerializeField] private string MovingCoroId;
+   public virtual void Awake()
+   {
+      seeker = GetComponent<Seeker>();
+      if (seeker == null)
+      {
+         seeker = gameObject.AddComponent<Seeker>();
+      }
+
+      animator = GetComponentInChildren<Animator>();
+
+      IsMove = false;
+
+      rb = GetComponent<Rigidbody2D>();
+      if (rb == null)
+      {
+         rb = gameObject.AddComponent<Rigidbody2D>();
+      }
+      rb.gravityScale = 0;
+
+   }
+
+   public void InstianceWays(Vector3 target)
+   {
+      seeker.StartPath(transform.position, target,PathGotten);
+   }
+
+
+   protected Vector3 GetRandomPoint(Vector3 leftUp,Vector3 rightDown)
+   {
+      
+      float x=Random.Range(leftUp.x, rightDown.x);
+      float y=Random.Range(rightDown.y, leftUp.y);
+      float z = 0;
+      return new Vector3(x, y, z);
+   }
+
+   private void OnTriggerStay2D(Collider2D other)
+   {
+      Debug.LogWarning("OnTriggerStay2D");
+      if (other.gameObject.CompareTag("Player"))
+      {
+         CoroutineFactory.Instance.HaltCoroutine(MovingCoroId);
+      }
+   }
+
+   private void OnTriggerExit2D(Collider2D other)
+   {
+      if (other.gameObject.CompareTag("Player"))
+      {
+         Move();
+      }
+   }
+
+   public void Move()
+   {
+      if(waypoints==null||waypoints.Count==0)
+         return;
+      IsMove = true;
+      if (MovingCoroId != null)
+         CoroutineFactory.Instance.HaltCoroutine(MovingCoroId);
+      MovingCoroId = CoroutineFactory.Instance.RunCoroutine(MoveCoroutine);
+   }
+
+   IEnumerator MoveCoroutine()
+   {
+      
+      while (currentIndex < waypoints.Count)
+      {
+         
+         Vector3 nowtarget = waypoints[currentIndex];
+         Vector3 current = transform.position ;
+         if (Vector2.Distance(nowtarget, current) < Mathf.Epsilon)
+         {
+            currentIndex++;
+         }
+
+         if (currentIndex >= waypoints.Count)
+         {
+            currentIndex = 0;
+            InstianceWays(GetRandomPoint(LeftUp.position, RightDown.position));
+            yield return new WaitForSeconds(0.3f);
+         }
+         nowtarget = waypoints[currentIndex];
+         
+         var collider = Physics2D.OverlapCircle(transform.position, radius);
+         if (collider != null && collider.CompareTag("Link"))
+         {
+           
+         }
+         else
+         {
+            Vector3 nextPosition=Vector2.MoveTowards(current, nowtarget
+               , Speed * Time.deltaTime);
+            
+            rb.MovePosition(nextPosition);
+            Vector3 dir=nextPosition-transform.position;
+            animator.SetFloat("Xvelocity",dir.x);
+            animator.SetFloat("Yvelocity",dir.y*2);
+            
+         }
+         
+         yield return null;
+      }
+   }
+
+   [Button("Generate Waypoints")]
+   public void GenerateWaypoints()
+   {
+      InstianceWays(GetRandomPoint(LeftUp.position, RightDown.position));
+      Move();
+   }
+   
+   void PathGotten(Path path)
+   {
+      waypoints = path.vectorPath;
+   }
+
+}
