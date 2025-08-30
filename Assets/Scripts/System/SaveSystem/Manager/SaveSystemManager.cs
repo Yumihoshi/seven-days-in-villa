@@ -258,12 +258,12 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
             }
         }
         SaveSceneItem();
-        PlayerSaving.Instance.Save();
-        yield return null;
-        PlayerInventory.Instance.Save();
-        yield return null;
-        PlayerHpSystem.Instance.Save();
-        yield return null;
+        // PlayerSaving.Instance.Save();
+        // yield return null;
+        // PlayerInventory.Instance.Save();
+        // yield return null;
+        // PlayerHpSystem.Instance.Save();
+        // yield return null;
     }
     
     
@@ -298,12 +298,12 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
             }
         }
         LoadSceneItem();
-        PlayerSaving.Instance.Load();
-        yield return null;
-        PlayerInventory.Instance.Load();
-        yield return null;
-        PlayerHpSystem.Instance.Load();
-        yield return null;
+        // PlayerSaving.Instance.Load();
+        // yield return null;
+        // PlayerInventory.Instance.Load();
+        // yield return null;
+        // PlayerHpSystem.Instance.Load();
+        // yield return null;
         SavingMask.DOFade(0, 0.2f);
     }
     
