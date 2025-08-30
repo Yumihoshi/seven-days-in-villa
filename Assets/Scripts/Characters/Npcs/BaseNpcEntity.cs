@@ -68,7 +68,7 @@ public class BaseNpcEntity : MonoBehaviour
 
    private void OnTriggerStay2D(Collider2D other)
    {
-      Debug.LogWarning("OnTriggerStay2D");
+      
       if (other.gameObject.CompareTag("Player"))
       {
          CoroutineFactory.Instance.HaltCoroutine(MovingCoroId);

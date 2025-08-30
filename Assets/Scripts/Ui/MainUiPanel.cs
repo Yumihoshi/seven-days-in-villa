@@ -8,6 +8,11 @@ public class MainUiPanel : cjr.Single.SingleMon<MainUiPanel>
 
   public void setToolSentence(string sentence)
   {
+    if (toolDialogueSkin.gameObject.activeSelf)
+    {
+      toolDialogueSkin.gameObject.SetActive(false);
+      return;
+    }
     toolDialogueSkin.SetSentence(sentence);
   }
   

@@ -5,8 +5,8 @@ using UnityEngine;
 public class ToolIneraction :InteractableItem
 {
    [SerializeField] private string GameName;
-   
-   
+
+   [SerializeField] private string Text;
    
    protected override void Awake()
    {
@@ -23,6 +23,6 @@ public class ToolIneraction :InteractableItem
    public override void Interact()
    {
       base.Interact();
-      MainUiPanel.Instance.setToolSentence("aaaaaaaa");
+      MainUiPanel.Instance.setToolSentence(Text);
    }
 }
