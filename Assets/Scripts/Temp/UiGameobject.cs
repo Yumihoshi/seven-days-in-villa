@@ -63,7 +63,7 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
     {
         Infotext.text = string.Empty;
         int i = 0;
-        while (Infotext.text.Length < info.Length)
+        while (Infotext.text.Length < info.Length&& i<info.Length)
         {
             Infotext.text += info[i];
             i++;
