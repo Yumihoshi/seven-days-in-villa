@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameStateSlot : ScriptableObject
+{
+   public virtual void update()
+   {
+      
+   }
+
+   public virtual void fixedUpdate()
+   {
+      
+   }
+
+   public virtual void lateUpdate()
+   {
+      
+   }
+}

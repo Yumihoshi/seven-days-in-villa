@@ -1,32 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState:cjr.Single.SingleMon<GameState>,RequireSavingItem
+public class GameState:cjr.Single.SingleMon<GameState>
 {
    [SerializeField] private int NowDays;
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+   [SerializeField] GameStateSlot currentStateSlot;
 
-   public void Load()
+
+   private void Update()
    {
-      //todo   
+      currentStateSlot?.update();
+   }
+
+   private void FixedUpdate()
+   {
+      currentStateSlot?.fixedUpdate();
       
    }
 
-   public void Save()
+
+   private void LateUpdate()
    {
-      //todo
-      
+      currentStateSlot?.lateUpdate();
    }
 }
