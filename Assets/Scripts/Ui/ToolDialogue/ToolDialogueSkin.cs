@@ -20,6 +20,7 @@ public class ToolDialogueSkin : MonoBehaviour
         ShowToolDialogue();
         if (Coroitinue != null)
             CoroutineFactory.Instance.HaltCoroutine(Coroitinue);
+        PlayerAction.Instance.playerInput.SwitchCurrentActionMap("Dialogue");
         Coroitinue = CoroutineFactory.Instance.RunCoroutine(TypingWord(sentence));
     }
 
@@ -34,7 +35,6 @@ public class ToolDialogueSkin : MonoBehaviour
         }
 
         Content.text = sentence;
-        PlayerAction.Instance.playerInput.SwitchCurrentActionMap("GamePlay");
     }
 
 
@@ -57,7 +57,7 @@ public class ToolDialogueSkin : MonoBehaviour
 
         if (Coroitinue != null)
         {
-            CoroutineFactory.Instance.HaltCoroutine(Coroitinue);
+            CoroutineFactory.Instance?.HaltCoroutine(Coroitinue);
         }
         
     }

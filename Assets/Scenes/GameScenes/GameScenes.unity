@@ -26392,6 +26392,7 @@ GameObject:
   - component: {fileID: 2072186896}
   - component: {fileID: 2072186898}
   - component: {fileID: 2072186899}
+  - component: {fileID: 2072186900}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -26491,6 +26492,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NowDays: 0
+--- !u!114 &2072186900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072186893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde521266533aba4fa87caddf0251d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AudioSource: {fileID: 0}
 --- !u!1 &2092173034
 GameObject:
   m_ObjectHideFlags: 0
@@ -27817,6 +27831,10 @@ PrefabInstance:
       propertyPath: OptionHolder
       value: 
       objectReference: {fileID: 637346404}
+    - target: {fileID: 3840199952156831483, guid: bc578eb22fc0ef3408bb813d43d2f80c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4235810385540672919, guid: bc578eb22fc0ef3408bb813d43d2f80c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

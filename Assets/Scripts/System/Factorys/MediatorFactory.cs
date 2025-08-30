@@ -13,6 +13,7 @@ public class MediatorFactory
     void InitMediator()
     {
        RegisterMediator(new DialogueMediator());
+       RegisterMediator(new ToolDialogueMediator());
     }
 
 

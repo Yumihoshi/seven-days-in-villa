@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Content: {fileID: 1837762569624135307}
   Nos: {fileID: 2740348674503811729}
+  Chosen: {fileID: 2196292411165334835}
 --- !u!1 &7934207160955208008
 GameObject:
   m_ObjectHideFlags: 0
