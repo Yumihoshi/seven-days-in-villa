@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 6823288120238616239}
   - component: {fileID: 2528057216042414750}
   - component: {fileID: 1870974239714238191}
+  - component: {fileID: 9143507001664482021}
   m_Layer: 5
   m_Name: ChosnOption
   m_TagString: Untagged
@@ -214,6 +215,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9143507001664482021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718789378762423026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148b8c44e5d9d7e488d45e7b358ef6c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Content: {fileID: 1837762569624135307}
+  Nos: {fileID: 2740348674503811729}
 --- !u!1 &7934207160955208008
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class ToolDialogueSkin : MonoBehaviour
 
     [SerializeField] private string Coroitinue;
     
+    [SerializeField] Transform OptionHolder;
+    
+    
     public void SetSentence(string sentence)
     {
         ShowToolDialogue();
@@ -32,6 +35,16 @@ public class ToolDialogueSkin : MonoBehaviour
 
         Content.text = sentence;
         PlayerAction.Instance.playerInput.SwitchCurrentActionMap("GamePlay");
+    }
+
+
+    public void CleanOptions()
+    {
+        for (int i = 0; i < OptionHolder.childCount; i++)
+        {
+            Transform child = OptionHolder.GetChild(i);
+            child.gameObject.SetActive(false);
+        }
     }
     
     public void ShowToolDialogue()
