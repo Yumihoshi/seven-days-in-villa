@@ -60,6 +60,7 @@ public class PlayerUiInput : cjr.Single.SingleMon<PlayerUiInput>
         if (context.performed)
         {
            DialogueSystemManager.Instance.DoSpeedUp();
+           ToolDialogueSkin.Instance.DoSpeedUp();
         }
     }
 }
