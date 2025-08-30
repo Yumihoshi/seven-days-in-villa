@@ -25,4 +25,11 @@ public class ToolIneraction :InteractableItem
       base.Interact();
       MainUiPanel.Instance.setToolSentence(Text);
    }
+
+   protected override void OnCollisionExit2D(Collision2D other)
+   {
+      base.OnCollisionExit2D(other);
+      if(other.gameObject.CompareTag("Player"))
+         MainUiPanel.Instance.CloseToolPanel();
+   }
 }

@@ -15,5 +15,11 @@ public class MainUiPanel : cjr.Single.SingleMon<MainUiPanel>
     }
     toolDialogueSkin.SetSentence(sentence);
   }
+
+
+  public void CloseToolPanel()
+  {
+    toolDialogueSkin.gameObject.SetActive(false);
+  }
   
 }
