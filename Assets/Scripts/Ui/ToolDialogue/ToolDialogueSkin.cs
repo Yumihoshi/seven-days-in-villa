@@ -28,7 +28,6 @@ public class ToolDialogueSkin : cjr.Single.SingleMon<ToolDialogueSkin>
         ShowToolDialogue();
         if (Coroitinue != null)
             CoroutineFactory.Instance.HaltCoroutine(Coroitinue);
-        PlayerAction.Instance.playerInput.SwitchCurrentActionMap("Dialogue");
         Coroitinue = CoroutineFactory.Instance.RunCoroutine(TypingWord(sentence));
     }
 
