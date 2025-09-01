@@ -7,7 +7,9 @@ public class ToolIneraction :InteractableItem
    [SerializeField] private string GameName;
 
    [SerializeField] private string Text;
-   
+
+
+   [SerializeField] private int Grade = 1;
    protected override void Awake()
    {
       
@@ -23,7 +25,7 @@ public class ToolIneraction :InteractableItem
    public override void Interact()
    {
       base.Interact();
-      MainUiPanel.Instance.setToolSentence(Text);
+      ToolDialogueSkin.Instance.StartDialogue(DialogueMetas.Instance.GetToolDialogueTree(GameName, Grade));
    }
 
    protected override void OnCollisionExit2D(Collision2D other)

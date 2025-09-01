@@ -200,6 +200,7 @@ public class ToolDialogueSkin : cjr.Single.SingleMon<ToolDialogueSkin>
                 Debug.LogError("Dialogue tree is empty or null.");
                 return;
             }
+            currentDialogueTree = dialogueTree;
             ApplicationFacade.Instance.SendNotification(NotificationConst.Start_Dialogue);
             gameObject.SetActive(true);
             startIndex =int.Parse(dialogueTree.nodes[0].id);

@@ -32,7 +32,7 @@ namespace DialogueSystem
             dialogueNode.nextNode = varas[4];
             if(varas[5]!="null")
                 dialogueNode.OptionNodes = ParseDialogueOptionNodes(varas[5]);
-            dialogueNode.Grade= (varas[6][varas[6].Length - 1]);
+            dialogueNode.Grade= int.Parse(varas[6]);
             return dialogueNode;
         }
         
