@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//todo
+//需要在一些阶段执行功能
+
 public class ToolIneraction :InteractableItem
 {
    [SerializeField] private string GameName;
-
-   [SerializeField] private string Text;
+   
 
 
    [SerializeField] private int Grade = 1;

@@ -357,7 +357,10 @@ public class ToolDialogueSkin : cjr.Single.SingleMon<ToolDialogueSkin>
 
                 if (currentNode == null)
                     break;
-                yield return _waitSentenceSecond;
+                while (!Input.anyKeyDown)
+                {
+                    yield return null;
+                }
 
             }
 

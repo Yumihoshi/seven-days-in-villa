@@ -82,26 +82,8 @@ public class DialogueMetas:cjr.Single.Singleton<DialogueMetas>
           
       }
       
-      //todo
-      //test
-      var trees = ToolDialoguedict[Name];
-      for (int i = 0; i < trees.Count; i++)
-      {
-          var tree = trees.ElementAt(i).Value;
-          
-          if(tree==null)
-              continue;
-          
-          foreach (var lef in tree.nodes)
-          {
-              Debug.LogWarning(lef.Content);
-          }
-          Debug.LogWarning("-------------");
-          
-      }
-      
-      //
-      
+      if(!ToolDialoguedict[Name].ContainsKey(Grade))
+        return null;
       return ToolDialoguedict[Name][Grade];
   }
   
