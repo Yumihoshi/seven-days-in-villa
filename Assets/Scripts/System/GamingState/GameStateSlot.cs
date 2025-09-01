@@ -18,4 +18,16 @@ public class GameStateSlot : ScriptableObject
    {
       
    }
+
+   public virtual void onEnter()
+   {
+      
+   }
+
+
+   public virtual void onExit()
+   {
+      
+   }
+   
 }

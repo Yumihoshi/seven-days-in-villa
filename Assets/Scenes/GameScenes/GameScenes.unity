@@ -26507,6 +26507,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NowDays: 0
+  currentStateSlot: {fileID: 0}
+  slot0Test: {fileID: 11400000, guid: 510e602cd7fc56d4ab9bc6da2dcee4bf, type: 2}
+  slot1Test: {fileID: 11400000, guid: 28d3f7ec94e976f4c892e8b613f39da2, type: 2}
 --- !u!114 &2072186900
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,14 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class GameState:cjr.Single.SingleMon<GameState>
 {
    [SerializeField] private int NowDays;
-   
-   [SerializeField] GameStateSlot currentStateSlot;
 
+
+   [SerializeField] private GameStateSlot currentStateSlot;
+
+
+   [SerializeField] private GameStateSlot slot0Test;
+   [SerializeField] private GameStateSlot slot1Test;
+   
+   
+   public void SwitchStateSlot(GameStateSlot newStateSlot)
+   {
+      currentStateSlot?.onExit();
+      currentStateSlot = newStateSlot;
+      currentStateSlot?.onEnter();
+   }   
 
    private void Update()
    {
@@ -26,4 +39,17 @@ public class GameState:cjr.Single.SingleMon<GameState>
    {
       currentStateSlot?.lateUpdate();
    }
+
+   [Button("test0 set")]
+   public void test0()
+   {
+      currentStateSlot=slot0Test;
+   }
+
+   [Button("test1 set")]
+   public void test1()
+   {
+      SwitchStateSlot(slot1Test);
+   }
+   
 }
