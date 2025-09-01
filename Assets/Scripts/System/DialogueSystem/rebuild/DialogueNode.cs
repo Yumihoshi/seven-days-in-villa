@@ -39,10 +39,27 @@ namespace DialogueSystem
          OptionNodes = new List<DialogueOptionNode>();
          OptionNodes.Clear();
       }
+
+      public virtual void Debug()
+      {
+          UnityEngine.Debug.LogWarning(id+' '+nodeType+' '+SpeakerName+' '+Content);
+      }
       
       
    }
 
+   [Serializable]
+   public class ToolDialogueNode : DialogueNode
+   {
+       public int Grade;
+       public override void Debug()
+       {
+           UnityEngine.Debug.LogWarning(id+' '+nodeType+' '+SpeakerName+' '+Content+' '+Grade);
+           
+       }
+   }
+   
+   
    [Serializable]
    public class DialogueOptionNode
    {

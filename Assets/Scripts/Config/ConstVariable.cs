@@ -17,3 +17,9 @@ public class ConstVariable
 
    #endregion
 }
+
+
+public class FileConstPath
+{
+   public const string ToolDialoguePath = "Assets/Resources/SvnResource/文案/物品交互/序章 物品交互.xlsx";
+}

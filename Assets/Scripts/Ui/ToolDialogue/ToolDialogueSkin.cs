@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DialogueSystem;
+using FlexFramework.Excel;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -70,6 +71,39 @@ public class ToolDialogueSkin : cjr.Single.SingleMon<ToolDialogueSkin>
     }
 
 
+    [SerializeField] private string filePath;
+
+
+    [Button("测试解析读表")]
+    public void pahre()
+    {
+        // var fileContent = System.IO.File.ReadAllLines(filePath,System.Text.Encoding.UTF8);
+        // WorkBook book = new FlexFramework.Excel.WorkBook(filePath);
+        // Debug.LogWarning(book);
+        // var sheet = book[0];
+        // for (int r = 0; r < sheet.Rows.Count; r++)
+        // {
+        //     var row = sheet.Rows[r];
+        //     for (int c = 0; c < row.Cells.Count; c++)
+        //     {
+        //         Debug.Log(row.Cells[c].Value);
+        //     }
+        // }
+        
+        var tree=DialogueParser.ParseDialogueNodes(filePath,
+            "食用油",true);
+        foreach (var le in tree)
+        {
+            var tol = le as ToolDialogueNode;
+            Debug.LogWarning(tol);
+            tol?.Debug();
+        }
+    }
+    
+    
+    
+    
+    
 
 
 
