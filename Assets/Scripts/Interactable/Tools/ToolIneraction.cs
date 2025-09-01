@@ -25,7 +25,7 @@ public class ToolIneraction :InteractableItem
    public override void Interact()
    {
       base.Interact();
-      ToolDialogueSkin.Instance.StartDialogue(DialogueMetas.Instance.GetToolDialogueTree(GameName, Grade));
+     MainUiPanel.Instance.StartToolDialogue(DialogueMetas.Instance.GetToolDialogueTree(GameName, Grade));
    }
 
    protected override void OnCollisionExit2D(Collision2D other)

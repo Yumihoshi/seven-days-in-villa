@@ -197,7 +197,7 @@ public class ToolDialogueSkin : cjr.Single.SingleMon<ToolDialogueSkin>
         {
             if (dialogueTree == null || dialogueTree.nodes.Count == 0)
             {
-                Debug.LogError("Dialogue tree is empty or null.");
+                gameObject.SetActive(false);
                 return;
             }
             currentDialogueTree = dialogueTree;
@@ -364,6 +364,12 @@ public class ToolDialogueSkin : cjr.Single.SingleMon<ToolDialogueSkin>
             //todo
             //ui的一些处理
             yield return _waitSentenceSecond;
+            
+            while (!Input.anyKeyDown)
+            {
+                yield return null;
+            }
+            
             gameObject.SetActive(false);
             ApplicationFacade.Instance.SendNotification(NotificationConst.End_Dialogue);
         }

@@ -19,7 +19,6 @@ public class MediatorFactory
 
     void RegisterMediator(Mediator mediator)
     {
-        Debug.LogWarning(mediator.MediatorName);
         ApplicationFacade.Instance.RegisterMediator(mediator);
         
     }

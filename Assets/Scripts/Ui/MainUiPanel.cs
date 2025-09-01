@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DialogueSystem;
 using UnityEngine;
 
 public class MainUiPanel : cjr.Single.SingleMon<MainUiPanel>
@@ -17,6 +18,13 @@ public class MainUiPanel : cjr.Single.SingleMon<MainUiPanel>
   }
 
 
+  public void StartToolDialogue(DialogueTree tree)
+  {
+    if(tree == null)
+      return;
+    toolDialogueSkin.gameObject.SetActive(true);
+    toolDialogueSkin.StartDialogue(tree);
+  }
   public void CloseToolPanel()
   {
     toolDialogueSkin.gameObject.SetActive(false);

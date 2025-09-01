@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DialogueSystem;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ public class DialogueMetas:cjr.Single.Singleton<DialogueMetas>
           ToolDialoguedict[Name] = new Dictionary<int, DialogueTree>();
 
       DialogueTree tmpTree = ScriptableObject.CreateInstance<DialogueTree>();
-      int start = 1;
+      int start = -1;
 
       foreach (var single in dialogueTree.nodes)
       {
@@ -33,7 +34,9 @@ public class DialogueMetas:cjr.Single.Singleton<DialogueMetas>
               return;
           }
 
-         
+          if (start == -1)
+              start = toolnode.Grade;
+          
           if (start == toolnode.Grade)
           {
               tmpTree.nodes.Add(toolnode);
@@ -65,8 +68,6 @@ public class DialogueMetas:cjr.Single.Singleton<DialogueMetas>
 
       if(!ToolDialoguedict.ContainsKey(Name))
           ToolDialoguedict[Name] = new Dictionary<int,DialogueTree>();
-
-      Debug.LogWarning(Name+"  "+Grade);
       
       if (!ToolDialoguedict[Name].ContainsKey(Grade) || ToolDialoguedict[Name][Grade] == null)
       {
@@ -80,6 +81,26 @@ public class DialogueMetas:cjr.Single.Singleton<DialogueMetas>
           InitToolDialogueDict(Name, tmpTree);
           
       }
+      
+      //todo
+      //test
+      var trees = ToolDialoguedict[Name];
+      for (int i = 0; i < trees.Count; i++)
+      {
+          var tree = trees.ElementAt(i).Value;
+          
+          if(tree==null)
+              continue;
+          
+          foreach (var lef in tree.nodes)
+          {
+              Debug.LogWarning(lef.Content);
+          }
+          Debug.LogWarning("-------------");
+          
+      }
+      
+      //
       
       return ToolDialoguedict[Name][Grade];
   }
