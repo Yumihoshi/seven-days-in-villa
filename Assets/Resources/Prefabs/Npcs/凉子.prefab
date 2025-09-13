@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  grade: 0
+  grade: 1
   seeker: {fileID: 0}
   IsMove: 0
   waypoints: []
@@ -56,6 +56,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   LeftUp: {fileID: 0}
   RightDown: {fileID: 0}
+  MovingCoroId: 
+  waitTimeMin: 1.4
+  waitTimeMax: 3.5
 --- !u!50 &4899323233042012734
 Rigidbody2D:
   serializedVersion: 4

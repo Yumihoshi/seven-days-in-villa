@@ -30,6 +30,10 @@ public class BaseNpcEntity : MonoBehaviour
    [SerializeField] private Transform RightDown;
 
    [SerializeField] private string MovingCoroId;
+
+   [SerializeField] private float waitTimeMin = 1.4f;
+   [SerializeField] private float waitTimeMax = 3.5f;
+   
    public virtual void Awake()
    {
       seeker = GetComponent<Seeker>();
@@ -49,6 +53,11 @@ public class BaseNpcEntity : MonoBehaviour
       }
       rb.gravityScale = 0;
 
+   }
+
+   private void OnEnable()
+   {
+      GenerateWaypoints();
    }
 
    public void InstianceWays(Vector3 target)
@@ -110,11 +119,16 @@ public class BaseNpcEntity : MonoBehaviour
          {
             currentIndex = 0;
             InstianceWays(GetRandomPoint(LeftUp.position, RightDown.position));
-            yield return new WaitForSeconds(0.3f);
+            float waitTime = Random.Range(waitTimeMin, waitTimeMax);
+            animator.Play($"idle_{grade}");
+            
+            yield return new WaitForSeconds(waitTime);
+            animator.Play($"{grade}Grade");
          }
          nowtarget = waypoints[currentIndex];
          
          var collider = Physics2D.OverlapCircle(transform.position, radius);
+         
          if (collider != null && collider.CompareTag("Link"))
          {
            
@@ -126,8 +140,8 @@ public class BaseNpcEntity : MonoBehaviour
             
             rb.MovePosition(nextPosition);
             Vector3 dir=nextPosition-transform.position;
-            animator.SetFloat("Xvelocity",dir.x);
-            animator.SetFloat("Yvelocity",dir.y*2);
+            animator.SetFloat("Xvelocity",dir.x*50);
+            animator.SetFloat("Yvelocity",dir.y*100);
             
          }
          
@@ -135,13 +149,17 @@ public class BaseNpcEntity : MonoBehaviour
       }
    }
 
-   [Button("Generate Waypoints")]
+  
    public void GenerateWaypoints()
    {
       InstianceWays(GetRandomPoint(LeftUp.position, RightDown.position));
+   
+   }
+   [Button("Generate Move")]
+   public void StartMoving()
+   {
       Move();
    }
-   
    void PathGotten(Path path)
    {
       waypoints = path.vectorPath;
