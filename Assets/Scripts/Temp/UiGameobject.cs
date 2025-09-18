@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 /// </summary>
 public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
 {
-    #region ?н????????
+    #region ???????????
 
     [SerializeField] private CanvasGroup interactbleInfo;
     [SerializeField] TMPro.TextMeshProUGUI Infotext;
@@ -19,13 +19,19 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
     [SerializeField] private Coroutine IntervalCoroutine;
     #endregion
 
+
+    public float GetSingleWordInterval()
+    {
+        return singleWordInterval;
+    }
+    
     protected override void Awake()
     {
         base.Awake();
         IntervalCoroutine = null;
     }
 
-    #region 提示信息
+    #region nono
     public void SetInteractbleInfoClose()
     {
         if(IntervalCoroutine != null)
@@ -79,9 +85,19 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
     
 
     #endregion
-    
-    public void Update()
+
+    public void SetPopHintPopPanel(string info, float waitingTime)
     {
+        var Gobject = PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.PopHintPanel);
+        
+        PopHintPanel hintPanel = Gobject.GetComponent<PopHintPanel>();
+
+        if (hintPanel != null)
+        {
+            hintPanel.SetInfos(info, waitingTime);
+            
+            hintPanel.StartInfo();
+        }
         
     }
 }

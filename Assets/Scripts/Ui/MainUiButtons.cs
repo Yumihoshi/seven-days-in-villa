@@ -8,4 +8,11 @@ public class MainUiButtons : MonoBehaviour
    {
       PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.InventoryPanel);
    }
+
+
+   public void ShowPopShopPanel()
+   {
+      PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.ShopPanel);
+   }
+   
 }
