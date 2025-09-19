@@ -10,10 +10,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstac
   - Water
   - UI
-  - 
+  - PlayerIgnore
   - 
   - 
   - 
