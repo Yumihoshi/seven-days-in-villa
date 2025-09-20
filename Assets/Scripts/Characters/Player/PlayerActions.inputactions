@@ -375,7 +375,7 @@
             "id": "40e2979c-a0da-4bd2-867b-01813960bfc1",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "HideUi",
                     "type": "Button",
                     "id": "a4b824d1-15ac-4f4a-96f0-e1ca6209a994",
                     "expectedControlType": "",
@@ -388,11 +388,11 @@
                 {
                     "name": "",
                     "id": "bcd1866e-f254-4a0c-8620-78a4b6766ad8",
-                    "path": "",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "HideUi",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

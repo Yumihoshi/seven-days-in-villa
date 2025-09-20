@@ -25982,6 +25982,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: aa580909-0e29-4d23-83e3-999e77dfa7e2
     m_ActionName: Dialogue/Confrim[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1974379326}
+        m_TargetAssemblyTypeName: PlayerUiInput, Assembly-CSharp
+        m_MethodName: HideSettingsUi
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a4b824d1-15ac-4f4a-96f0-e1ca6209a994
+    m_ActionName: ShopInput/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay
