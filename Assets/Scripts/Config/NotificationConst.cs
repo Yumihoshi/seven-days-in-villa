@@ -11,4 +11,9 @@ public class NotificationConst
     
     public const string Start_Dialogue = "Start_Dialogue";
     public const string End_Dialogue = "End_Dialogue";
+    
+    
+    public const string ShopPanelCreate= "ShopPanelCreate";
+    public const string ShopPanelHide = "ShopPanelHide";
+    
 }

@@ -10,7 +10,7 @@ public class GameData_So : ScriptableObject
     public List<string> SaveSlotNames;
     public string CurrentSaveSlotName;
 
-    public List<InventoryItem>InventoryItems;
+    public List<InventoryItemInWorld>InventoryItems;
     
     private void Awake()
     {

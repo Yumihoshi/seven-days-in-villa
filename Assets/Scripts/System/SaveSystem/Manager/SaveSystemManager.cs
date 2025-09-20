@@ -3,24 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
-/*
- *????????????????????????
- *?????????????е????嶼???????
- *????data_so??
- *????????????????????id??λ?????
- *
- * 
- */
 
-/*
- *??????????????
- * ?????μ???????????????
- *
- *
- * 
- */
 
 public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
 {
@@ -37,7 +23,7 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
     #region ????
 
     
-        [SerializeField] InventoryItem[] items;
+        [SerializeField] InventoryItemInWorld[] items;
         [SerializeField] List<SaveSceneStruct> saved;
 
     #endregion
@@ -57,7 +43,7 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
         
         ClearCurrentSceneData();
         
-        items = FindObjectsOfType<InventoryItem>();
+        items = FindObjectsOfType<InventoryItemInWorld>();
         for (int i = 0; i < items.Length; i++)
         {
             var item = items[i];
@@ -70,7 +56,7 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
     [Button("LoadSceneItem")]
     public void LoadSceneItem()
     {
-        items = FindObjectsOfType<InventoryItem>();
+        items = FindObjectsOfType<InventoryItemInWorld>();
         if(!ES3.KeyExists(InventoryItemDic))
             return;
         SaveDatas = ES3.Load(InventoryItemDic,SaveDatas);
@@ -230,6 +216,24 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
     List<GameObject> rootObjects = new List<GameObject>();
 
 
+
+    public void SaveObject(string key, object entity)
+    {
+        // 任意 JSON 库都行，这里用 Newtonsoft.Json 举例
+        string json = JsonConvert.SerializeObject(entity);
+        var deepCopy = JsonConvert.DeserializeObject(json);
+        ES3.Save(SaveSlotName + key, deepCopy, ES3Settings.defaultSettings);
+    } 
+    
+
+    public T LoadObject<T>(string key)
+    {
+        if (!ES3.KeyExists(SaveSlotName + key))
+            return default(T);
+
+        // ES3.Load 会 new 一份全新的对象，不会跟任何旧对象共享引用
+        return ES3.Load<T>(SaveSlotName + key);
+    }
     
     /// <summary>
     /// ???浱???????????
@@ -258,12 +262,6 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
             }
         }
         SaveSceneItem();
-        // PlayerSaving.Instance.Save();
-        // yield return null;
-        // PlayerInventory.Instance.Save();
-        // yield return null;
-        // PlayerHpSystem.Instance.Save();
-        // yield return null;
     }
     
     

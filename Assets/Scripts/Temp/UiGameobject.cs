@@ -86,7 +86,7 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
 
     #endregion
 
-    public void SetPopHintPopPanel(string info, float waitingTime)
+    public void SetPopHintPopPanel(string info, float waitingTime,bool needMask=false)
     {
         var Gobject = PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.PopHintPanel);
         
@@ -96,7 +96,7 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
         {
             hintPanel.SetInfos(info, waitingTime);
             
-            hintPanel.StartInfo();
+            hintPanel.StartInfo(needMask);
         }
         
     }

@@ -16,7 +16,7 @@ public enum NumType
     Multiple,
 }
 
-public class InventoryItem : InteractableItem
+public class InventoryItemInWorld : InteractableItem
 { 
     public int ID;
     public string Name;

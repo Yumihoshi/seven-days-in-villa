@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopHintPanel : PopUiBasePanel
 {
@@ -11,6 +12,9 @@ public class PopHintPanel : PopUiBasePanel
   [SerializeField] string text;
   [SerializeField] private float MyWaitTime;
 
+
+  [SerializeField] private Image Mask;
+  
   private void Awake()
   {
     myText = GetComponentInChildren<TextMeshProUGUI>();
@@ -35,6 +39,7 @@ public class PopHintPanel : PopUiBasePanel
     wait =new WaitForSeconds(waitingTime);
     yield return wait;
     text=string.Empty;
+    Mask.gameObject.SetActive(false);
     PopUiPanelController.Instance.CloseTargetPanel(this.gameObject);
 
   }
@@ -46,8 +51,10 @@ public class PopHintPanel : PopUiBasePanel
   }
   
   
-  public void StartInfo()
+  public void StartInfo(bool needMask=false)
   {
+    
+        Mask.gameObject.SetActive(needMask);
         CoroutineFactory.Instance.RunCoroutine(TypingMachine(text, MyWaitTime));
   }
 

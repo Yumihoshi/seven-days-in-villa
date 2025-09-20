@@ -27,21 +27,21 @@ public class PlayerInventory : cjr.Single.SingleMon<PlayerInventory>,RequireSavi
         }
     }
 
-    public bool checkInventory(InventoryItem item)
+    public bool checkInventory(InventoryItemInWorld itemInWorld)
     {
         foreach (var it in playerInventory)
         {
-            if(it.ItemID == item.ID)
+            if(it.ItemID == itemInWorld.ID)
                 return true;
         }
         return false;
     }
 
-    public void AddItem(InventoryItem item)
+    public void AddItem(InventoryItemInWorld itemInWorld)
     {
-        if (!checkInventory(item))
+        if (!checkInventory(itemInWorld))
         {
-            SaveSceneStruct saveScene = new SaveSceneStruct(item.ID,item.Name,item.transform.position,item.NumType);
+            SaveSceneStruct saveScene = new SaveSceneStruct(itemInWorld.ID,itemInWorld.Name,itemInWorld.transform.position,itemInWorld.NumType);
             playerInventory.Add(saveScene);
         }
         else
@@ -49,7 +49,7 @@ public class PlayerInventory : cjr.Single.SingleMon<PlayerInventory>,RequireSavi
             
         }
         
-        Destroy(item.gameObject);
+        Destroy(itemInWorld.gameObject);
        
     }
     

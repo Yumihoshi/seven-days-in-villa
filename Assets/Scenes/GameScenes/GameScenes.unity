@@ -28658,44 +28658,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: dialogueUi
       objectReference: {fileID: 0}
-    - target: {fileID: 2526841490984954561, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_margin.w
-      value: 40.721695
-      objectReference: {fileID: 0}
-    - target: {fileID: 2526841490984954561, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_margin.y
-      value: 54.29561
-      objectReference: {fileID: 0}
-    - target: {fileID: 2526841490984954561, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_margin.z
-      value: -38.253784
-      objectReference: {fileID: 0}
-    - target: {fileID: 2867063459026396589, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9966f925c742f47409fad34e59253198, type: 3}
-    - target: {fileID: 4102961264527310412, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102961264527310412, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102961264527310412, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102961264527310412, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 153
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543111718255294520, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172373431364602919, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
-      propertyPath: m_Color.a
+    - target: {fileID: 2131138578648981230, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -29239,10 +29203,6 @@ PrefabInstance:
     - target: {fileID: 8776440921626812500, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
       propertyPath: m_Name
       value: ShopPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776440921626812500, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

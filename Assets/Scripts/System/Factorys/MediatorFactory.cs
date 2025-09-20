@@ -14,6 +14,7 @@ public class MediatorFactory
     {
        RegisterMediator(new DialogueMediator());
        RegisterMediator(new ToolDialogueMediator());
+       RegisterMediator(new ShopSystemMediator());
     }
 
 
