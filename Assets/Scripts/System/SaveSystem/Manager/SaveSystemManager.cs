@@ -16,7 +16,7 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
     
     public string SaveSlotName=>gameData_SO.CurrentSaveSlotName;
 
-    [SerializeField] Dictionary<string,Dictionary<string,List<SaveSceneStruct>>>SaveDatas = new Dictionary<string, Dictionary<string,List<SaveSceneStruct>>>();
+    [SerializeField] Dictionary<string,Dictionary<string,List<SaveItemStruct>>>SaveDatas = new Dictionary<string, Dictionary<string,List<SaveItemStruct>>>();
 
     public const string InventoryItemDic = "InventoryItemDic";
 
@@ -24,14 +24,14 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
 
     
         [SerializeField] InventoryItemInWorld[] items;
-        [SerializeField] List<SaveSceneStruct> saved;
+        [SerializeField] List<SaveItemStruct> saved;
 
     #endregion
 
 
     [SerializeField] private CanvasGroup SavingMask;
     
-    public  IReadOnlyList<SaveSceneStruct> GetCurrentLists()
+    public  IReadOnlyList<SaveItemStruct> GetCurrentLists()
     {
         return   SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()];
     }
@@ -47,8 +47,8 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
         for (int i = 0; i < items.Length; i++)
         {
             var item = items[i];
-            SaveSceneStruct saveSceneStruct = new SaveSceneStruct(item.ID,item.Name,item.transform.position,item.NumType);
-            AddItem(saveSceneStruct);
+            SaveItemStruct saveItemStruct = new SaveItemStruct(item.ID,item.Name,item.transform.position,item.NumType);
+            AddItem(saveItemStruct);
         }
         ES3.Save(InventoryItemDic,SaveDatas);
     }
@@ -84,7 +84,7 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
                     var Games=Instantiate(gameData_SO.InventoryItems[offset],saved[i].ItemPosition,Quaternion.identity);
                     Games.Name=saved[i].ItemName;
                     //todo
-                    //?????Щ????????
+                    //
                     Games.transform.position = saved[i].ItemPosition;
                 }
             }
@@ -138,16 +138,16 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
         Debug.LogWarning("Can not remove item");
     }
 
-    public void AddItem(SaveSceneStruct item)
+    public void AddItem(SaveItemStruct item)
     {
         if (!SaveDatas.ContainsKey(SaveSlotName))
         {
-            SaveDatas[SaveSlotName] = new Dictionary<string, List<SaveSceneStruct>>();
+            SaveDatas[SaveSlotName] = new Dictionary<string, List<SaveItemStruct>>();
         }
 
         if (!SaveDatas[SaveSlotName].ContainsKey(cjr.Scence.SceneManager.Instance.GetCurrentScene()))
         {
-            SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()] = new List<SaveSceneStruct>();
+            SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()] = new List<SaveItemStruct>();
         }
         var saveData = SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()];
         if (saveData.Contains(item))
@@ -198,18 +198,18 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
         if (ES3.KeyExists(InventoryItemDic))
         {
             // var mid=new Dictionary<string, Dictionary<string,List<SaveSceneStruct>>>();
-           SaveDatas = (Dictionary<string,Dictionary<string,List<SaveSceneStruct>>>)ES3.Load(InventoryItemDic);
+           SaveDatas = (Dictionary<string,Dictionary<string,List<SaveItemStruct>>>)ES3.Load(InventoryItemDic);
             // SaveDatas =new Dictionary<string, Dictionary<string,List<SaveSceneStruct>>>(mid);
         }
         
         if (!SaveDatas.ContainsKey(SaveSlotName))
         {
-            SaveDatas[SaveSlotName] = new Dictionary<string, List<SaveSceneStruct>>();
+            SaveDatas[SaveSlotName] = new Dictionary<string, List<SaveItemStruct>>();
         }
 
         if (!SaveDatas[SaveSlotName].ContainsKey(cjr.Scence.SceneManager.Instance.GetCurrentScene()))
         {
-            SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()] = new List<SaveSceneStruct>();
+            SaveDatas[SaveSlotName][cjr.Scence.SceneManager.Instance.GetCurrentScene()] = new List<SaveItemStruct>();
         }
     }
 
@@ -219,6 +219,9 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
 
     public void SaveObject(string key, object entity)
     {
+        
+        if(IsDebug)
+            return;
         // 任意 JSON 库都行，这里用 Newtonsoft.Json 举例
         string json = JsonConvert.SerializeObject(entity);
         var deepCopy = JsonConvert.DeserializeObject(json);
@@ -228,6 +231,10 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
 
     public T LoadObject<T>(string key)
     {
+        if (IsDebug)
+            return default(T);
+        
+        
         if (!ES3.KeyExists(SaveSlotName + key))
             return default(T);
 

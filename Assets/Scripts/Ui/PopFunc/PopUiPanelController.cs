@@ -24,7 +24,7 @@ public class PopUiPanelController : cjr.Single.SingleMon<PopUiPanelController>
   }
 
 
-  public GameObject CreatePopUiPanel(GameObject prefab)
+  public GameObject CreatePopUiPanel(GameObject prefab,bool needFadeOut = true)
   {
     if (prefab == null)
     {
@@ -76,12 +76,15 @@ public class PopUiPanelController : cjr.Single.SingleMon<PopUiPanelController>
     
     // 确保UI元素激活
     prefab.SetActive(true);
+
+    if (needFadeOut)
+    {
+      currentPopUiPanel?.AfterShowPopPanel();
+      cgp.alpha = 0;
+      cgp.DOFade(1f, fadeOutTime);
+      
+    }
     
-    
-    
-    currentPopUiPanel?.AfterShowPopPanel();
-    cgp.alpha = 0;
-    cgp.DOFade(1f, fadeOutTime);
     
     // 强制刷新Canvas
     Canvas.ForceUpdateCanvases();
@@ -92,11 +95,11 @@ public class PopUiPanelController : cjr.Single.SingleMon<PopUiPanelController>
   }
   
   
-  public GameObject CreatePopUiPanel(string prefabPath)
+  public GameObject CreatePopUiPanel(string prefabPath,bool needFadeOut = true)
   {
     Debug.LogWarning(prefabPath);
     GameObject prefab = ResourceLoader.Instance.LoadObject(prefabPath,PopHolder);
-    return CreatePopUiPanel(prefab);
+    return CreatePopUiPanel(prefab,needFadeOut);
   }
 
   public void CloseCurrentPopUiPanel()

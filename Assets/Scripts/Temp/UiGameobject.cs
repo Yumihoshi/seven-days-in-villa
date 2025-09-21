@@ -88,7 +88,7 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
 
     public void SetPopHintPopPanel(string info, float waitingTime,bool needMask=false)
     {
-        var Gobject = PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.PopHintPanel);
+        var Gobject = PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.PopHintPanel,false);
         
         PopHintPanel hintPanel = Gobject.GetComponent<PopHintPanel>();
 

@@ -6,7 +6,7 @@ using UnityEngine;
  * 是一个中间体
  */
 [Serializable]
-public struct SaveSceneStruct 
+public struct SaveItemStruct 
 {
     public int ItemID;
     public string ItemName;
@@ -14,7 +14,7 @@ public struct SaveSceneStruct
     public NumType ItemType;
     public int ItemAmount;
 
-    public SaveSceneStruct(int itemID, string itemName, Vector3 itemPosition, NumType itemType)
+    public SaveItemStruct(int itemID, string itemName, Vector3 itemPosition, NumType itemType=NumType.Single)
     {
         ItemAmount = 1;
         ItemID = itemID;
@@ -22,12 +22,12 @@ public struct SaveSceneStruct
         ItemPosition = itemPosition;
         ItemType = itemType;
     }
-    public static bool operator ==(SaveSceneStruct a, SaveSceneStruct b) => a.Equals(b);
-    public static bool operator !=(SaveSceneStruct a, SaveSceneStruct b) => !(a == b);
+    public static bool operator ==(SaveItemStruct a, SaveItemStruct b) => a.Equals(b);
+    public static bool operator !=(SaveItemStruct a, SaveItemStruct b) => !(a == b);
 
-    public override bool Equals(object obj) => obj is SaveSceneStruct other && Equals(other);
+    public override bool Equals(object obj) => obj is SaveItemStruct other && Equals(other);
 
-    public bool Equals(SaveSceneStruct other)
+    public bool Equals(SaveItemStruct other)
     {
         return ItemID == other.ItemID;
     }

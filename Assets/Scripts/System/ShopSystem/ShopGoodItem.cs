@@ -15,6 +15,7 @@ public class ShopGoodItem: MonoBehaviour
 [Serializable]
 public struct ShopGoodForSaveItem
 {
+    public int ItemID;
     public string GoodName;
     public string GoodDescription;
     public string GoodPrice;

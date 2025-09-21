@@ -28,6 +28,5 @@ public class InventoryItemInWorld : InteractableItem
     {
         base.Interact();
         PlayerInventory.Instance.AddItem(this);
-        gameObject.SetActive(false);
     }
 }

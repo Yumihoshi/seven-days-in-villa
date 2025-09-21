@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerInventory : cjr.Single.SingleMon<PlayerInventory>,RequireSavingItem
 {
-    [SerializeField] List<SaveSceneStruct> playerInventory;
+    [SerializeField] List<SaveItemStruct> playerInventory;
     public const string playerInventoryName = "PlayerInventory";
     public void Save()
     {
@@ -18,11 +18,11 @@ public class PlayerInventory : cjr.Single.SingleMon<PlayerInventory>,RequireSavi
     {
         if (ES3.KeyExists(SaveSystemManager.Instance.SaveSlotName+playerInventoryName))
         {
-            playerInventory = ES3.Load<List<SaveSceneStruct>>(SaveSystemManager.Instance.SaveSlotName+playerInventoryName);
+            playerInventory = ES3.Load<List<SaveItemStruct>>(SaveSystemManager.Instance.SaveSlotName+playerInventoryName);
         }
         else
         {
-            playerInventory = new List<SaveSceneStruct>();
+            playerInventory = new List<SaveItemStruct>();
             playerInventory.Clear();
         }
     }
@@ -41,16 +41,33 @@ public class PlayerInventory : cjr.Single.SingleMon<PlayerInventory>,RequireSavi
     {
         if (!checkInventory(itemInWorld))
         {
-            SaveSceneStruct saveScene = new SaveSceneStruct(itemInWorld.ID,itemInWorld.Name,itemInWorld.transform.position,itemInWorld.NumType);
-            playerInventory.Add(saveScene);
+            SaveItemStruct saveItem = new SaveItemStruct(itemInWorld.ID,itemInWorld.Name,
+                itemInWorld.transform.position,itemInWorld.NumType);
+            playerInventory.Add(saveItem);
         }
-        else
-        {
-            
-        }
+       
         
         Destroy(itemInWorld.gameObject);
        
+    }
+
+    public bool checkInventory(ShopGoodForSaveItem item)
+    {
+        foreach (var single in playerInventory)
+        {
+            if(single.ItemID == item.ItemID)
+                return true;
+        }
+        return false;
+    }
+    
+    public void AddItem(ShopGoodForSaveItem item)
+    {
+        if (!checkInventory(item))
+        {
+            SaveItemStruct saveItem= new SaveItemStruct(item.ItemID, item.GoodName, Vector3.zero);
+            playerInventory.Add(saveItem);
+        }
     }
     
 }
