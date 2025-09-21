@@ -9,6 +9,11 @@ public class GameStateSlot : ScriptableObject
       
    }
 
+
+   public virtual void Step()
+   {
+      
+   }
    public virtual void fixedUpdate()
    {
       

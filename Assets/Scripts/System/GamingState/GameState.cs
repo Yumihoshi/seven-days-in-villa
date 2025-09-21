@@ -14,7 +14,13 @@ public class GameState:cjr.Single.SingleMon<GameState>
 
    [SerializeField] private GameStateSlot slot0Test;
    [SerializeField] private GameStateSlot slot1Test;
-   
+
+
+
+   public GameStateSlot CurrentStateSlot
+   {
+      get { return currentStateSlot; }
+   }
    
    public void SwitchStateSlot(GameStateSlot newStateSlot)
    {
