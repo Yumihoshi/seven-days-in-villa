@@ -4551,6 +4551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434443349}
+  - component: {fileID: 434443350}
   m_Layer: 0
   m_Name: paintingRoom
   m_TagString: Untagged
@@ -4577,6 +4578,19 @@ Transform:
   - {fileID: 110717703}
   m_Father: {fileID: 1133365677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &434443350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434443348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35032c396066fe247bc361e0c18fed45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 6
 --- !u!1 &436178890
 GameObject:
   m_ObjectHideFlags: 0
@@ -10910,6 +10924,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 978393884}
+  - component: {fileID: 978393885}
   m_Layer: 0
   m_Name: lobby
   m_TagString: Untagged
@@ -10938,6 +10953,19 @@ Transform:
   - {fileID: 204025634}
   m_Father: {fileID: 436178891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &978393885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978393883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476b8fae2fc3d0c4cb935eefa7411085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 0
 --- !u!1 &978451642
 GameObject:
   m_ObjectHideFlags: 0
@@ -11675,6 +11703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1015072542}
+  - component: {fileID: 1015072543}
   m_Layer: 0
   m_Name: corridor
   m_TagString: Untagged
@@ -11702,6 +11731,19 @@ Transform:
   - {fileID: 484463306}
   m_Father: {fileID: 436178891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1015072543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015072541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f934ed473af99e64f855399557c65c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 2
 --- !u!224 &1017890731 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5410899506737055526, guid: e2ede1208ad0b39489954527da933206, type: 3}
@@ -15288,6 +15330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1426884036}
+  - component: {fileID: 1426884037}
   m_Layer: 0
   m_Name: Entrance_hall
   m_TagString: Untagged
@@ -15314,6 +15357,19 @@ Transform:
   - {fileID: 701728590}
   m_Father: {fileID: 436178891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1426884037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426884035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cddade25bc39ab41ba7ccf5af6247b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 3
 --- !u!1 &1434209641
 GameObject:
   m_ObjectHideFlags: 0
@@ -16565,8 +16621,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1503860423}
+  - component: {fileID: 1503860424}
   m_Layer: 0
-  m_Name: Kitch
+  m_Name: Kitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16591,6 +16648,19 @@ Transform:
   - {fileID: 653035195}
   m_Father: {fileID: 436178891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1503860424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503860422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32803395dcca3804cb46196f2c253727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 5
 --- !u!1 &1509849089
 GameObject:
   m_ObjectHideFlags: 0
@@ -17241,6 +17311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1544915778}
+  - component: {fileID: 1544915779}
   m_Layer: 0
   m_Name: Storage_room
   m_TagString: Untagged
@@ -17267,6 +17338,19 @@ Transform:
   - {fileID: 803926409}
   m_Father: {fileID: 436178891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1544915779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544915777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e323fea31b7f2e499af1f7f12882c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 1
 --- !u!1 &1550631705
 GameObject:
   m_ObjectHideFlags: 0
@@ -26940,6 +27024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976338184}
+  - component: {fileID: 1976338185}
   m_Layer: 0
   m_Name: PlayingRoom
   m_TagString: Untagged
@@ -26966,6 +27051,19 @@ Transform:
   - {fileID: 1470370924}
   m_Father: {fileID: 436178891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1976338185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976338183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ebf72eb53e9654a9bc9c871f553152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 4
 --- !u!1 &1976338379
 GameObject:
   m_ObjectHideFlags: 0
@@ -28161,6 +28259,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rooms:
   - {fileID: 880204770}
+  - {fileID: 978393885}
+  - {fileID: 1544915779}
+  - {fileID: 1015072543}
+  - {fileID: 1426884037}
+  - {fileID: 1976338185}
+  - {fileID: 1503860424}
+  - {fileID: 434443350}
 --- !u!1 &2095445343
 GameObject:
   m_ObjectHideFlags: 0
