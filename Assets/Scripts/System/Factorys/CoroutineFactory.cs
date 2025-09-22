@@ -11,7 +11,7 @@ using UnityEngine;
 public class CoroutineFactory : cjr.Single.SingleMon<CoroutineFactory>
 {
     public enum LogLevel { None, Info, Warning, Error }
-
+    
     [Serializable]
     public class CoroutineInfo
     {
@@ -55,7 +55,7 @@ public class CoroutineFactory : cjr.Single.SingleMon<CoroutineFactory>
     protected override void Awake()
     {
         base.Awake();
-      
+        DontDestroyOnLoad(this);
     }
 
     /// <summary>

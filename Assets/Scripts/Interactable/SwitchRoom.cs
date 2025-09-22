@@ -34,7 +34,7 @@ public class SwitchRoom : InteractableItem
     {
         base.Interact();
         UiGameobject.Instance.SetInteractbleInfoClose();
-        StartCoroutine(interactRoutine());
+        CoroutineFactory.Instance.RunCoroutine(interactRoutine());
     }
     
     IEnumerator interactRoutine()

@@ -9,6 +9,14 @@ using Yumihoshi.Task;
 [Serializable]
 public enum RoomType
 {
+    Lobby,
+    Storage,
+    Corridor,
+    Entrance_hall,
+    PlayingRoom,
+    Kitchen,
+    PaintingRoom,
+    StartRoom,
     
 }
 

@@ -49,7 +49,7 @@ public class GameState:cjr.Single.SingleMon<GameState>
    [Button("test0 set")]
    public void test0()
    {
-      currentStateSlot=slot0Test;
+     SwitchStateSlot(slot0Test);
    }
 
    [Button("test1 set")]

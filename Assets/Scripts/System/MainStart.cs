@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -12,9 +13,14 @@ public class MainStart : MonoBehaviour
     public void OpenNewGame()
     {
         gameData_SO.CurrentSaveSlotName = gameData_SO.SaveSlotNames[0];
-        StartCoroutine(ChangeScene());
+        CoroutineFactory.Instance.RunCoroutine(ChangeScene());
     }
 
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     IEnumerator ChangeScene()
     {
@@ -38,6 +44,16 @@ public class MainStart : MonoBehaviour
         }
 
         Mask.alpha = 0;
+        
+        yield return null;
+        yield return null;
+        
+        //todo
+        //先硬编码为加载0的游戏状态
+        GameState.Instance.test0();
+        
         Debug.Log("场景加载完毕！");
+        Destroy(gameObject);
     }
+    
 }

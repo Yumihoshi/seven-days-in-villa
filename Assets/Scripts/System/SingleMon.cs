@@ -31,17 +31,17 @@ namespace cjr.Single
 
       protected virtual void Awake()
       {
-         // ���ʵ���Ѵ����Ҳ��ǵ�ǰ�������ٶ����ʵ��
+       
          if (instance != null && instance != this)
          {
             Destroy(gameObject);
             return;
          }
 
-         // ��ʼ������ʵ��
+       
          instance = this as T;
 
-         // ��ѡ���糡��������������
+       
         
       }
    }
