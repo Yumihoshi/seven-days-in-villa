@@ -9,6 +9,11 @@ public class GameStateSlot : ScriptableObject
       
    }
 
+   public virtual int GetState()
+   {
+       return 0;
+   }
+
 
    public virtual void Step()
    {
@@ -26,13 +31,13 @@ public class GameStateSlot : ScriptableObject
 
    public virtual void onEnter()
    {
-      
+       SaveSystemManager.Instance.SaveGameState();
    }
 
 
    public virtual void onExit()
    {
-      
+     
    }
    
 }

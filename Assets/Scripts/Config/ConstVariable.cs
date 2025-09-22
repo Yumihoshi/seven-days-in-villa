@@ -14,6 +14,8 @@ public class ConstVariable
    
    public const string PopHintPanel = "Prefabs/UI/Pop/Hint/PopHintPanel";
    
+   public const string GameStateSo="GameState/slots/slot";
+   
    #endregion
 
    #region PopLayer

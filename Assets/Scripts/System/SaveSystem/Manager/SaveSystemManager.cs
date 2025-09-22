@@ -29,6 +29,22 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
     #endregion
 
 
+
+    public void SaveGameState()
+    {
+        if(IsDebug)
+            return;
+        ES3.Save(SaveSlotName+"nowGameState",GameState.Instance.CurrentStateSlot.GetState());
+    }
+
+    public int LoadGameState()
+    {
+        if(IsDebug|| !ES3.KeyExists(SaveSlotName+"nowGameState"))
+            return 0;
+        return (ES3.Load<int>(SaveSlotName+"nowGameState"));
+    }
+    
+
     [SerializeField] private CanvasGroup SavingMask;
     
     public  IReadOnlyList<SaveItemStruct> GetCurrentLists()

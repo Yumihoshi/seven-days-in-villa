@@ -80,7 +80,15 @@ public class ResourceLoader : cjr.Single.Singleton<ResourceLoader>
         }
     }
 
- 
+    /// <summary>
+    /// 传入 Resources 下相对路径，不带扩展名，如 "Config/MyData"
+    /// </summary>
+    public T LoadSO<T>(string resourcesPath) where T : ScriptableObject
+    {
+        T so = Resources.Load<T>(resourcesPath);
+        if (so == null) Debug.LogError($"Resources.Load 找不到 SO: {resourcesPath}");
+        return so;
+    }
 
 
     public Sprite LoadSprite(string spritePath)
@@ -96,7 +104,7 @@ public class ResourceLoader : cjr.Single.Singleton<ResourceLoader>
     public GameObject LoadObject(string ObjectPath)
     {
         
-        return GameObject.Instantiate(Resources.Load<GameObject>(ObjectPath));
+        return GameObjectFactory.Instance.Create(Resources.Load<GameObject>(ObjectPath));
     }
     
     public GameObject LoadObject(string ObjectPath,Transform parent)

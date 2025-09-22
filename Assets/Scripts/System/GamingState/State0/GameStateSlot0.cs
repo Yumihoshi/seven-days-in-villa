@@ -8,6 +8,9 @@ public class GameStateSlot0 : GameStateSlot
 
     //todo
 
+    
+    public new const int state = 0;
+    
     [SerializeField] private int maxX;
     [SerializeField] private int nowStep;
 

@@ -27,8 +27,23 @@ public class GameState:cjr.Single.SingleMon<GameState>
       currentStateSlot?.onExit();
       currentStateSlot = newStateSlot;
       currentStateSlot?.onEnter();
-   }   
+   }
 
+   protected override void Awake()
+   {
+      base.Awake();
+      LoadState();
+   }
+
+   public void LoadState()
+   {
+    
+      int state=SaveSystemManager.Instance.LoadGameState();
+      
+      //todo
+      SwitchStateSlot(ResourceLoader.Instance.LoadSO<GameStateSlot>(ConstVariable.GameStateSo+state.ToString()));
+   }
+   
    private void Update()
    {
       currentStateSlot?.update();

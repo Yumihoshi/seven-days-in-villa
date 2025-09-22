@@ -29,6 +29,11 @@ public class GameObjectFactory : cjr.Single.SingleMon<GameObjectFactory>
         DontDestroyOnLoad(gameObject);
     }
 
+    public GameObject Create(GameObject Prefab)
+    {
+       return Create(Prefab, Vector3.zero);
+    }
+    
     public GameObject Create(GameObject prefab, Vector3 position)
     {
         return Create(prefab, position, Quaternion.identity);
