@@ -29,10 +29,16 @@ public class GameObjectFactory : cjr.Single.SingleMon<GameObjectFactory>
         DontDestroyOnLoad(gameObject);
     }
 
+    public GameObject Create(GameObject prefab, Vector3 position)
+    {
+        return Create(prefab, position, Quaternion.identity);
+    }
+    
     /// <summary>
     /// 创建游戏物体
     /// </summary>
-    public GameObject Create(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null)
+    public GameObject Create(GameObject prefab, Vector3 position, Quaternion rotation
+        , Transform parent = null)
     {
         GameObject obj = null;
         if (usePool && prefab != null)

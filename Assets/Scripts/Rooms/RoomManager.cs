@@ -6,6 +6,10 @@ public class RoomManager : cjr.Single.SingleMon<RoomManager>
 {
   [SerializeField] private List<BaseRoom> rooms = new List<BaseRoom>();
 
+  public int GetRoomsCount()
+  {
+    return rooms.Count;
+  }
 
   public StartRoom GetStartRoom()
   {

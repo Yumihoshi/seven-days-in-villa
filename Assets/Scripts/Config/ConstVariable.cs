@@ -10,6 +10,8 @@ public class ConstVariable
    
    public const string ShopPanel = "Prefabs/UI/Pop/Shop/ShopPanel";   
    
+   public const string WalkedRoomCheck="Prefabs/GameState/Slot0/EnterDec";
+   
    public const string PopHintPanel = "Prefabs/UI/Pop/Hint/PopHintPanel";
    
    #endregion
@@ -26,4 +28,5 @@ public class ConstVariable
 public class FileConstPath
 {
    public const string ToolDialoguePath = "Assets/Resources/SvnResource/文案/物品交互/序章 物品交互.xlsx";
+   
 }
