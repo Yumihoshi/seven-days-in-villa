@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class BaseNpcEntity : MonoBehaviour
+public class BaseNpcEntity : InteractableItem
 {
    public Animator animator;
    public int grade;
@@ -56,9 +56,11 @@ public class BaseNpcEntity : MonoBehaviour
 
    }
 
+   
+   
    private void OnEnable()
    {
-      GenerateWaypoints();
+      CoroutineFactory.Instance.RunCoroutine(initPoint());
    }
 
    public void InstianceWays(Vector3 target)
@@ -90,7 +92,17 @@ public class BaseNpcEntity : MonoBehaviour
 
 
    }
-   
+
+
+   IEnumerator initPoint()
+   {
+      yield return null;
+      yield return null;
+      yield return null;
+      yield return null;
+      yield return null;
+      GenerateWaypoints();
+   }
    
    protected Vector3 GetRandomPoint()
    {
@@ -100,11 +112,17 @@ public class BaseNpcEntity : MonoBehaviour
       return position;
    }
 
+   public override void Interact()
+   {
+      Debug.LogWarning(" i am npc");
+   }
+
    private void OnTriggerStay2D(Collider2D other)
    {
       
       if (other.gameObject.CompareTag("Player"))
       {
+         PlayerAction.Instance.SetInteract(this);
          CoroutineFactory.Instance.HaltCoroutine(MovingCoroId);
       }
    }
@@ -113,6 +131,7 @@ public class BaseNpcEntity : MonoBehaviour
    {
       if (other.gameObject.CompareTag("Player"))
       {
+         PlayerAction.Instance.SetInteract(null);
          Move();
       }
    }

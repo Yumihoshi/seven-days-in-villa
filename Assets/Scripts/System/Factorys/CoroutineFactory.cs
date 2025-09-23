@@ -281,7 +281,6 @@ public class CoroutineFactory : cjr.Single.SingleMon<CoroutineFactory>
         {
             switch (level)
             {
-                case LogLevel.Info: Debug.Log(msg); break;
                 case LogLevel.Warning: Debug.LogWarning(msg); break;
                 case LogLevel.Error: Debug.LogError(msg); break;
             }
