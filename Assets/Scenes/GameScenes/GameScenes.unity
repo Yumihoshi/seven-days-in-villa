@@ -4206,6 +4206,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &393451750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393451751}
+  - component: {fileID: 393451752}
+  m_Layer: 0
+  m_Name: Steward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &393451751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393451750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.554135, y: -2.3395517, z: 0.04949917}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &393451752
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393451750}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &415808749
 GameObject:
   m_ObjectHideFlags: 0
@@ -4591,6 +4650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: 6
+  spriteRenderer: {fileID: 0}
 --- !u!1 &436178890
 GameObject:
   m_ObjectHideFlags: 0
@@ -9645,6 +9705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: 7
+  spriteRenderer: {fileID: 0}
   actionPoint: {fileID: 1824706229}
 --- !u!1 &893991004
 GameObject:
@@ -10966,6 +11027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: 0
+  spriteRenderer: {fileID: 0}
 --- !u!1 &978451642
 GameObject:
   m_ObjectHideFlags: 0
@@ -11744,6 +11806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: 2
+  spriteRenderer: {fileID: 0}
 --- !u!224 &1017890731 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5410899506737055526, guid: e2ede1208ad0b39489954527da933206, type: 3}
@@ -12370,7 +12433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1133365677
 Transform:
   m_ObjectHideFlags: 0
@@ -15370,6 +15433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: 3
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1434209641
 GameObject:
   m_ObjectHideFlags: 0
@@ -16577,6 +16641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: 5
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1509849089
 GameObject:
   m_ObjectHideFlags: 0
@@ -17250,7 +17315,7 @@ Transform:
   m_Children:
   - {fileID: 607307171}
   - {fileID: 344098863}
-  - {fileID: 1617201279}
+  - {fileID: 1681110033}
   - {fileID: 803926409}
   m_Father: {fileID: 436178891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17267,6 +17332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: 1
+  spriteRenderer: {fileID: 607307172}
 --- !u!1 &1550631705
 GameObject:
   m_ObjectHideFlags: 0
@@ -17979,38 +18045,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.24247432}
   m_EdgeRadius: 0
---- !u!1 &1617201278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1617201279}
-  m_Layer: 0
-  m_Name: confiners
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1617201279
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617201278}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1681110033}
-  m_Father: {fileID: 1544915778}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1617692895
 GameObject:
   m_ObjectHideFlags: 0
@@ -18515,7 +18549,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1617201279}
+  m_Father: {fileID: 1544915778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1681110034
 PolygonCollider2D:
@@ -26959,6 +26993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: 4
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1976338379
 GameObject:
   m_ObjectHideFlags: 0
@@ -28161,6 +28196,7 @@ MonoBehaviour:
   - {fileID: 1976338185}
   - {fileID: 1503860424}
   - {fileID: 434443350}
+  roomPositions: []
 --- !u!1 &2095445343
 GameObject:
   m_ObjectHideFlags: 0
@@ -30191,3 +30227,4 @@ SceneRoots:
   - {fileID: 3331655313517091186}
   - {fileID: 228034343}
   - {fileID: 7948309153535994908}
+  - {fileID: 393451751}

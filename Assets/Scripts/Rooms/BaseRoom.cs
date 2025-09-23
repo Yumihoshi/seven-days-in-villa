@@ -23,6 +23,11 @@ public enum RoomType
 public class BaseRoom : MonoBehaviour
 {
     public RoomType roomName;
-    
-    
+    public SpriteRenderer spriteRenderer;
+
+
+    private void OnEnable()
+    {
+        spriteRenderer=transform.GetChild(0).GetComponent<SpriteRenderer>();
+    }
 }
