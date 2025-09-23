@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using Pathfinding;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -26,9 +25,11 @@ public class BaseNpcEntity : MonoBehaviour
 
    int currentIndex = 0;
 
-   [SerializeField] private Transform LeftUp;
-   [SerializeField] private Transform RightDown;
-
+  
+   [SerializeField] BaseRoom closestRoom = null;
+   
+   
+   
    [SerializeField] private string MovingCoroId;
 
    [SerializeField] private float waitTimeMin = 1.4f;
@@ -66,13 +67,37 @@ public class BaseNpcEntity : MonoBehaviour
    }
 
 
-   protected Vector3 GetRandomPoint(Vector3 leftUp,Vector3 rightDown)
+   
+   private void Update()
+   {
+      // Vector3? last = null;
+      // if (closestRoom != null)
+      // {
+      //    foreach (var pt in closestRoom.MyPolyEdge)
+      //    {
+      //       if (pt == Vector3.positiveInfinity)
+      //       {
+      //          last = null; // ÐÂÂÖÀª
+      //          continue;
+      //       }
+      //
+      //       if (last.HasValue)
+      //          Debug.DrawLine(last.Value, pt, Color.cyan);
+      //       last = pt;
+      //    }
+      //
+      // }
+
+
+   }
+   
+   
+   protected Vector3 GetRandomPoint()
    {
       
-      float x=Random.Range(leftUp.x, rightDown.x);
-      float y=Random.Range(rightDown.y, leftUp.y);
-      float z = 0;
-      return new Vector3(x, y, z);
+      closestRoom=RoomManager.Instance.GetClosestRoom(transform.position);
+      var position = closestRoom.GetRomdomPosition();
+      return position;
    }
 
    private void OnTriggerStay2D(Collider2D other)
@@ -118,7 +143,7 @@ public class BaseNpcEntity : MonoBehaviour
          if (currentIndex >= waypoints.Count)
          {
             currentIndex = 0;
-            InstianceWays(GetRandomPoint(LeftUp.position, RightDown.position));
+            InstianceWays(GetRandomPoint());
             float waitTime = Random.Range(waitTimeMin, waitTimeMax);
             animator.Play($"idle_{grade}");
             
@@ -152,10 +177,17 @@ public class BaseNpcEntity : MonoBehaviour
   
    public void GenerateWaypoints()
    {
-      InstianceWays(GetRandomPoint(LeftUp.position, RightDown.position));
+      InstianceWays(GetRandomPoint());
    
    }
-   [Button("Generate Move")]
+
+   [Button("test generate waypoints")]
+   public void TestWaypoints()
+   {
+      GenerateWaypoints();
+   }
+   
+   [Button("Move")]
    public void StartMoving()
    {
       Move();

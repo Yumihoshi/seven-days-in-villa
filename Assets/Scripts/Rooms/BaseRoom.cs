@@ -25,9 +25,21 @@ public class BaseRoom : MonoBehaviour
     public RoomType roomName;
     public SpriteRenderer spriteRenderer;
 
+    public List<Vector3> MyPolyEdge;
+    
+    
 
     private void OnEnable()
     {
         spriteRenderer=transform.GetChild(0).GetComponent<SpriteRenderer>();
+        MyPolyEdge=SpriteBoundaryExtractor.GetSpriteAlphaBoundaryWorldPoints(spriteRenderer,3);
+        
     }
+
+
+    public Vector3 GetRomdomPosition()
+    {
+        return PolygonRandomSampler.GetRandomPointInPolygon(MyPolyEdge);
+    }
+    
 }

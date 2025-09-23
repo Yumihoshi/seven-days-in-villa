@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -46,35 +44,38 @@ public class RoomManager : cjr.Single.SingleMon<RoomManager>
       return null;
     return rooms[roomID];
   }
-
+  
+  
+  
+  
   //todo
-    [SerializeField] List<Vector3> roomPositions = new List<Vector3>();
+  [SerializeField] List<Vector3> roomPositions = new List<Vector3>();
 
 
-    private void Update()
-    {
-        Vector3? last = null;
-        foreach (var pt in roomPositions)
-        {
-            if (pt == Vector3.positiveInfinity)
-            {
-                last = null; // 新轮廓
-                continue;
-            }
-            if (last.HasValue)
-                Debug.DrawLine(last.Value, pt, Color.cyan);
-            last = pt;
-        }
-    }
+  private void Update()
+  {
+      Vector3? last = null;
+      foreach (var pt in roomPositions)
+      {
+          if (pt == Vector3.positiveInfinity)
+          {
+              last = null; // 新轮廓
+              continue;
+          }
+          if (last.HasValue)
+              Debug.DrawLine(last.Value, pt, Color.cyan);
+          last = pt;
+      }
+  }
 
-    [SerializeField] private int ee = 2;
-    [Button("test")]
-    public void test()
-    {
-        roomPositions = SpriteBoundaryExtractor.GetSpriteAlphaBoundaryWorldPoints(
-            rooms[ee].spriteRenderer,3);
+  [SerializeField] private int ee = 2;
+  [Button("test")]
+  public void test()
+  {
+      roomPositions = SpriteBoundaryExtractor.GetSpriteAlphaBoundaryWorldPoints(
+          rooms[ee].spriteRenderer,3);
         
-    }
+  }
 
   
 }
@@ -84,9 +85,9 @@ public class RoomManager : cjr.Single.SingleMon<RoomManager>
 
 public static class SpriteBoundaryExtractor
 {
-    // 增加一个参数 samplingStep 用于控制采样疏密
-        /// <summary>
+    /// <summary>
     /// 精确提取Sprite所有轮廓（防止漏面），返回轮廓点集合（以Vector3.positiveInfinity分隔），可指定采样疏密
+    /// 轮廓点世界坐标与Sprite完全重合，无整体偏移
     /// </summary>
     public static List<Vector3> GetSpriteAlphaBoundaryWorldPoints(SpriteRenderer sprender, int samplingStep = 1)
     {
@@ -102,7 +103,7 @@ public static class SpriteBoundaryExtractor
         // 标记已访问的边界点
         bool[,] visited = new bool[w, h];
 
-        // Moore邻域
+        // Moore邻域偏移
         int[] dx = { -1, -1, 0, 1, 1, 1, 0, -1 };
         int[] dy = { 0, -1, -1, -1, 0, 1, 1, 1 };
 
@@ -164,7 +165,7 @@ public static class SpriteBoundaryExtractor
                     if (!found) break;
                 } while (curr != start);
 
-                // 按采样步长简化点集
+                // 采样并转世界坐标（关键：不加spriteRect.x/y）
                 for (int i = 0; i < contourPix.Count; i += samplingStep)
                 {
                     Vector2Int pix = contourPix[i];
@@ -175,7 +176,7 @@ public static class SpriteBoundaryExtractor
                     Vector3 worldPos = sprender.transform.TransformPoint(localPos);
                     worldPoints.Add(worldPos);
                 }
-                // 补最后一个点，闭合
+                // 补最后一个点闭合
                 if (contourPix.Count > 0)
                 {
                     Vector2Int pix = contourPix[0];
@@ -199,5 +200,72 @@ public static class SpriteBoundaryExtractor
         return worldPoints;
     }
         
-        
+}
+
+
+
+public static class PolygonRandomSampler
+{
+    /// <summary>
+    /// 从轮廓点集合（含Vector3.positiveInfinity分隔符）随机采样多边形内部一点，只使用第一个轮廓
+    /// </summary>
+    public static Vector3 GetRandomPointInPolygon(List<Vector3> polygon)
+    {
+        // 只取第一个轮廓点集合，过滤所有无穷分隔符和无穷点
+        List<Vector2> poly2D = new List<Vector2>();
+        float zValue = 0f;
+        foreach (var pt in polygon)
+        {
+            if (pt == Vector3.positiveInfinity || float.IsInfinity(pt.x) || float.IsInfinity(pt.y)) break;
+            poly2D.Add(new Vector2(pt.x, pt.y));
+            zValue = pt.z;
+        }
+
+        if (poly2D.Count < 3)
+        {
+            Debug.LogError($"PolygonRandomSampler: 输入轮廓点不足, 有效点数量={poly2D.Count}");
+            return Vector3.zero;
+        }
+
+        // 计算AABB
+        float minX = poly2D[0].x, maxX = poly2D[0].x;
+        float minY = poly2D[0].y, maxY = poly2D[0].y;
+        foreach (var p in poly2D)
+        {
+            if (p.x < minX) minX = p.x;
+            if (p.x > maxX) maxX = p.x;
+            if (p.y < minY) minY = p.y;
+            if (p.y > maxY) maxY = p.y;
+        }
+
+        // 随机采样
+        for (int attempt = 0; attempt < 1000; attempt++)
+        {
+            float rx = Random.Range(minX, maxX);
+            float ry = Random.Range(minY, maxY);
+            Vector2 testPt = new Vector2(rx, ry);
+            if (IsPointInPolygon(testPt, poly2D))
+                return new Vector3(rx, ry, zValue);
+        }
+
+        // 没采到就返回重心
+        Vector2 center = Vector2.zero;
+        foreach (var p in poly2D) center += p;
+        center /= poly2D.Count;
+        return new Vector3(center.x, center.y, zValue);
+    }
+
+    // 射线法判断点是否在多边形内部
+    static bool IsPointInPolygon(Vector2 pt, List<Vector2> poly)
+    {
+        int n = poly.Count;
+        bool inside = false;
+        for (int i = 0, j = n - 1; i < n; j = i++)
+        {
+            if (((poly[i].y > pt.y) != (poly[j].y > pt.y)) &&
+                 (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x))
+                inside = !inside;
+        }
+        return inside;
+    }
 }
