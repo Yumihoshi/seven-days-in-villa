@@ -30,6 +30,8 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
 
 
 
+    public int GameState_Ondebug = 0;
+    
     public void SaveGameState()
     {
         if(IsDebug)
@@ -40,7 +42,7 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
     public int LoadGameState()
     {
         if(IsDebug|| !ES3.KeyExists(SaveSlotName+"nowGameState"))
-            return 0;
+            return GameState_Ondebug;
         return (ES3.Load<int>(SaveSlotName+"nowGameState"));
     }
     

@@ -17,6 +17,11 @@ public class GameState:cjr.Single.SingleMon<GameState>
 
 
 
+   public int GetGameState()
+   {
+      return currentStateSlot.GetState();
+   }
+   
    public GameStateSlot CurrentStateSlot
    {
       get { return currentStateSlot; }

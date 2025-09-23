@@ -36,6 +36,27 @@ namespace DialogueSystem
             return dialogueNode;
         }
         
+        
+        /// <summary>
+        /// 获取Excel文件中Sheet的数量
+        /// </summary>
+        /// <param name="filePath">Excel文件路径</param>
+        /// <returns>Sheet数量</returns>
+        public static int GetSheetCount(string filePath)
+        {
+            try
+            {
+                WorkBook book = new FlexFramework.Excel.WorkBook(filePath);
+                return book.Count;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"获取Sheet数量时出错: {e.Message}");
+                return 0;
+            }
+        }
+        
+        
         public static List<DialogueNode> ParseDialogueNodes(string filePath,int sheetIndex=0,bool isTool=false)
         {
             var fileContent = System.IO.File.ReadAllLines(filePath,System.Text.Encoding.UTF8);

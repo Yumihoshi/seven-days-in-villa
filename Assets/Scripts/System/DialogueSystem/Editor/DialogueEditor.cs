@@ -39,7 +39,7 @@ public class DialogueEditor : OdinEditorWindow
     [Button("选择文件", ButtonSizes.Small)]
     private void SelectFile()
     {
-        string path = EditorUtility.OpenFilePanel("选择CSV文件", "", "csv");
+        string path = EditorUtility.OpenFilePanel("选择CSV文件", "", "xlsx");
         if (!string.IsNullOrEmpty(path))
         {
             filePath = path;
@@ -125,4 +125,125 @@ public class DialogueEditor : OdinEditorWindow
         }
     }
 
+    
+    
+    
+    
+    [HorizontalGroup("BatchButtons")]
+[Button("批量生成所有Sheet")]
+private void makeFilesFromAllSheets()
+{
+    if (string.IsNullOrEmpty(filePath))
+    {
+        EditorUtility.DisplayDialog("错误", "请先选择Excel文件", "确定");
+        return;
+    }
+
+    if (string.IsNullOrEmpty(outputDirectory))
+    {
+        EditorUtility.DisplayDialog("错误", "请先选择输出目录", "确定");
+        return;
+    }
+
+    if (!File.Exists(filePath))
+    {
+        EditorUtility.DisplayDialog("错误", "选择的文件不存在", "确定");
+        return;
+    }
+
+    try
+    {
+        // 获取文件名（不含扩展名）
+        string baseFileName = Path.GetFileNameWithoutExtension(filePath);
+        
+        // 获取表中sheet的数量
+        int sheetCount = DialogueParser.GetSheetCount(filePath);
+        
+        if (sheetCount == 0)
+        {
+            EditorUtility.DisplayDialog("警告", "未找到任何Sheet", "确定");
+            return;
+        }
+
+        // 将绝对路径转换为相对于Assets的路径
+        string relativePath = "";
+        if (outputDirectory.StartsWith(Application.dataPath))
+        {
+            // 如果输出目录在Assets文件夹内，转换为相对路径
+            relativePath = "Assets" + outputDirectory.Substring(Application.dataPath.Length);
+        }
+        else
+        {
+            // 如果不在Assets文件夹内，默认保存到Assets文件夹
+            relativePath = "Assets/DialogueTrees";
+            Directory.CreateDirectory(Path.Combine(Application.dataPath, "DialogueTrees"));
+        }
+
+        int successCount = 0;
+
+        for (int i = 0; i < sheetCount; i++)
+        {
+            try
+            {
+                // 显示进度条
+                EditorUtility.DisplayProgressBar("批量生成中", $"正在处理Sheet: {baseFileName}_{i} ({i + 1}/{sheetCount})", (float)i / sheetCount);
+                
+                // 解析指定sheet索引的对话节点
+                List<DialogueNode> nodes = DialogueParser.ParseDialogueNodes(filePath, i);
+                
+                // 如果该sheet没有数据，跳过
+                if (nodes == null || nodes.Count == 0)
+                {
+                    Debug.LogWarning($"Sheet {baseFileName}_{i} 没有数据，跳过");
+                    continue;
+                }
+                
+                // 创建DialogueTree
+                DialogueTree dialogueTree = ScriptableObject.CreateInstance<DialogueTree>();
+                dialogueTree.dialogueName = $"{baseFileName}_{i}"; // 表名_sheet索引
+                dialogueTree.nodes = nodes;
+                
+                // 生成输出文件路径
+                string outputPath = Path.Combine(relativePath, $"{dialogueTree.dialogueName}.asset");
+                
+                // 保存ScriptableObject
+                AssetDatabase.CreateAsset(dialogueTree, outputPath);
+                
+                successCount++;
+                Debug.Log($"成功生成: {outputPath}");
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"处理Sheet {baseFileName}_{i} 时出错: {e.Message}");
+            }
+        }
+
+        // 清除进度条
+        EditorUtility.ClearProgressBar();
+        
+        // 保存并刷新资源
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        EditorUtility.DisplayDialog("批量生成完成", 
+            $"成功生成 {successCount}/{sheetCount} 个DialogueTree文件\n输出目录: {relativePath}", 
+            "确定");
+        
+        Debug.Log($"批量生成完成，成功: {successCount}, 总数: {sheetCount}");
+    }
+    catch (System.Exception e)
+    {
+        EditorUtility.ClearProgressBar();
+        EditorUtility.DisplayDialog("错误", $"批量生成文件时出错: {e.Message}", "确定");
+        Debug.LogError($"批量生成DialogueTree时出错: {e.Message}");
+    }
+}
+    
+    
+    
+    
+    
+    
+    
+    
 }
