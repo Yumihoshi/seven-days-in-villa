@@ -2,16 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopShopPanel : PopUiBasePanel
 {
 
-    [SerializeField] private string IsFirst = "FirstShopAppearFirst";
+    public const string IsFirst = "FirstShopAppearFirst";
 
     [SerializeField] private bool opened;
 
-  
 
+    [SerializeField] private Sprite[] oriClass;
+    [SerializeField] private Sprite[] SwithchClass;
+
+    [SerializeField] private List<Image> ChosenBar;
+    
     public override void BeforeShowPopPanel()
     {
         base.BeforeShowPopPanel();
@@ -27,14 +32,21 @@ public class PopShopPanel : PopUiBasePanel
         {
             Debug.LogWarning("i am saved opened ");
         }
+        
+        PlayerAction.Instance.playerInput.SwitchCurrentActionMap("ShopInput");
+        ApplicationFacade.Instance.SendNotification(NotificationConst.ShopPanelCreate,this);
     }
 
     public override void AfterShowPopPanel()
     {
         base.AfterShowPopPanel();
-        ApplicationFacade.Instance.SendNotification(NotificationConst.ShopPanelCreate,this);
     }
 
+    public void SwitchGoods(Vector2 v)
+    {
+        //todo
+        
+    }
 
     public override void BeforeHidePopPanel()
     {

@@ -76,10 +76,12 @@ public class PopUiPanelController : cjr.Single.SingleMon<PopUiPanelController>
     
     // 确保UI元素激活
     prefab.SetActive(true);
-
+    Debug.LogWarning(PlayerAction.Instance.playerInput.currentActionMap);
+    
+    currentPopUiPanel?.AfterShowPopPanel();
+    
     if (needFadeOut)
     {
-      currentPopUiPanel?.AfterShowPopPanel();
       cgp.alpha = 0;
       cgp.DOFade(1f, fadeOutTime);
       
@@ -97,7 +99,7 @@ public class PopUiPanelController : cjr.Single.SingleMon<PopUiPanelController>
   
   public GameObject CreatePopUiPanel(string prefabPath,bool needFadeOut = true)
   {
-    Debug.LogWarning(prefabPath);
+ 
     GameObject prefab = ResourceLoader.Instance.LoadObject(prefabPath,PopHolder);
     return CreatePopUiPanel(prefab,needFadeOut);
   }

@@ -44,6 +44,8 @@ public class PlayerUiInput : cjr.Single.SingleMon<PlayerUiInput>
     {
         if (context.performed)
         {
+            
+            
             if (PopUiPanelController.Instance.PopStack.Count > 0)
             {
                 PopUiPanelController.Instance.CloseCurrentPopUiPanel();
@@ -63,6 +65,16 @@ public class PlayerUiInput : cjr.Single.SingleMon<PlayerUiInput>
            ToolDialogueSkin.Instance.DoSpeedUp();
         }
     }
+
+
+    public void ShopSwitching(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Vector2 inputVector = context.ReadValue<Vector2>();
+            ApplicationFacade.Instance.SendNotification(NotificationConst.ShopSwitch, inputVector);
+        }
+    }    
 }
 
 
