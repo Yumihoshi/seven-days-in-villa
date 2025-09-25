@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,19 @@ public class PopShopPanel : PopUiBasePanel
     [SerializeField] private bool opened;
 
 
+    [SerializeField] private string SpritePath = "SvnResource/Art/Tools/商店道具/";
+    
+    
+    [SerializeField] string path="Assets/Resources/SvnResource/文案/道具商品相关表格/商店存货单.xlsx";
+    [SerializeField] List<BaseMeta> metas = new List<BaseMeta>();
+
+
+
+    [SerializeField] private TextMeshProUGUI IconName;
+    [SerializeField] private TextMeshProUGUI Description;
+    [SerializeField] private TextMeshProUGUI Price;
+    
+    
     [SerializeField] private Sprite[] oriClass;
     [SerializeField] private Sprite[] SwithchClass;
 
@@ -27,7 +41,7 @@ public class PopShopPanel : PopUiBasePanel
     public override void BeforeShowPopPanel()
     {
         pos = ItemIcon.transform.position;
-       
+        SpritePath = "SvnResource/Art/Tools/商店道具/";
         base.BeforeShowPopPanel();
         // Debug.LogWarning("用你心智的清明，来换取肉体的存续");
         if (!SaveSystemManager.Instance.IsContainKey(IsFirst))
@@ -42,18 +56,45 @@ public class PopShopPanel : PopUiBasePanel
             Debug.LogWarning("i am saved opened ");
         }
 
+      
+        
         CurrentChosen = 0;
         PlayerAction.Instance.playerInput.SwitchCurrentActionMap("ShopInput");
         ApplicationFacade.Instance.SendNotification(NotificationConst.ShopPanelCreate,this);
     }
 
+    [SerializeField] List<ShopGoodForSaveItem> shopGoodItems = new List<ShopGoodForSaveItem>();
     public override void AfterShowPopPanel()
     {
         pos = ItemIcon.transform.position;
-        
+        InitGoods();
         SetChosen(CurrentChosen);
     }
 
+
+    void InitGoods()
+    {
+        metas=ExcelParser.ParseExcel(path);
+        shopGoodItems=new List<ShopGoodForSaveItem>();
+        foreach (var varMeta in metas)
+        {
+            ShopGoodForSaveItem item=new ShopGoodForSaveItem();
+            item.ItemID = int.Parse((string)varMeta.Get("ID"));
+            item.GoodDescription = (string)varMeta.Get(3);
+         
+            item.GoodPrice = ((int)varMeta.Get("GoodPrice"));
+            
+            BaseMeta tmp= MetaManager.Instance.GetToolMeta(item.ItemID);
+            item.GoodName=(string) tmp.Get("GoodName");
+            
+            
+            
+            
+            
+            item.Icon=ResourceLoader.Instance.LoadSprite(SpritePath+item.GoodName);
+            shopGoodItems.Add(item);
+        }
+    }
 
     [SerializeField] private float downPoi = 10f;
     [SerializeField] private float duration = .5f;
@@ -87,10 +128,20 @@ public class PopShopPanel : PopUiBasePanel
     
     public void SetChosen(int chosen)
     {
+
+        if (chosen < 0 || chosen >= shopGoodItems.Count)
+            return;
+        
         ClearSp();
         ChosenBar[CurrentChosen].sprite = SwithchClass[chosen];
         ChosenBar[CurrentChosen].SetNativeSize();
         //todo
+        
+        IconName.SetText(shopGoodItems[CurrentChosen].GoodName);
+        
+        Description.SetText(shopGoodItems[CurrentChosen].GoodDescription);
+        Price.SetText("花费: "+shopGoodItems[CurrentChosen].GoodPrice);
+        ItemIcon.sprite = shopGoodItems[CurrentChosen].Icon;
         
         AppearIcon();
     }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class ShopGoodItem: MonoBehaviour
 {
-    ShopGoodItem _shopGoodItem;
+    ShopGoodForSaveItem _shopGoodItem;
     
     
 }
@@ -18,6 +18,6 @@ public struct ShopGoodForSaveItem
     public int ItemID;
     public string GoodName;
     public string GoodDescription;
-    public string GoodPrice;
-    public string GoodSpitePath;
+    public int GoodPrice;
+    public Sprite Icon;
 }

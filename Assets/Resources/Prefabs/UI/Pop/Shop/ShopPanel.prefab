@@ -67,15 +67,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6D88\u8017:"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 075fea3e44f818b4ab73a37b00e40d50, type: 2}
-  m_sharedMaterial: {fileID: -8871136719797373597, guid: 075fea3e44f818b4ab73a37b00e40d50, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e656382a952a1d4f83404c8b8323f71, type: 2}
+  m_sharedMaterial: {fileID: 3829951537958106861, guid: 5e656382a952a1d4f83404c8b8323f71, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -241,9 +241,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9042325384302051055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 109.375, y: -59.375}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 218.75, y: 118.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3414637676600684135
@@ -391,9 +391,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9042325384302051055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 640.135, y: -59.375}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 218.75, y: 118.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &682010639075963124
@@ -598,8 +598,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 075fea3e44f818b4ab73a37b00e40d50, type: 2}
-  m_sharedMaterial: {fileID: -8871136719797373597, guid: 075fea3e44f818b4ab73a37b00e40d50, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e656382a952a1d4f83404c8b8323f71, type: 2}
+  m_sharedMaterial: {fileID: 3829951537958106861, guid: 5e656382a952a1d4f83404c8b8323f71, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -735,9 +735,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9042325384302051055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 374.755, y: -59.375}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 218.75, y: 118.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2895449124353341720
@@ -1062,8 +1062,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u5468\u672B\u7684\u6E05\u6668\uFF0C\u6211\u8E29\u7740\u9732\u6C34\u53BB\u83DC\u5730\u3002\u6CE5\u571F\u677E\u8F6F\uFF0C\u756A\u8304\u85E4\u5DF2\u9AD8\u8FC7\u819D\u76D6\uFF0C\u6307\u5C16\u8F7B\u5F39\uFF0C\u7EA2\u679C\u6643\u5982\u5C0F\u706F\u3002\u6458\u4E0B\u4E00\u9897\uFF0C\u9633\u5149\u900F\u8FC7\u8584\u76AE\uFF0C\u6C41\u6C34\u5728\u638C\u5FC3\u53D1\u70EB\u3002\u8FDC\u5904\u6BCD\u4EB2\u5524\u6211\u56DE\u5BB6\uFF0C\u58F0\u97F3\u7A7F\u8FC7\u708A\u70DF\uFF0C\u50CF\u65E7\u65F6\u5149\u843D\u5728\u9488\u53F6\u4E0A\u3002\u98CE\u628A\u9999\u5473\u63A8\u5F97\u66F4\u8FDC\uFF0C\u6211\u4E3E\u8D77\u679C\u5B9E\uFF0C\u50CF\u4E3E\u8D77\u4E00\u9897\u5C0F\u5C0F\u7684\u5FC3\uFF0C\u671D\u5979\u8DD1\u53BB\uFF0C\u811A\u6B65\u6BD4\u7AE5\u5E74\u8FD8\u8F7B\u3002"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 075fea3e44f818b4ab73a37b00e40d50, type: 2}
-  m_sharedMaterial: {fileID: -8871136719797373597, guid: 075fea3e44f818b4ab73a37b00e40d50, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e656382a952a1d4f83404c8b8323f71, type: 2}
+  m_sharedMaterial: {fileID: 3829951537958106861, guid: 5e656382a952a1d4f83404c8b8323f71, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1148,7 +1148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5439570663888240059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1249,6 +1249,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opened: 0
+  path: "Assets/Resources/SvnResource/\u6587\u6848/\u9053\u5177\u5546\u54C1\u76F8\u5173\u8868\u683C/\u5546\u5E97\u5B58\u8D27\u5355.xlsx"
+  metas: []
+  IconName: {fileID: 8441236186667468653}
+  Description: {fileID: 3618633327664946825}
+  Price: {fileID: 2208053789977160520}
   oriClass:
   - {fileID: -2041917339, guid: c03dd09237f588b458ea8b786a4e55f3, type: 3}
   - {fileID: 2133121417, guid: c03dd09237f588b458ea8b786a4e55f3, type: 3}
@@ -1263,5 +1268,6 @@ MonoBehaviour:
   - {fileID: 2008388156735333664}
   CurrentChosen: 0
   ItemIcon: {fileID: 7399743241998083918}
+  shopGoodItems: []
   downPoi: 100
   duration: 0.5

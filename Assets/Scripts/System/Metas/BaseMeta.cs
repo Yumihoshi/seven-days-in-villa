@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FlexFramework.Excel;
 using UnityEngine;
-
+[Serializable]
 public class BaseMeta
 {
     public Dictionary<string, object> _data;
@@ -31,7 +32,7 @@ public class BaseMeta
     {
         if(index < 0 || index >= _data.Count)
             return null;
-        return _data.ElementAt(index);
+        return _data.ElementAt(index).Value;
     }
     // 可选：简化用法
 }

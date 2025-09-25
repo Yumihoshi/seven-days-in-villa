@@ -79,14 +79,6 @@ public class RoomManager : cjr.Single.SingleMon<RoomManager>
         
   }
 
-  [SerializeField] private string Path = "Assets/Resources/SvnResource/文案/道具商品相关表格/物品表.xlsx";
-  
-  [Button("TestLoadMeta")]
-  public void TestLoadMeta()
-  {
-      var book=ExcelParser.ParseExcel(Path);
-      Debug.LogWarning(book[0].Get("ID"));
-  }
 
   
 }
