@@ -6,6 +6,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
+
 namespace DialogueSystem
 {
     public class DialogueSystemManager : cjr.Single.SingleMon<DialogueSystemManager>
@@ -25,6 +27,12 @@ namespace DialogueSystem
         
         WaitForSeconds _waitWordSecond     ;
         WaitForSeconds _waitSentenceSecond ;
+        
+        [SerializeField] Image NpcImage;
+        [SerializeField] Image PlayerImage;
+        
+        
+        
         
         [SerializeField] DialogueNode nextNode;
         private int startIndex;
@@ -160,6 +168,20 @@ namespace DialogueSystem
             //ui的一些处理
             textMeshPro.text = String.Empty;
 
+
+            PlayerImage.gameObject.SetActive(false);
+            NpcImage.gameObject.SetActive(false);
+            if (speakerName.text == "玩家")
+            {
+                PlayerImage.gameObject.SetActive(true);
+                PlayerImage.sprite =
+                    ResourceLoader.Instance.LoadSprite("SvnResource\\Art\\大头\\主控大头\\熊猫弟大头\\一阶正常大小-Sheet");
+                PlayerImage.SetNativeSize();
+            }
+            else
+            {
+                NpcImage.gameObject.SetActive(true);
+            }
             
             
 
