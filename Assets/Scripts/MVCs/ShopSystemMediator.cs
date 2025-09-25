@@ -22,8 +22,7 @@ public class ShopSystemMediator : BaseMediator
     if (pack.Body is Vector2)
     {
       Vector2 v = (Vector2)pack.Body;
-
-      Debug.LogWarning(popShopPanel);
+      
       
       if (popShopPanel)
       {

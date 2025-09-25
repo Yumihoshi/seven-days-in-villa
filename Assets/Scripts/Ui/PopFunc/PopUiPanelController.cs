@@ -70,14 +70,16 @@ public class PopUiPanelController : cjr.Single.SingleMon<PopUiPanelController>
       cgp=prefab.AddComponent<CanvasGroup>();
     }
     
+    currentPopUiPanel=prefab.GetComponent<PopUiBasePanel>();
     
     currentPopUiPanel?.BeforeShowPopPanel();
     
     
+    
     // 确保UI元素激活
     prefab.SetActive(true);
-    Debug.LogWarning(PlayerAction.Instance.playerInput.currentActionMap);
-    
+   
+    currentPopUiPanel=prefab.GetComponent<PopUiBasePanel>();
     currentPopUiPanel?.AfterShowPopPanel();
     
     if (needFadeOut)
