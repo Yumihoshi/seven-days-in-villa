@@ -30,6 +30,9 @@ public class PlayerHpSystem : cjr.Single.SingleMon<PlayerHpSystem>,RequireSaving
     Instantiate(SinGleHp, HpHolder);
   }
 
+
+  [SerializeField] private int now_San = 1000;
+  
   
   public void Initialize()
   {

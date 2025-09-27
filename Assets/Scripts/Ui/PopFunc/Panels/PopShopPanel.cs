@@ -64,13 +64,61 @@ public class PopShopPanel : PopUiBasePanel
     }
 
     [SerializeField] List<ShopGoodForSaveItem> shopGoodItems = new List<ShopGoodForSaveItem>();
+
+    [SerializeField] private List<ShopGoodForSaveItem> RecoveryItems = new List<ShopGoodForSaveItem>();
+    [SerializeField] private List<ShopGoodForSaveItem> AimingItems = new List<ShopGoodForSaveItem>();
+    [SerializeField] private List<ShopGoodForSaveItem> EfficiencyItems = new List<ShopGoodForSaveItem>();
+    
+    [SerializeField] int itemChosen = 0;
+    
+    
     public override void AfterShowPopPanel()
     {
         pos = ItemIcon.transform.position;
         InitGoods();
-        SetChosen(CurrentChosen);
+        InitClassOfItems();
+        
+        itemChosen = 0;
+        SetChosen(itemChosen,GetClassOfItems());
     }
 
+    List<ShopGoodForSaveItem> GetClassOfItems()
+    {
+        switch (CurrentChosen)
+        {
+            case 0:
+                return RecoveryItems;
+            case 1:
+                return AimingItems;
+            case 2:
+                return EfficiencyItems;
+            default:
+                return null;
+        }
+    }
+
+
+    public void InitClassOfItems()
+    {
+        RecoveryItems=new List<ShopGoodForSaveItem>();
+        AimingItems=new List<ShopGoodForSaveItem>();
+        EfficiencyItems=new List<ShopGoodForSaveItem>();
+        foreach (var item in shopGoodItems)
+        {
+            switch (item.itemType)
+            {
+                case ItemType.Recovery:
+                    RecoveryItems.Add(item);
+                    break;
+                case ItemType.Aiming:
+                    AimingItems.Add(item);
+                    break;
+                case ItemType.Efficiency:
+                    EfficiencyItems.Add(item);
+                    break;
+            }
+        }
+    }
 
     void InitGoods()
     {
@@ -87,6 +135,7 @@ public class PopShopPanel : PopUiBasePanel
             BaseMeta tmp= MetaManager.Instance.GetToolMeta(item.ItemID);
             item.GoodName=(string) tmp.Get("GoodName");
             
+            item.itemType=EnumParser.ParseItemType((string)MetaManager.Instance.GetToolMeta(item.ItemID).Get("GoodType"));
             
             
             
@@ -94,6 +143,7 @@ public class PopShopPanel : PopUiBasePanel
             item.Icon=ResourceLoader.Instance.LoadSprite(SpritePath+item.GoodName);
             shopGoodItems.Add(item);
         }
+       
     }
 
     [SerializeField] private float downPoi = 10f;
@@ -126,22 +176,22 @@ public class PopShopPanel : PopUiBasePanel
         }
     }
     
-    public void SetChosen(int chosen)
+    public void SetChosen(int chosen,List<ShopGoodForSaveItem> chosenItems)
     {
 
-        if (chosen < 0 || chosen >= shopGoodItems.Count)
+        if (itemChosen < 0 || itemChosen >= chosenItems.Count)
             return;
         
         ClearSp();
-        ChosenBar[CurrentChosen].sprite = SwithchClass[chosen];
+        ChosenBar[CurrentChosen].sprite = SwithchClass[CurrentChosen];
         ChosenBar[CurrentChosen].SetNativeSize();
         //todo
         
-        IconName.SetText(shopGoodItems[CurrentChosen].GoodName);
+        IconName.SetText(chosenItems[chosen].GoodName);
         
-        Description.SetText(shopGoodItems[CurrentChosen].GoodDescription);
-        Price.SetText("花费: "+shopGoodItems[CurrentChosen].GoodPrice);
-        ItemIcon.sprite = shopGoodItems[CurrentChosen].Icon;
+        Description.SetText(chosenItems[chosen].GoodDescription);
+        Price.SetText("花费: "+chosenItems[chosen].GoodPrice);
+        ItemIcon.sprite = chosenItems[chosen].Icon;
         
         AppearIcon();
     }
@@ -151,8 +201,9 @@ public class PopShopPanel : PopUiBasePanel
 
         if (v.x != 0)
         {
+            itemChosen = 0;
             CurrentChosen+=(int) (v.x / Mathf.Abs(v.x));
-            if (CurrentChosen >= ChosenBar.Count)
+            if (CurrentChosen >=3)
             {
                 CurrentChosen = 0;
             }
@@ -162,7 +213,24 @@ public class PopShopPanel : PopUiBasePanel
                 CurrentChosen = 2;
             }
         }
-        SetChosen(CurrentChosen);
+
+        var lists = GetClassOfItems();
+
+        if (v.y != 0)
+        {
+            itemChosen += (int)(v.y / Mathf.Abs(v.y));
+            if (itemChosen >= lists.Count)
+            {
+                itemChosen = 0;
+            }
+
+            if (itemChosen < 0)
+            {
+                itemChosen = lists.Count - 1;
+            }
+        }
+        
+        SetChosen(itemChosen,lists);
     }
 
     public override void BeforeHidePopPanel()

@@ -419,7 +419,7 @@
                 {
                     "name": "up",
                     "id": "34c2671c-ccc9-4327-b119-d14681228a2b",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -430,7 +430,7 @@
                 {
                     "name": "down",
                     "id": "7c816e35-6736-4488-b658-2bac81b8bcd9",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

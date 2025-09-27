@@ -27105,6 +27105,7 @@ MonoBehaviour:
   HpHolder: {fileID: 875894388}
   SinGleHp: {fileID: 8404495300981656384, guid: bf2550cd08b223645a04893d0a71ffb1, type: 3}
   HealthPoints: 0
+  now_San: 1000
 --- !u!1 &1976338183
 GameObject:
   m_ObjectHideFlags: 0

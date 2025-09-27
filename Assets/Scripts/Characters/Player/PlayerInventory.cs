@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerInventory : cjr.Single.SingleMon<PlayerInventory>,RequireSavingItem
 {
+    
+    
+    
+    
     [SerializeField] List<SaveItemStruct> playerInventory;
     public const string playerInventoryName = "PlayerInventory";
     public void Save()
