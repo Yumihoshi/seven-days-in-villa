@@ -21,10 +21,13 @@ public class PopShopPanel : PopUiBasePanel
     [SerializeField] List<BaseMeta> metas = new List<BaseMeta>();
 
 
+    [SerializeField] float fadeTime = 0.4f;
+    [SerializeField] private CanvasGroup confirmDecrations;
 
     [SerializeField] private TextMeshProUGUI IconName;
     [SerializeField] private TextMeshProUGUI Description;
     [SerializeField] private TextMeshProUGUI Price;
+    [SerializeField] private TextMeshProUGUI Mymoney;
     
     
     [SerializeField] private Sprite[] oriClass;
@@ -37,6 +40,13 @@ public class PopShopPanel : PopUiBasePanel
     private Vector3 pos;
 
     [SerializeField] private Image ItemIcon;
+
+
+
+    public void Refresh(int nowSan)
+    {
+        
+    }
     
     public override void BeforeShowPopPanel()
     {
@@ -56,14 +66,14 @@ public class PopShopPanel : PopUiBasePanel
             Debug.LogWarning("i am saved opened ");
         }
 
-      
+        Mymoney.text = "现有理智: " + PlayerHpSystem.Instance.GetMySan();
         
         CurrentChosen = 0;
         PlayerAction.Instance.playerInput.SwitchCurrentActionMap("ShopInput");
         ApplicationFacade.Instance.SendNotification(NotificationConst.ShopPanelCreate,this);
     }
 
-    [SerializeField] List<ShopGoodForSaveItem> shopGoodItems = new List<ShopGoodForSaveItem>();
+    List<ShopGoodForSaveItem> shopGoodItems = new List<ShopGoodForSaveItem>();
 
     [SerializeField] private List<ShopGoodForSaveItem> RecoveryItems = new List<ShopGoodForSaveItem>();
     [SerializeField] private List<ShopGoodForSaveItem> AimingItems = new List<ShopGoodForSaveItem>();
@@ -79,7 +89,8 @@ public class PopShopPanel : PopUiBasePanel
         InitClassOfItems();
         
         itemChosen = 0;
-        SetChosen(itemChosen,GetClassOfItems());
+        CurrentChosen = 0;
+        SwitchGoods(Vector2.zero);
     }
 
     List<ShopGoodForSaveItem> GetClassOfItems()
@@ -179,6 +190,14 @@ public class PopShopPanel : PopUiBasePanel
     public void SetChosen(int chosen,List<ShopGoodForSaveItem> chosenItems)
     {
 
+
+        if (chosenItems.Count == 0)
+        {
+            ClearSp();
+            ItemIcon.sprite=null;
+            return;
+        }
+        
         if (itemChosen < 0 || itemChosen >= chosenItems.Count)
             return;
         
@@ -233,6 +252,81 @@ public class PopShopPanel : PopUiBasePanel
         SetChosen(itemChosen,lists);
     }
 
+
+    ShopGoodForSaveItem GetNowChosenItem()
+    {
+
+        List<ShopGoodForSaveItem> now = GetClassOfItems();
+        
+       
+
+        if (itemChosen < now.Count && itemChosen >= 0)
+        {
+            return now[itemChosen];
+        }
+
+        ShopGoodForSaveItem a = new ShopGoodForSaveItem();
+        return a;
+    }
+
+    void RemoveItem(ShopGoodForSaveItem item)
+    {
+        var now = GetClassOfItems();
+        for (int i = 0; i < now.Count; i++)
+        {
+            if (now[i].ItemID == item.ItemID)
+            {
+                now.RemoveAt(i);
+                break;
+            }
+        }
+        
+        SwitchGoods(Vector2.down);
+    }
+    
+    
+    
+    
+    public void ConfirmPurchase()
+    {
+        
+      
+        if(GetClassOfItems().Count==0)
+            return;
+        
+        
+        var good = GetNowChosenItem();
+        if(!PlayerHpSystem.Instance.subSan(good.GoodPrice))
+            return;
+      
+        PlayerInventory.Instance.AddItem(good);
+
+
+
+        int nowSan = PlayerHpSystem.Instance.GetMySan();
+        
+        
+        
+        
+        
+        PlayerAction.Instance.SetPlayerInputNull();
+        confirmDecrations.DOFade(1f,fadeTime).OnComplete(() =>
+        {
+            Mymoney.text = $"现有理智: {nowSan}";
+            confirmDecrations.DOFade(0f,fadeTime).OnComplete(() =>
+            {
+                RemoveItem(good);
+                PlayerAction.Instance.playerInput.SwitchCurrentActionMap("ShopInput");
+                SwitchGoods(Vector2.down);
+            });
+            
+        });
+
+
+       
+
+    }
+    
     public override void BeforeHidePopPanel()
     {
         base.BeforeHidePopPanel();

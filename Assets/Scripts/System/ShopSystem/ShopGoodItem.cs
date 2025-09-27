@@ -33,6 +33,10 @@ public struct ShopGoodForSaveItem
     public Sprite Icon;
     
     public ItemType itemType;
+
+
+
+    
 }
 
 
@@ -44,7 +48,6 @@ public static class EnumParser
 {
     public static ItemType ParseItemType(string itemType)
     {
-        Debug.LogWarning(itemType);
         
         switch (itemType)
         {
@@ -61,6 +64,7 @@ public static class EnumParser
                 return ItemType.Other;
             break;
             default:
+                Debug.LogError("Unknown item type "+itemType);
                 return ItemType.Error;
         }
     }

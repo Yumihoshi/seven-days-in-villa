@@ -32,8 +32,20 @@ public class PlayerHpSystem : cjr.Single.SingleMon<PlayerHpSystem>,RequireSaving
 
 
   [SerializeField] private int now_San = 1000;
-  
-  
+
+
+  public int GetMySan()
+  {
+      return now_San;
+  }
+
+  public bool subSan(int sub)
+  {
+    if (sub > now_San)
+      return false;
+    now_San -= sub;
+    return true;
+  }
   public void Initialize()
   {
     for (int i = 0; i < HpHolder.childCount; i++)

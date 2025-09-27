@@ -74,7 +74,17 @@ public class PlayerUiInput : cjr.Single.SingleMon<PlayerUiInput>
             Vector2 inputVector = context.ReadValue<Vector2>();
             ApplicationFacade.Instance.SendNotification(NotificationConst.ShopSwitch, inputVector);
         }
-    }    
+    }
+
+
+    public void ShopPurchased(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ApplicationFacade.Instance.SendNotification(NotificationConst.ShopPurchaseConfirm);
+        }
+    }
+    
 }
 
 

@@ -66,6 +66,13 @@ public class PlayerAction : MonoBehaviour
       }
    }
 
+
+   public void SetPlayerInputNull()
+   {
+      playerInput.SwitchCurrentActionMap("Null");
+   }
+   
+   
    #region PlayerAt
    public void Move(InputAction.CallbackContext context)
    {

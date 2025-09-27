@@ -17,5 +17,8 @@ public class NotificationConst
     public const string ShopSwitch = "ShopSwitch";
     public const string ShopPanelCreate= "ShopPanelCreate";
     public const string ShopPanelHide = "ShopPanelHide";
+    public const string ShopPurchaseConfirm = "ShopPurchaseConfirm";
+   
+    
     
 }

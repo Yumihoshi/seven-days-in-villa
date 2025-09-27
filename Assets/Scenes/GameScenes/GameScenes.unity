@@ -26983,6 +26983,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cf84d804-cf57-4c00-9998-6a3872123eb3
     m_ActionName: ShopInput/SwitchGood[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1974379326}
+        m_TargetAssemblyTypeName: PlayerUiInput, Assembly-CSharp
+        m_MethodName: ShopPurchased
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: effd8cc9-c65b-4fa2-8811-5e12ab4d002a
+    m_ActionName: ShopInput/Purchase[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay
@@ -27105,7 +27121,7 @@ MonoBehaviour:
   HpHolder: {fileID: 875894388}
   SinGleHp: {fileID: 8404495300981656384, guid: bf2550cd08b223645a04893d0a71ffb1, type: 3}
   HealthPoints: 0
-  now_San: 1000
+  now_San: 0
 --- !u!1 &1976338183
 GameObject:
   m_ObjectHideFlags: 0
