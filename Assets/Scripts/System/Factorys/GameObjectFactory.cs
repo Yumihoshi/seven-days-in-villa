@@ -9,6 +9,7 @@ public class GameObjectFactory : cjr.Single.SingleMon<GameObjectFactory>
 {
     public static GameObjectFactory Instance { get; private set; }
 
+    public Transform gameHolder;
     // 跟踪已创建的物体
     private readonly HashSet<GameObject> _createdObjects = new HashSet<GameObject>();
 
@@ -36,7 +37,7 @@ public class GameObjectFactory : cjr.Single.SingleMon<GameObjectFactory>
     
     public GameObject Create(GameObject prefab, Vector3 position)
     {
-        return Create(prefab, position, Quaternion.identity);
+        return Create(prefab, position, Quaternion.identity,gameHolder);
     }
     
     /// <summary>

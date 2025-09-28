@@ -181,6 +181,14 @@ namespace DialogueSystem
             else
             {
                 NpcImage.gameObject.SetActive(true);
+                switch (speakerName.text)
+                {
+                    case "管家":
+                        NpcImage.sprite = //Assets/Resources/SvnResource/Art/大头/管家大头/datou.png
+                            ResourceLoader.Instance.LoadSprite("SvnResource\\Art\\大头/管家大头/datou");
+                        NpcImage.SetNativeSize();
+                        break;
+                }
             }
             
             

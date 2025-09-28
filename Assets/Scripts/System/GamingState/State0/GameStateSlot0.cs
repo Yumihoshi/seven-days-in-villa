@@ -14,6 +14,7 @@ public class GameStateSlot0 : GameStateSlot
     [SerializeField] private int maxX;
     [SerializeField] private int nowStep;
 
+    [SerializeField] Vector3 startPosition;
 
     [SerializeField] private List<GameObject> entered;
     public override void Step()
@@ -40,9 +41,13 @@ public class GameStateSlot0 : GameStateSlot
         yield return null;
         cjr.Scence.SceneManager.Instance.FainOut(1, 0.1f);
         nowStep = 0;
-        Transform actionPoint = RoomManager.Instance.GetStartRoom().GetActionPoint();
+
+
+        startPosition.x = -3.402f;
+        startPosition.y = 3.5384f;
+        startPosition.z = 0f;
         
-        PlayerAction.Instance.transform.position = actionPoint.position;
+        PlayerAction.Instance.transform.position = startPosition;
         VcmManager.Instance.GetClosestConfiner();
         entered = new List<GameObject>();
         cjr.Scence.SceneManager.Instance.FainOut(0, 0.1f);

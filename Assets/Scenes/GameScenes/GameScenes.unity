@@ -28292,7 +28292,7 @@ MonoBehaviour:
   IsDebug: 1
   items: []
   saved: []
-  GameState_Ondebug: 1
+  GameState_Ondebug: 0
   SavingMask: {fileID: 1187313584}
   gameData_SO: {fileID: 11400000, guid: cc48aefe91e88b04c869981a4b3bd62a, type: 2}
 --- !u!114 &2072186896
