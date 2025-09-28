@@ -4,10 +4,5 @@ using UnityEngine;
 
 public class StartRoom : BaseRoom
 {
-   public Transform actionPoint;
-
-   public Transform GetActionPoint()
-   {
-      return actionPoint;
-   }
+  
 }

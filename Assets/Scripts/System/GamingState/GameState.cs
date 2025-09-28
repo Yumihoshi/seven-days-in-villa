@@ -34,11 +34,7 @@ public class GameState:cjr.Single.SingleMon<GameState>
       currentStateSlot?.onEnter();
    }
 
-   protected override void Awake()
-   {
-      base.Awake();
-      LoadState();
-   }
+  
 
    public void LoadState()
    {
@@ -69,7 +65,8 @@ public class GameState:cjr.Single.SingleMon<GameState>
    [Button("test0 set")]
    public void test0()
    {
-     SwitchStateSlot(slot0Test);
+      Debug.LogWarning("test0 set");
+      SwitchStateSlot(slot0Test);
    }
 
    [Button("test1 set")]

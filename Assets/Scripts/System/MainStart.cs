@@ -50,7 +50,7 @@ public class MainStart : MonoBehaviour
         
         //todo
         //先硬编码为加载0的游戏状态
-        GameState.Instance.test0();
+        GameState.Instance.LoadState();
         
         Debug.Log("场景加载完毕！");
         Destroy(gameObject);

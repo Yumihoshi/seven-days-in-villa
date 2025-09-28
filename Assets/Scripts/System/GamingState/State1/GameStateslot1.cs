@@ -6,12 +6,16 @@ using UnityEngine;
 public class GameStateslot1 : GameStateSlot
 {
     
+    [SerializeField] Vector3 StewardPosition;
     
     public new const int state = 1;
     public override void onEnter()
     {
         base.onEnter();
-        Debug.LogWarning("In slot1 ");
+
+        GameObject stewardObject = ResourceLoader.Instance.LoadObject("Prefabs/Npcs/Steward");
+        stewardObject.transform.position = StewardPosition;
+
     }
 
     public override int GetState()
