@@ -44,6 +44,7 @@ public class GameState:cjr.Single.SingleMon<GameState>
       int state=SaveSystemManager.Instance.LoadGameState();
       
       //todo
+      state=SaveSystemManager.Instance.LoadGameState();
       SwitchStateSlot(ResourceLoader.Instance.LoadSO<GameStateSlot>(ConstVariable.GameStateSo+state.ToString()));
    }
    

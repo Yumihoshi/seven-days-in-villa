@@ -28881,18 +28881,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -355.9375
       objectReference: {fileID: 0}
-    - target: {fileID: 8152525825302881250, guid: 3f6841cff56319c488b782c03b3fd7e9, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8152525825302881250, guid: 3f6841cff56319c488b782c03b3fd7e9, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 80147c39a53453940935bdbe4d627d2f, type: 3}
-    - target: {fileID: 8152525825302881250, guid: 3f6841cff56319c488b782c03b3fd7e9, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: c49c107a39f3e004eb23377845990bb6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

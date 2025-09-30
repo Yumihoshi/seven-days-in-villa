@@ -36,6 +36,7 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
     {
         if(IsDebug)
             return;
+        
         ES3.Save(SaveSlotName+"nowGameState",GameState.Instance.CurrentStateSlot.GetState());
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using cjr.Scence;
 using UnityEngine;
 
 public class MainUiButtons : MonoBehaviour
@@ -14,5 +15,12 @@ public class MainUiButtons : MonoBehaviour
    {
       PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.ShopPanel);
    }
+
+   public void BackToMainMenu()
+   {
+      SceneManager.Instance.BackToMainMenu();
+   }
+   
+   
    
 }
