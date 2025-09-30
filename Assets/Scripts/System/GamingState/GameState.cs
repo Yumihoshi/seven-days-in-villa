@@ -36,7 +36,14 @@ public class GameState:cjr.Single.SingleMon<GameState>
       currentStateSlot?.onEnter();
    }
 
-  
+   public void SwitchStateSlot(int newState)
+   {
+       
+      SwitchStateSlot(ResourceLoader.Instance.LoadSO<GameStateSlot>(
+         ConstVariable.GameStateSo+newState.ToString()));
+      SaveSystemManager.Instance.SaveGameState();
+
+   }
 
    public void LoadState()
    {
@@ -45,7 +52,11 @@ public class GameState:cjr.Single.SingleMon<GameState>
       
       //todo
       state=SaveSystemManager.Instance.LoadGameState();
-      SwitchStateSlot(ResourceLoader.Instance.LoadSO<GameStateSlot>(ConstVariable.GameStateSo+state.ToString()));
+      
+      SwitchStateSlot(ResourceLoader.Instance.LoadSO<GameStateSlot>(
+         ConstVariable.GameStateSo+state.ToString()));
+      
+      
    }
    
    private void Update()

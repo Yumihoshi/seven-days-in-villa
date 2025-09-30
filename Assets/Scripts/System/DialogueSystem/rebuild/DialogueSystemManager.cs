@@ -89,7 +89,7 @@ namespace DialogueSystem
             _waitSentenceSecond = new WaitForSeconds(_sentenceInterval);
         }
         
-        public void StartDialogue(DialogueTree dialogueTree)
+        public void StartDialogue(DialogueTree dialogueTree,Action onFinish=null)
         {
             if (dialogueTree == null || dialogueTree.nodes.Count == 0)
             {
@@ -101,7 +101,8 @@ namespace DialogueSystem
             startIndex =int.Parse(dialogueTree.nodes[0].id);
             nextNode = null;
             // Start the dialogue with the first node
-            CoroutineFactory.Instance.RunCoroutine(ShowDialogueNodes(dialogueTree.nodes[0]));
+            CoroutineFactory.Instance.RunCoroutine(
+                ShowDialogueNodes(dialogueTree.nodes[0]),onFinish);
         }
 
         //todo
@@ -255,7 +256,7 @@ namespace DialogueSystem
         }
         
         
-        IEnumerator ShowDialogueNodes(DialogueNode startNode)
+        IEnumerator ShowDialogueNodes(DialogueNode startNode,Action onFinish=null)
         {
             
             DialogueNode currentNode = startNode;
@@ -280,6 +281,7 @@ namespace DialogueSystem
             //ui的一些处理
             yield return _waitSentenceSecond;
             DialogueRoot.gameObject.SetActive(false);
+            onFinish?.Invoke();
             ApplicationFacade.Instance.SendNotification(NotificationConst.End_Dialogue);
         }
         

@@ -15,7 +15,12 @@ public class Steward : BaseNpcEntity
       // if (state <= 1)
       {
          DialogueTree dialogueTree = ResourceLoader.Instance.LoadSO<DialogueTree>("DialogueData/¶Ô»°2");
-         DialogueSystemManager.Instance.StartDialogue(dialogueTree);
+         DialogueSystemManager.Instance.StartDialogue(dialogueTree,Onend);
       }
+   }
+
+   public void Onend()
+   {
+      Debug.LogWarning("Action finished");
    }
 }
