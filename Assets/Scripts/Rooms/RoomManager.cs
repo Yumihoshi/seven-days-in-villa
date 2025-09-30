@@ -10,11 +10,7 @@ public class RoomManager : cjr.Single.SingleMon<RoomManager>
   {
     return rooms.Count;
   }
-
-  public StartRoom GetStartRoom()
-  {
-    return rooms[0] as StartRoom;
-  }
+  
 
 
   public BaseRoom GetClosestRoom(Vector3 position)

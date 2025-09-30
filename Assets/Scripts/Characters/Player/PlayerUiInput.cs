@@ -60,9 +60,14 @@ public class PlayerUiInput : cjr.Single.SingleMon<PlayerUiInput>
     public void SpeakingSpeeding(InputAction.CallbackContext context)
     {
         if (context.performed)
-        {
-           DialogueSystemManager.Instance.DoSpeedUp();
-           ToolDialogueSkin.Instance.DoSpeedUp();
+        { 
+            if(DialogueSystemManager.Instance)
+                DialogueSystemManager.Instance.DoSpeedUp();
+            
+            if(ToolDialogueSkin.Instance)
+                ToolDialogueSkin.Instance.DoSpeedUp();
+            
+            
         }
     }
 

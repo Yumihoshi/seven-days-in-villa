@@ -93,6 +93,12 @@ public class PlayerAction : MonoBehaviour
 
    public void SetInteract(InteractableItem item)
    {
+      if (item != null && item.NeedHint)
+      {
+         UiGameobject.Instance.ShowHintObject(item.GetPosition());
+      }
+      if(!item)
+         UiGameobject.Instance.HideHintObject();
       playerInteract.SetInteract(item);
    }
 

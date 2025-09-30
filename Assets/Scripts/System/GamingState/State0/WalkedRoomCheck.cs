@@ -20,8 +20,12 @@ public class WalkedRoomCheck : MonoBehaviour
     {
         if (!hasInit&&other.CompareTag("Player"))
         {
-            GameState.Instance.CurrentStateSlot?.Step();
-            hasInit = true;
+            if (GameState.Instance)
+            {
+                GameState.Instance.CurrentStateSlot?.Step();
+                hasInit = true;
+                
+            }
         }
     }
     

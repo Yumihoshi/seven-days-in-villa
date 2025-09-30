@@ -7,6 +7,23 @@ public class InteractableItem : MonoBehaviour
 {
     private Collider2D _collider2D;
     [SerializeField] protected bool NeedTrigger = true;
+
+    [SerializeField] private Vector3 offset;
+    public Vector3 GetPosition()
+    {
+        return transform.position + offset;
+    }
+
+    public bool NeedHint
+    {
+        get
+        {
+            return needHint;
+        }
+    }
+    
+    
+    [SerializeField] bool needHint = false;
     protected virtual void Awake()
     {
         _collider2D = GetComponent<Collider2D>();
@@ -36,7 +53,7 @@ public class InteractableItem : MonoBehaviour
     }
     public virtual void Interact()
     {
-      
+        needHint = false;
     }
 
 

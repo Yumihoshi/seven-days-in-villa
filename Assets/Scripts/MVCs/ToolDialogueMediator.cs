@@ -14,6 +14,10 @@ public class ToolDialogueMediator : BaseMediator
    void OnbeginChosenOption(object param)
    {
       object body = ApplicationFacade.Unpackage(param).Body;
+
+      if (!ToolDialogueSkin.Instance)
+         return;
+         
       if(body is int optionIndex)
       {
          ToolDialogueSkin.Instance.CurrentOption+=optionIndex;
@@ -33,6 +37,7 @@ public class ToolDialogueMediator : BaseMediator
    
    void OnConfirm_Choose_Dialogue_Option(object data)
    {
-      ToolDialogueSkin.Instance.optionConfirm = ToolDialogueSkin.Instance.IsinOptions;
+      if(ToolDialogueSkin.Instance)
+         ToolDialogueSkin.Instance.optionConfirm = ToolDialogueSkin.Instance.IsinOptions;
    }
 }

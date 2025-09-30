@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 /// </summary>
 public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
 {
-    #region ???????????
+    #region i_dont_know_
 
     [SerializeField] private CanvasGroup interactbleInfo;
     [SerializeField] TMPro.TextMeshProUGUI Infotext;
@@ -19,7 +19,28 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
     [SerializeField] private Coroutine IntervalCoroutine;
     #endregion
 
+    [SerializeField] GameObject  hintObject;
 
+
+    public void ShowHintObject(Vector3 hintPosition)
+    {
+        if (!hintObject)
+        {
+            hintObject = ResourceLoader.Instance.LoadObject("Prefabs/Other/HintPreb");
+            
+        }
+        hintObject.transform.position = hintPosition;
+        
+        hintObject.SetActive(true);
+    }
+
+
+    public void HideHintObject()
+    {
+        if(hintObject)
+            hintObject.SetActive(false);
+    }
+    
     public float GetSingleWordInterval()
     {
         return singleWordInterval;
@@ -28,6 +49,7 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
     protected override void Awake()
     {
         base.Awake();
+        hintObject = null;
         IntervalCoroutine = null;
     }
 

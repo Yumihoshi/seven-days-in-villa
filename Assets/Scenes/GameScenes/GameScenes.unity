@@ -1079,6 +1079,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 1663955192}
   NextPoisition: {fileID: 484463306}
   duration: 0.2
@@ -5089,6 +5091,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 582534518}
   NextPoisition: {fileID: 923718253}
   duration: 0.2
@@ -5931,6 +5935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 1679179369}
   NextPoisition: {fileID: 231785830}
   duration: 0.2
@@ -6294,6 +6300,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 1292282889}
   NextPoisition: {fileID: 253547319}
   duration: 0.2
@@ -7445,6 +7453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 975217688}
   NextPoisition: {fileID: 1979974606}
   duration: 0.2
@@ -7677,6 +7687,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 1663955192}
   NextPoisition: {fileID: 484463306}
   duration: 0.2
@@ -8085,6 +8097,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 975217688}
   NextPoisition: {fileID: 566732492}
   duration: 0.2
@@ -8289,6 +8303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 0
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   GameName: "\u98DF\u7528\u6CB9"
   Grade: 3
 --- !u!1 &721912992
@@ -9142,6 +9158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 975217688}
   NextPoisition: {fileID: 1854883171}
   duration: 0.2
@@ -9584,53 +9602,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3596921356358413237, guid: e2ede1208ad0b39489954527da933206, type: 3}
   m_PrefabInstance: {fileID: 4333743013681193480}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &880204768
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 880204769}
-  - component: {fileID: 880204770}
-  m_Layer: 0
-  m_Name: StartRoom
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &880204769
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880204768}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -91.1, y: 11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1984662070}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &880204770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880204768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad78e348b86e7f3489082a8ae65bc9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomName: 7
-  spriteRenderer: {fileID: 0}
-  MyPolyEdge: []
 --- !u!1 &893991004
 GameObject:
   m_ObjectHideFlags: 0
@@ -12004,6 +11975,7 @@ MonoBehaviour:
   Infotext: {fileID: 37368362}
   infoDuration: 0
   singleWordInterval: 0.02
+  hintObject: {fileID: 0}
 --- !u!224 &1058328873 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 464264268243905278, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
@@ -16006,6 +15978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 975217688}
   NextPoisition: {fileID: 590330497}
   duration: 0.2
@@ -23826,6 +23800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 1681110034}
   NextPoisition: {fileID: 1998399415}
   duration: 0.2
@@ -26918,6 +26894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0, z: 0}
+  needHint: 0
   NextConfiner: {fileID: 1663955192}
   NextPoisition: {fileID: 2006912679}
   duration: 0.2
@@ -26954,7 +26932,6 @@ Transform:
   - {fileID: 436178891}
   - {fileID: 1133365677}
   - {fileID: 1325686656}
-  - {fileID: 880204769}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984827682
@@ -27882,7 +27859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 880204770}
   - {fileID: 978393885}
   - {fileID: 1544915779}
   - {fileID: 1015072543}

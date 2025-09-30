@@ -226,6 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  offset: {x: 0, y: 0.75, z: 0}
+  needHint: 0
   animator: {fileID: 0}
   grade: 0
   seeker: {fileID: 0}

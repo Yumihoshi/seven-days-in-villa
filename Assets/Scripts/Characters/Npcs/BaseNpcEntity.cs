@@ -79,7 +79,7 @@ public class BaseNpcEntity : InteractableItem
       //    {
       //       if (pt == Vector3.positiveInfinity)
       //       {
-      //          last = null; // ÐÂÂÖÀª
+      //          last = null; // ??????
       //          continue;
       //       }
       //
@@ -127,14 +127,23 @@ public class BaseNpcEntity : InteractableItem
       }
    }
 
-   private void OnTriggerExit2D(Collider2D other)
+
+   public override void OnTriggerEnter2D(Collider2D other)
    {
+      base.OnTriggerEnter2D(other);
+   }
+
+   public override void OnTriggerExit2D(Collider2D other)
+   {
+      base.OnTriggerExit2D(other);
       if (other.gameObject.CompareTag("Player"))
       {
          PlayerAction.Instance.SetInteract(null);
          Move();
       }
    }
+   
+   
 
    public void Move()
    {

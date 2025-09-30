@@ -13,6 +13,7 @@ public class GameStateslot1 : GameStateSlot
     {
         base.onEnter();
 
+        Debug.LogWarning("enter state1");
         GameObject stewardObject = ResourceLoader.Instance.LoadObject("Prefabs/Npcs/Steward");
         stewardObject.transform.position = StewardPosition;
 
