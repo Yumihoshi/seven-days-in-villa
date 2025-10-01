@@ -22,6 +22,17 @@ public class UiGameobject : cjr.Single.SingleMon<UiGameobject>
     [SerializeField] GameObject  hintObject;
 
 
+    [SerializeField] private CanvasGroup MainMask;
+
+    public void SetMaskAlpha(float alpha, float duration,Action onFinish=null)
+    {
+        MainMask.gameObject.SetActive(true);
+        MainMask.DOFade(alpha, duration).OnComplete(() =>
+        {
+            onFinish?.Invoke();
+        });
+    }
+
     public void ShowHintObject(Vector3 hintPosition)
     {
         if (!hintObject)

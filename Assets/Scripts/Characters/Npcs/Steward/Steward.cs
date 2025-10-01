@@ -11,16 +11,20 @@ public class Steward : BaseNpcEntity
    {
       
       base.Interact();
+      if (!CanbeInteracted)
+         return;
       int state = GameState.Instance.GetGameState();
       // if (state <= 1)
       {
          DialogueTree dialogueTree = ResourceLoader.Instance.LoadSO<DialogueTree>("DialogueData/¶Ô»°2");
+         CanbeInteracted = false;
          DialogueSystemManager.Instance.StartDialogue(dialogueTree,Onend);
       }
    }
 
    public void Onend()
    {
-      Debug.LogWarning("Action finished");
+     GameState.Instance.CurrentStateSlot.Step();
+     
    }
 }

@@ -29,4 +29,10 @@ public class GameStateslot1 : GameStateSlot
         base.Step();
         GameState.Instance.SwitchStateSlot(2);
     }
+
+    public override void onExit()
+    {
+        base.onExit();
+        GameObjectFactory.Instance.DestroyObject(stewardObject,.5f);
+    }
 }

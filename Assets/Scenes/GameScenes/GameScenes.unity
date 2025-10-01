@@ -1079,6 +1079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 1663955192}
@@ -5091,6 +5092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 582534518}
@@ -5935,6 +5937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 1679179369}
@@ -6300,6 +6303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 1292282889}
@@ -7453,6 +7457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 975217688}
@@ -7687,6 +7692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 1663955192}
@@ -8097,6 +8103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 975217688}
@@ -8303,6 +8310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 0
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   GameName: "\u98DF\u7528\u6CB9"
@@ -9158,6 +9166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 975217688}
@@ -11976,6 +11985,7 @@ MonoBehaviour:
   infoDuration: 0
   singleWordInterval: 0.02
   hintObject: {fileID: 0}
+  MainMask: {fileID: 247933692}
 --- !u!224 &1058328873 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 464264268243905278, guid: 1f74f8286335bcc4e9fd35f2d4367fe0, type: 3}
@@ -15978,6 +15988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 975217688}
@@ -23800,6 +23811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 1681110034}
@@ -26894,6 +26906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeedTrigger: 1
+  CanbeInteracted: 0
   offset: {x: 0, y: 0, z: 0}
   needHint: 0
   NextConfiner: {fileID: 1663955192}
@@ -27780,7 +27793,7 @@ MonoBehaviour:
   IsDebug: 1
   items: []
   saved: []
-  GameState_Ondebug: 0
+  GameState_Ondebug: 1
   SavingMask: {fileID: 1187313584}
   gameData_SO: {fileID: 11400000, guid: cc48aefe91e88b04c869981a4b3bd62a, type: 2}
 --- !u!114 &2072186896
@@ -29594,38 +29607,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 905274071}
     m_Modifications:
-    - target: {fileID: 768578224896950149, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 768578224896950149, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 768578224896950149, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 374.755
-      objectReference: {fileID: 0}
-    - target: {fileID: 768578224896950149, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -59.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 2631684678979070594, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2631684678979070594, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2631684678979070594, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 640.135
-      objectReference: {fileID: 0}
-    - target: {fileID: 2631684678979070594, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -59.375
-      objectReference: {fileID: 0}
     - target: {fileID: 5439570663888240059, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -29706,29 +29687,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5837754741933779946, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5837754741933779946, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5837754741933779946, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 109.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 5837754741933779946, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -59.375
-      objectReference: {fileID: 0}
     - target: {fileID: 8776440921626812500, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
       propertyPath: m_Name
       value: ShopPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776440921626812500, guid: 4d4d07f00212bed409567a6a60802f85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

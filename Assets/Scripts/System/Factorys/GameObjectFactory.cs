@@ -69,6 +69,27 @@ public class GameObjectFactory : cjr.Single.SingleMon<GameObjectFactory>
         _createdObjects.Add(obj);
         return obj;
     }
+    
+    
+    
+    /// <summary>
+    /// 延时销毁游戏物体（支持池回收或立即销毁）
+    /// </summary>
+    /// <param name="obj">目标物体</param>
+    /// <param name="delay">延迟时间（秒）</param>
+    public void DestroyObject(GameObject obj, float delay)
+    {
+        if (obj == null) return;
+        // 启动一个协程做“到点后真正处理”
+        CoroutineFactory.Instance.RunCoroutine(DestroyAfterDelay(obj, delay));
+    }
+
+    private System.Collections.IEnumerator DestroyAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        // 到点后走原来的销毁逻辑（含池回收）
+        DestroyObject(obj);
+    }
 
     /// <summary>
     /// 销毁游戏物体（自动回收或销毁，无论是不是Factory创建的）

@@ -8,6 +8,9 @@ public class InteractableItem : MonoBehaviour
     private Collider2D _collider2D;
     [SerializeField] protected bool NeedTrigger = true;
 
+
+    public bool CanbeInteracted;
+    
     [SerializeField] private Vector3 offset;
     public Vector3 GetPosition()
     {
@@ -28,6 +31,7 @@ public class InteractableItem : MonoBehaviour
     {
         _collider2D = GetComponent<Collider2D>();
         _collider2D.isTrigger = NeedTrigger;
+        CanbeInteracted = true;
     }
 
     public virtual void OnTriggerEnter2D(Collider2D other)
@@ -54,6 +58,8 @@ public class InteractableItem : MonoBehaviour
     public virtual void Interact()
     {
         needHint = false;
+        if(!CanbeInteracted)
+            return;
     }
 
 

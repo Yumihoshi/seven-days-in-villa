@@ -34,9 +34,12 @@ public class BaseNpcEntity : InteractableItem
 
    [SerializeField] private float waitTimeMin = 1.4f;
    [SerializeField] private float waitTimeMax = 3.5f;
-   
-   public virtual void Awake()
+
+
+
+   protected override void Awake()
    {
+      base.Awake();
       seeker = GetComponent<Seeker>();
       if (seeker == null)
       {
