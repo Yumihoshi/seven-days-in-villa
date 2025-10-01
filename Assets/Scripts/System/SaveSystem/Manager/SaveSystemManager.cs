@@ -310,7 +310,12 @@ public class SaveSystemManager : cjr.Single.SingleMon<SaveSystemManager>
         SavingMask.alpha = 1;
         {
             foreach (GameObject go in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
-            { 
+            {
+                if (!go)
+                {
+                    yield return null;
+                    continue;
+                }
                 Component[] components = go.GetComponents<Component>();
                 for (int i = 0; i < components.Length; i++)
                 {

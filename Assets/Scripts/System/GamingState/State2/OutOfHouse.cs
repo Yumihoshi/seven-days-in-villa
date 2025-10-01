@@ -23,9 +23,12 @@ public class OutOfHouse : InteractableItem
    {
       base.Interact();
     
-      UiGameobject.Instance.SetMaskAlpha(1f,.1f);
+      UiGameobject.Instance.SetMaskAlpha(1f,.1f, () =>
+      {
+         GameState.Instance.SwitchStateSlot(3);
+         
+      });
       
-      GameState.Instance.SwitchStateSlot(3);
       
    }
 

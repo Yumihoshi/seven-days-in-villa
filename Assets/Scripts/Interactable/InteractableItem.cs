@@ -30,7 +30,8 @@ public class InteractableItem : MonoBehaviour
     protected virtual void Awake()
     {
         _collider2D = GetComponent<Collider2D>();
-        _collider2D.isTrigger = NeedTrigger;
+        if(_collider2D)
+            _collider2D.isTrigger = NeedTrigger;
         CanbeInteracted = true;
     }
 

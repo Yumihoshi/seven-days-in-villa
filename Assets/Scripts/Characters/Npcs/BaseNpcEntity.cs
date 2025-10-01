@@ -37,7 +37,7 @@ public class BaseNpcEntity : InteractableItem
 
 
 
-   protected override void Awake()
+   public virtual void Awake()
    {
       base.Awake();
       seeker = GetComponent<Seeker>();

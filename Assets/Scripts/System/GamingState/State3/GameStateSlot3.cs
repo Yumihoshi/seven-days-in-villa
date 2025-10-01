@@ -8,4 +8,14 @@ public class GameStateSlot3 : GameStateSlot
     {
         return 3;
     }
+
+
+    public override void onEnter()
+    {
+        base.onEnter();
+        //todo
+        UiGameobject.Instance.SetMaskAlpha(0,0.1f);
+        
+        
+    }
 }
