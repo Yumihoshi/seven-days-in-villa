@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class Steward : BaseNpcEntity
 {
-   
-   
+   public override void Awake()
+   {
+      base.Awake();
+      NeedHintSwitch();
+   }
+
    public override void Interact()
    {
       
@@ -21,6 +25,9 @@ public class Steward : BaseNpcEntity
          DialogueSystemManager.Instance.StartDialogue(dialogueTree,Onend);
       }
    }
+
+
+  
 
    public void Onend()
    {

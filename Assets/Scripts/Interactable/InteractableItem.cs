@@ -35,6 +35,17 @@ public class InteractableItem : MonoBehaviour
         CanbeInteracted = true;
     }
 
+
+    public void NeedHintSwitch()
+    {
+        needHint = true;
+    }
+
+    public void NotNeedHint()
+    {
+        needHint = false;
+    }
+    
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
