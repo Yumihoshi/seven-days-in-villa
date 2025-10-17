@@ -58,8 +58,8 @@ public class RoomManager : cjr.Single.SingleMon<RoomManager>
               last = null; // 新轮廓
               continue;
           }
-          if (last.HasValue)
-              Debug.DrawLine(last.Value, pt, Color.cyan);
+          // 把每个点画出点来
+          Debug.DrawRay(pt, Vector3.up * 0.1f, Color.cyan);
           last = pt;
       }
   }

@@ -17,6 +17,8 @@ public enum RoomType
     Kitchen,
     PaintingRoom,
     StartRoom,
+    exerciseRoom,
+    LibraryRoom
     
 }
 
@@ -32,7 +34,15 @@ public class BaseRoom : MonoBehaviour
     private void OnEnable()
     {
         spriteRenderer=transform.GetChild(0).GetComponent<SpriteRenderer>();
-        MyPolyEdge=SpriteBoundaryExtractor.GetSpriteAlphaBoundaryWorldPoints(spriteRenderer,3);
+        try
+        {
+            
+            MyPolyEdge=SpriteBoundaryExtractor.GetSpriteAlphaBoundaryWorldPoints(spriteRenderer,3);
+        }
+        catch (System.Exception ex)  // »ò¼òÐ´Îª catch (Exception ex)
+        {
+            Debug.LogError(roomName + ": " + ex.Message);
+        }
         
     }
 

@@ -14965,12 +14965,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 79f325365a7fc1b4a8740e70f576c6a4, type: 3}
+  m_Sprite: {fileID: -2135178271, guid: 79f325365a7fc1b4a8740e70f576c6a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.53125, y: 8.0625}
+  m_Size: {x: 9.71875, y: 9.53125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -23613,6 +23613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729108517}
+  - component: {fileID: 1729108518}
   m_Layer: 0
   m_Name: exerciseRoom
   m_TagString: Untagged
@@ -23637,6 +23638,21 @@ Transform:
   - {fileID: 1527682675}
   m_Father: {fileID: 1133365677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1729108518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729108516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b68a3a9c61adae4a98aed22ca161e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 8
+  spriteRenderer: {fileID: 0}
+  MyPolyEdge: []
 --- !u!1 &1739150279
 GameObject:
   m_ObjectHideFlags: 0
@@ -27809,8 +27825,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1997901350}
+  - component: {fileID: 1997901351}
   m_Layer: 0
-  m_Name: Library
+  m_Name: LibraryRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27833,6 +27850,21 @@ Transform:
   - {fileID: 263956737}
   m_Father: {fileID: 1133365677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1997901351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997901349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956dff468c117814f8433e910957428a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: 9
+  spriteRenderer: {fileID: 0}
+  MyPolyEdge: []
 --- !u!1 &1998399414
 GameObject:
   m_ObjectHideFlags: 0
@@ -28597,6 +28629,8 @@ MonoBehaviour:
   - {fileID: 1976338185}
   - {fileID: 1503860424}
   - {fileID: 434443350}
+  - {fileID: 1729108518}
+  - {fileID: 1997901351}
   roomPositions: []
   ee: 1
 --- !u!114 &2072186901
