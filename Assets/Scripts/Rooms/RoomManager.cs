@@ -84,10 +84,6 @@ public class RoomManager : cjr.Single.SingleMon<RoomManager>
 
 public static class SpriteBoundaryExtractor
 {
-    /// <summary>
-    /// 精确提取Sprite所有轮廓（防止漏面），返回轮廓点集合（以Vector3.positiveInfinity分隔），可指定采样疏密
-    /// 轮廓点世界坐标与Sprite完全重合，无整体偏移
-    /// </summary>
     public static List<Vector3> GetSpriteAlphaBoundaryWorldPoints(SpriteRenderer sprender, int samplingStep = 1)
     {
         Sprite sprite = sprender.sprite;
@@ -99,106 +95,49 @@ public static class SpriteBoundaryExtractor
             (int)spriteRect.x, (int)spriteRect.y,
             w, h);
 
-        // 标记已访问的边界点
-        bool[,] visited = new bool[w, h];
-
-        // Moore邻域偏移
-        int[] dx = { -1, -1, 0, 1, 1, 1, 0, -1 };
-        int[] dy = { 0, -1, -1, -1, 0, 1, 1, 1 };
-
         // 判断是否是边界点
         bool IsEdge(int x, int y)
         {
             if (pixels[y * w + x].a <= 0.1f) return false;
             for (int ny = -1; ny <= 1; ny++)
-                for (int nx = -1; nx <= 1; nx++)
-                {
-                    if (nx == 0 && ny == 0) continue;
-                    int xx = x + nx, yy = y + ny;
-                    if (xx < 0 || xx >= w || yy < 0 || yy >= h) return true;
-                    if (pixels[yy * w + xx].a <= 0.1f) return true;
-                }
+            for (int nx = -1; nx <= 1; nx++)
+            {
+                if (nx == 0 && ny == 0) continue;
+                int xx = x + nx, yy = y + ny;
+                if (xx < 0 || xx >= w || yy < 0 || yy >= h) return true;
+                if (pixels[yy * w + xx].a <= 0.1f) return true;
+            }
             return false;
         }
 
         List<Vector3> worldPoints = new List<Vector3>();
 
-        // 彻底遍历每个未访问的边界点，防止漏面
-        for (int y = 1; y < h - 1; y++)
+        // 遍历所有像素找出边界点
+        int count = 0;
+        for (int y = 0; y < h; y++)
         {
-            for (int x = 1; x < w - 1; x++)
+            for (int x = 0; x < w; x++)
             {
-                if (visited[x, y]) continue;
-                if (!IsEdge(x, y)) continue;
-
-                // 新轮廓
-                List<Vector2Int> contourPix = new List<Vector2Int>();
-                Vector2Int start = new Vector2Int(x, y);
-                Vector2Int curr = start;
-                int prevDir = 0;
-                bool[,] contourVisited = new bool[w, h];
-
-                do
+                if (IsEdge(x, y))
                 {
-                    contourPix.Add(curr);
-                    visited[curr.x, curr.y] = true;
-                    contourVisited[curr.x, curr.y] = true;
-
-                    bool found = false;
-                    // 从上一次方向开始顺序查找
-                    for (int i = 0; i < 8; i++)
+                    // 按 samplingStep 采样
+                    if (count % samplingStep == 0)
                     {
-                        int dir = (prevDir + i) % 8;
-                        int nx = curr.x + dx[dir];
-                        int ny = curr.y + dy[dir];
-                        if (nx < 1 || nx >= w - 1 || ny < 1 || ny >= h - 1) continue;
-                        if (contourVisited[nx, ny]) continue;
-                        if (IsEdge(nx, ny))
-                        {
-                            curr = new Vector2Int(nx, ny);
-                            prevDir = dir;
-                            found = true;
-                            break;
-                        }
+                        // 转为世界坐标
+                        Vector2 localPos = new Vector2(
+                            (x - sprite.pivot.x) / sprite.pixelsPerUnit,
+                            (y - sprite.pivot.y) / sprite.pixelsPerUnit
+                        );
+                        Vector3 worldPos = sprender.transform.TransformPoint(localPos);
+                        worldPoints.Add(worldPos);
                     }
-                    if (!found) break;
-                } while (curr != start);
-
-                // 采样并转世界坐标（关键：不加spriteRect.x/y）
-                for (int i = 0; i < contourPix.Count; i += samplingStep)
-                {
-                    Vector2Int pix = contourPix[i];
-                    Vector2 localPos = new Vector2(
-                        (pix.x - sprite.pivot.x) / sprite.pixelsPerUnit,
-                        (pix.y - sprite.pivot.y) / sprite.pixelsPerUnit
-                    );
-                    Vector3 worldPos = sprender.transform.TransformPoint(localPos);
-                    worldPoints.Add(worldPos);
+                    count++;
                 }
-                // 补最后一个点闭合
-                if (contourPix.Count > 0)
-                {
-                    Vector2Int pix = contourPix[0];
-                    Vector2 localPos = new Vector2(
-                        (pix.x - sprite.pivot.x) / sprite.pixelsPerUnit,
-                        (pix.y - sprite.pivot.y) / sprite.pixelsPerUnit
-                    );
-                    Vector3 worldPos = sprender.transform.TransformPoint(localPos);
-                    worldPoints.Add(worldPos);
-                }
-
-                // 添加分隔点
-                worldPoints.Add(Vector3.positiveInfinity);
             }
         }
 
-        // 去掉最后一个分隔点
-        if (worldPoints.Count > 0 && worldPoints[worldPoints.Count - 1] == Vector3.positiveInfinity)
-            worldPoints.RemoveAt(worldPoints.Count - 1);
-
         return worldPoints;
     }
-        
 }
 
 
