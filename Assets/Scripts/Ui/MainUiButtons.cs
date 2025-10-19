@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using cjr.Scence;
@@ -5,9 +6,19 @@ using UnityEngine;
 
 public class MainUiButtons : MonoBehaviour
 {
+   private bool isOpenedInventory;
+
+   private void Awake()
+   {
+      isOpenedInventory = false;
+   }
+
    public void ShowPopInventoryPanel()
    {
-      PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.InventoryPanel);
+    
+      
+         PopUiPanelController.Instance.CreatePopUiPanel(ConstVariable.InventoryPanel);
+      
    }
 
 
