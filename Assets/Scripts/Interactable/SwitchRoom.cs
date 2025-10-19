@@ -51,5 +51,8 @@ public class SwitchRoom : InteractableItem
         {
             PlayerUiInput.Instance.playerInput.SwitchCurrentActionMap("GamePlay");
         });
+        UiGameobject.Instance.SetInteractableInfo(NextConfiner.transform.parent.gameObject.
+            GetComponent<BaseRoom>().GetChineseRoomName(),0.7f);
+        
     }
 }
